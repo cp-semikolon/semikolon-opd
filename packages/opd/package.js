@@ -19,7 +19,8 @@ Package.onUse(function(api) {
   // define local dependencies
   // api.use('semikolon:opd-otp');
 
-  api.addFiles('namespaces.es6.js');
+  api.addFiles('shared/namespaces.es6.js');
+  api.addFiles('templates/temp.html');
   api.export('OPD');
 });
 

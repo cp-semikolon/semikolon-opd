@@ -108,6 +108,10 @@
       "Handlebars": false,      // https://github.com/meteor/meteor/wiki/Handlebars
       "Package": false,
       "App": false, //mobile-config.js
+      "FlowRouter": false,
+      "BlazeLayout": false,
+      "BlazeComponent": false,
+      "Values": true,
       // Meteor internals
       "DDPServer": false,
       "global": false,
