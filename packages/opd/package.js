@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'semikolon:opd',
+  name: 'opd',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -12,21 +12,14 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
-
   api.use('ecmascript');
-  api.use('templating');
-
-  // define local dependencies
-  // api.use('semikolon:opd-otp');
-
-  api.addFiles('shared/namespaces.es6.js');
-  api.addFiles('templates/temp.html');
+  api.addFiles('opd.js');
   api.export('OPD');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('semikolon:opd');
+  api.use('opd');
   api.addFiles('opd-tests.js');
 });

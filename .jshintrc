@@ -111,7 +111,9 @@
       "FlowRouter": false,
       "BlazeLayout": false,
       "BlazeComponent": false,
-      "Values": true,
+      "SimpleSchema": false,
+      "PatientSchema": true,
+      "Patients": true,
       // Meteor internals
       "DDPServer": false,
       "global": false,
