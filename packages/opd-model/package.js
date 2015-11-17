@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'opd',
+  name: 'opd-model',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -13,13 +13,16 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.addFiles('opd.js');
-  api.export('OPD');
+  api.addFiles([
+    'lib/namespace.js',
+    'opd-model.js'
+  ]);
+  api.export('Model'); 
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('opd');
-  api.addFiles('opd-tests.js');
+  api.use('opd-model');
+  api.addFiles('opd-model-tests.js');
 });

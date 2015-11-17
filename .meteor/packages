@@ -27,4 +27,4 @@ peerlibrary:blaze-components
 meteorflux:dispatcher
 aldeed:collection2
 aldeed:autoform
-opd
+opd-core

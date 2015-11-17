@@ -61,7 +61,8 @@ mongo-id@1.0.1
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
-opd@0.0.1
+opd-core@0.0.1
+opd-model@0.0.1
 ordered-dict@1.0.4
 peerlibrary:assert@0.2.5
 peerlibrary:base-component@0.14.0

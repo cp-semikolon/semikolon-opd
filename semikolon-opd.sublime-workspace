@@ -1,0 +1,1243 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Fizz",
+				"fizzBuzzModel	fizzbuzz.js"
+			],
+			[
+				"pro",
+				"prototype"
+			],
+			[
+				"principal",
+				"principalId	routes.js"
+			],
+			[
+				"setTimeour",
+				"setTimeout(fn, delay, params)	jasmine.js"
+			],
+			[
+				"ajax",
+				"ajax( url, options )	jquery.js"
+			],
+			[
+				"download",
+				"downloadLink	agenda.js"
+			],
+			[
+				"sess",
+				"sessions	agenda.js"
+			],
+			[
+				"l",
+				"location"
+			],
+			[
+				"t",
+				"type"
+			],
+			[
+				"i",
+				"input"
+			],
+			[
+				"sc",
+				"src"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"message",
+				"message_type"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"f",
+				"font-weight"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"get",
+				"getElementsByClassName('aSome')"
+			],
+			[
+				"tes",
+				"/aSome/.test(aSome)"
+			],
+			[
+				"ser",
+				"verbose_$interval	AngularJS"
+			],
+			[
+				"test",
+				"getElementsByTagName('aSome')"
+			],
+			[
+				"C",
+				"ChoiceInline"
+			],
+			[
+				"Qu",
+				"QuestionAdmin"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"pu",
+				"pub_date"
+			],
+			[
+				"qu",
+				"question_text"
+			],
+			[
+				"list",
+				"list_name"
+			],
+			[
+				"na",
+				"nam	namespace :.. do .. end"
+			],
+			[
+				"li",
+				"list_name"
+			],
+			[
+				"is",
+				"is_found"
+			],
+			[
+				"chem",
+				"chem_a"
+			],
+			[
+				"ex",
+				"expected_res"
+			],
+			[
+				"che",
+				"chem_a"
+			],
+			[
+				"p",
+				"pair"
+			],
+			[
+				"ea",
+				"each"
+			],
+			[
+				"ch",
+				"chemicals"
+			],
+			[
+				"hea",
+				"header"
+			],
+			[
+				"fi",
+				"fsize"
+			],
+			[
+				"do",
+				"do"
+			],
+			[
+				"gr",
+				"group"
+			],
+			[
+				"set",
+				"set_arr"
+			],
+			[
+				"so",
+				"solve"
+			],
+			[
+				"n",
+				"npuzz"
+			],
+			[
+				"s",
+				"s"
+			],
+			[
+				"ta",
+				"take"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"not",
+				"notake"
+			],
+			[
+				"k",
+				"fractional_knapsack"
+			],
+			[
+				"fa",
+				"fractional_knapsack"
+			],
+			[
+				"o",
+				"obj_list"
+			],
+			[
+				"tim",
+				"times"
+			],
+			[
+				"cou",
+				"count_at_k"
+			],
+			[
+				"curr",
+				"curr_deg"
+			],
+			[
+				"cur",
+				"curr_deg"
+			],
+			[
+				"up",
+				"updated_grid"
+			],
+			[
+				"st",
+				"start"
+			],
+			[
+				"min",
+				"min_dist"
+			],
+			[
+				"if",
+				"if	if … end"
+			],
+			[
+				"b",
+				"bsearch"
+			],
+			[
+				"ca",
+				"camp_list"
+			],
+			[
+				"pt",
+				"Println"
+			],
+			[
+				"fil",
+				"file"
+			],
+			[
+				"co",
+				"chomp"
+			],
+			[
+				"eac",
+				"each_with_index"
+			],
+			[
+				"n_",
+				"n_elem"
+			],
+			[
+				"en",
+				"end_flag"
+			],
+			[
+				"se",
+				"set_tile"
+			],
+			[
+				"x",
+				"x"
+			],
+			[
+				"delete",
+				"deleteorder"
+			],
+			[
+				"O",
+				"OrderList"
+			],
+			[
+				"ord",
+				"order_list"
+			],
+			[
+				"or",
+				"order_list_input"
+			],
+			[
+				"va",
+				"var_dump"
+			],
+			[
+				"order_list",
+				"order_list_attribute"
+			],
+			[
+				"where",
+				"wherehas"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"edi",
+				"editname"
+			],
+			[
+				"bra",
+				"brands"
+			],
+			[
+				"bran",
+				"brands"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"del",
+				"delete"
+			],
+			[
+				"brand",
+				"Brand"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"B",
+				"B"
+			],
+			[
+				"d",
+				"def	#ifndef … #define … #endif"
+			],
+			[
+				"ma",
+				"main	main()"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/C++/C++.sublime-build",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"tern",
+				"TernJS: Reload"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ss java",
+				"Set Syntax: Java"
+			],
+			[
+				"linter",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"es6",
+				"Snippet: ES6 Class"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint Current File"
+			],
+			[
+				"dia",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"ss json",
+				"Set Syntax: JSON"
+			],
+			[
+				"linte",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"linr",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ss blade",
+				"Set Syntax: PHP - Laravel Blade"
+			],
+			[
+				"ss les",
+				"Set Syntax: LESS"
+			],
+			[
+				"ss ht",
+				"Set Syntax: HTML (Tcl)"
+			],
+			[
+				"ss ja",
+				"Set Syntax: Jade"
+			],
+			[
+				"l",
+				"SublimeLinter: Background Linting"
+			],
+			[
+				"sub",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"mar",
+				"Snippet: for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"",
+				"SublimeLinter: Background Linting"
+			],
+			[
+				"ss js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ss sh",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ss p",
+				"Set Syntax: PHP"
+			],
+			[
+				"r",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ss r",
+				"Set Syntax: Ruby"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"rub",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ss go",
+				"Set Syntax: Go"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ss c",
+				"Set Syntax: C++"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"p",
+				"Set Syntax: PHP"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"ssc",
+				"Set Syntax: C++"
+			],
+			[
+				"side",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"ss",
+				"Set Syntax: C"
+			],
+			[
+				"ssc++",
+				"Set Syntax: C++"
+			]
+		],
+		"width": 538.0
+	},
+	"console":
+	{
+		"height": 144.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Apple/node/semikolon-opd/packages/opd-core/namespaces.es6.js",
+		"/Users/Apple/node/semikolon-opd/packages/opd-core/package.js",
+		"/Users/Apple/node/try_kata/diff2big.js",
+		"/Users/Apple/try.js",
+		"/Users/Apple/node/microsite/server/views/pages/login.jade",
+		"/Users/Apple/practices/js/fizzbuzz/spec/fizzbuzz_view.html",
+		"/Users/Apple/practices/js/fizzbuzz/app.html",
+		"/Users/Apple/practices/js/fizzbuzz/view/fizzbuzz.spec.js",
+		"/Users/Apple/practices/js/fizzbuzz/view/fizzbuzz.js",
+		"/Users/Apple/practices/js/fizzbuzz/.gitignore",
+		"/Users/Apple/practices/js/fizzbuzz/model/fizzbuzz.js",
+		"/Users/Apple/practices/js/fizzbuzz/controller/fizzbuzz.spec.js",
+		"/Users/Apple/practices/js/fizzbuzz/controller/fizzbuzz.js",
+		"/Users/Apple/practices/js/fizzbuzz/model/fizzbuzz.spec.js",
+		"/Users/Apple/practices/js/fizzbuzz/spec/fizzbuzz_model.html",
+		"/Users/Apple/practices/js/fizzbuzz/spec/fizzbuzz_controller.html",
+		"/Users/Apple/practices/js/try_frontend_testing/cow.js",
+		"/Users/Apple/practices/js/try_frontend_testing/vendor/mocha.js",
+		"/Users/Apple/practices/js/try_frontend_testing/vendor/chai.js",
+		"/Users/Apple/practices/js/try_frontend_testing/vendor/mocha.css",
+		"/Users/Apple/practices/js/angular-todo-tdd/src/app/index.constants.js",
+		"/Users/Apple/practices/js/angular-todo-tdd/src/app/index.config.js",
+		"/Users/Apple/practices/js/angular-todo-tdd/node_modules/adm-zip/util/constants.js",
+		"/Users/Apple/practices/js/angular-todo-tdd/.yo-rc.json",
+		"/Users/Apple/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Apple/myPractices/kata/KataTennis/index.es6.js",
+		"/Users/Apple/myPractices/kata/KataTennis/.gitignore",
+		"/Users/Apple/myPractices/kata/KataTennis/index.js",
+		"/Users/Apple/myPractices/kata/KataTennis/mocha.opts",
+		"/Users/Apple/myPractices/kata/KataTennis/package.json",
+		"/Users/Apple/node/microsite/client/dist/assets/scripts/agenda.js",
+		"/Users/Apple/node/microsite/server/views/pages/vote.jade",
+		"/Users/Apple/node/microsite/server/views/layouts/app.jade",
+		"/Users/Apple/node/microsite/server/views/partials/sidebar.jade",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/vote.js",
+		"/Users/Apple/node/microsite/server/boot/routes.js",
+		"/Users/Apple/node/microsite/client/src/assets/styles/app.less",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/agenda.js",
+		"/Users/Apple/node/microsite/server/views/pages/q_and_a.jade",
+		"/Users/Apple/node/microsite/client/src/vote.js",
+		"/Users/Apple/node/microsite/common/models/session.js",
+		"/Users/Apple/node/microsite/common/models/session.json",
+		"/Users/Apple/node/microsite/server/boot/automigrate-1-user.js",
+		"/Users/Apple/node/microsite/server/boot/automigrate-2-session.js",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/member-admin.js",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/api.js",
+		"/Users/Apple/node/microsite/server/views/pages/member-admin.jade",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/agenda-admin.js",
+		"/Users/Apple/node/microsite/server/boot/automigrate-3-question.js",
+		"/Users/Apple/node/microsite/server/views/pages/agenda-admin.jade",
+		"/Users/Apple/Library/Application Support/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/Apple/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/Apple/node/microsite/node_modules/loopback-datasource-juggler/examples/app.js",
+		"/Users/Apple/node/microsite/server/boot/user-feed.js",
+		"/Users/Apple/node/microsite/server/views/partials/topbar.jade",
+		"/Users/Apple/node/microsite/server/model-config.json",
+		"/Users/Apple/node/microsite/client/dist/assets/scripts/login.js",
+		"/Users/Apple/node/microsite/server/views/pages/agenda.jade",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/login.js",
+		"/Users/Apple/node/microsite/client/src/assets/scripts/check-auth.js",
+		"/Users/Apple/node/microsite/client/dist/assets/scripts/check-auth.js",
+		"/Users/Apple/node/microsite/client/src/assets/styles/customization/util.less",
+		"/Users/Apple/node/microsite/server/views/layouts/main.jade",
+		"/Users/Apple/node/microsite/server/boot/module.exports = function(app) {",
+		"/Users/Apple/node/microsite/server/server.js",
+		"/Users/Apple/node/amd_tutorial/index.html",
+		"/Users/Apple/node/amd_tutorial/js/utils/array.js",
+		"/Users/Apple/node/amd_tutorial/js/dom/events.js",
+		"/Users/Apple/node/amd_tutorial/templates/list.html",
+		"/Users/Apple/node/amd_tutorial/js/main.js",
+		"/Users/Apple/node/amd_tutorial/server.py",
+		"/Users/Apple/laravel/rean/resources/views/layouts/parallax-header.blade.php",
+		"/Users/Apple/laravel/rean/artisan",
+		"/Users/Apple/laravel/rean/composer.lock",
+		"/Users/Apple/laravel/rean/resources/assets/less/variables.less",
+		"/Users/Apple/laravel/rean/resources/assets/less/component/form.less",
+		"/Users/Apple/laravel/rean/resources/views/layouts/notifications.blade.php",
+		"/Users/Apple/laravel/rean/resources/assets/less/ct/footer.less",
+		"/Users/Apple/laravel/rean/resources/assets/less/ct/socialicons.less",
+		"/Users/Apple/laravel/rean/resources/assets/bootstrap/less/mixins/vendor-prefixes.less",
+		"/Users/Apple/laravel/rean/resources/views/register.blade.php",
+		"/Users/Apple/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Apple/laravel/rean/resources/views/app.blade.php",
+		"/Users/Apple/laravel/rean/resources/views/layouts/navbar.blade.php",
+		"/Users/Apple/laravel/rean/gulpfile.js",
+		"/Users/Apple/laravel/rean/resources/assets/form/js/form.js",
+		"/Users/Apple/laravel/rean/public/build/css/app-08ac5b70.css",
+		"/Users/Apple/django_projects/mysite/polls/admin.py",
+		"/Users/Apple/django_projects/mysite/mysite/settings.py",
+		"/Users/Apple/django_projects/mysite/polls/models.py",
+		"/Users/Apple/django_projects/mysite/templates/admin/base_site.html",
+		"/Users/Apple/django_projects/mysite/mysite/urls.py",
+		"/Users/Apple/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/Apple/.zpreztorc",
+		"/Users/Apple/node/StudentEmailWS_Client_Application/package.json",
+		"/Users/Apple/node/StudentEmailWS_Client_Application/index.js",
+		"/Users/Apple/Desktop/wordcount/mapper.py",
+		"/Users/Apple/Desktop/wordcount/reducer.py",
+		"/Users/Apple/rails_projects/central-scraper/app/script/deep_cat.rb",
+		"/Users/Apple/rails_projects/central-scraper/app/models/product.rb",
+		"/Users/Apple/rails_projects/central-scraper/x",
+		"/Users/Apple/rails_projects/topman-scraper/config/database.yml",
+		"/Users/Apple/rails_projects/topman-scraper/Gemfile",
+		"/Applications/XAMPP/xamppfiles/htdocs/cuse_design_prototype/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/cuse_design_prototype/js/main.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/cuse_design_prototype/css/main.css",
+		"/Users/Apple/workspace/npk.rb",
+		"/Users/Apple/Downloads/snabbt.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/wptest/.jshintrc",
+		"/Applications/XAMPP/xamppfiles/htdocs/wptest/Gruntfile.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/wptest/wp-config-sample.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/index.php",
+		"/Users/Apple/algoritm/15puzz.rb",
+		"/Users/Apple/s.go",
+		"/Users/Apple/hbdice.go",
+		"/Users/Apple/algoritm/isp.rb",
+		"/Users/Apple/algoritm/nqueen.rb",
+		"/Users/Apple/algoritm/connection.rb",
+		"/Users/Apple/algoritm/cycle.rb",
+		"/Users/Apple/algoritm/work.rb",
+		"/Users/Apple/algoritm/spg.rb",
+		"/Users/Apple/Desktop/mb.rb",
+		"/Users/Apple/Desktop/3vs.rb",
+		"/Users/Apple/algoritm/test.rb",
+		"/Users/Apple/algoritm/interval.rb",
+		"/Users/Apple/go.go",
+		"/Users/Apple/go",
+		"/Users/Apple/workspace/iterm/Headers/iTerm/PTYTextView.h"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"/Users/Apple/laravel/rean/resources/assets/less",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"pokerHand2",
+			"pokerHand1",
+			" ",
+			": ",
+			"isTwoPa",
+			"IsTwoPa",
+			"isTwoPa",
+			"ThreeOfAKind",
+			"moddel",
+			"FizzBuzzModel",
+			"fizzBuzzList",
+			"sixthElement",
+			"sixt",
+			"six",
+			"view",
+			"displayitem",
+			"equal",
+			".grid",
+			"fifteen",
+			"one",
+			".content.row",
+			".content",
+			"p Lorem ipsum Dosit amet",
+			".ui.label.teal",
+			"myChart",
+			"134, 226, 213",
+			"myBarChart",
+			"\"",
+			"q_and_a",
+			"},",
+			"find",
+			"where",
+			"13",
+			" ",
+			"modal",
+			"modall",
+			"modal",
+			"mofal",
+			"modal",
+			"participant",
+			"edit",
+			"show",
+			"modal",
+			"rolemap",
+			"newPassword",
+			"'test'",
+			"]",
+			"'test'",
+			"find",
+			"console.log(se",
+			"sessions",
+			"session",
+			"sess",
+			"sessions",
+			"session",
+			"see\\",
+			"sess",
+			"session",
+			"sesion",
+			"s",
+			"sessions",
+			"},",
+			"renderSess",
+			"renderSess	",
+			"delete",
+			"onclick",
+			"onclicj",
+			"cb",
+			"render",
+			"loading",
+			"sort",
+			"_map",
+			"re",
+			"transform",
+			"dateCompare",
+			" - ",
+			"title",
+			"startTime",
+			"24",
+			"secret",
+			"password",
+			"email",
+			" ",
+			"i.file.icon",
+			"    ",
+			"             ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			"         ",
+			"        ",
+			"             ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			" ",
+			"coffeeShops",
+			"blue",
+			"pink",
+			"teal",
+			" ",
+			"	",
+			"{ ",
+			") ",
+			"; ",
+			"} ",
+			"{ ",
+			"; ",
+			"qoute",
+			"transparent",
+			"fa-4",
+			"ct-socialIcons",
+			"success",
+			"has",
+			"notifications",
+			"disabled"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 368.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"login.j",
+				"server/views/pages/login.jade"
+			],
+			[
+				"index.consta",
+				"src/app/index.constants.js"
+			],
+			[
+				"index.cons",
+				"src/app/index.config.js"
+			],
+			[
+				"constants",
+				"node_modules/adm-zip/util/constants.js"
+			],
+			[
+				"index",
+				"src/index.html"
+			],
+			[
+				"app.",
+				"server/views/layouts/app.jade"
+			],
+			[
+				"q_and_a",
+				"server/views/pages/q_and_a.jade"
+			],
+			[
+				"agenda",
+				"client/dist/assets/scripts/agenda.js"
+			],
+			[
+				"agend",
+				"client/src/assets/scripts/agenda.js"
+			],
+			[
+				"app",
+				"server/views/layouts/app.jade"
+			],
+			[
+				"side",
+				"server/views/partials/sidebar.jade"
+			],
+			[
+				"rout",
+				"server/boot/routes.js"
+			],
+			[
+				"route",
+				"server/boot/routes.js"
+			],
+			[
+				"automi",
+				"server/boot/automigrate-2-session.js"
+			],
+			[
+				"session",
+				"common/models/session.json"
+			],
+			[
+				"ses",
+				"common/models/session.js"
+			],
+			[
+				"member-ad",
+				"client/src/assets/scripts/member-admin.js"
+			],
+			[
+				"auto",
+				"server/boot/automigrate-1-user.js"
+			],
+			[
+				"api",
+				"client/src/assets/scripts/api.js"
+			],
+			[
+				"member",
+				"server/views/pages/member-admin.jade"
+			],
+			[
+				"agena",
+				"client/src/assets/scripts/agenda-admin.js"
+			],
+			[
+				"aut",
+				"server/boot/automigrate-1-user.js"
+			],
+			[
+				"member-adm",
+				"client/src/assets/scripts/member-admin.js"
+			],
+			[
+				"session.j",
+				"common/models/session.json"
+			],
+			[
+				"agenda-ad",
+				"client/src/assets/scripts/agenda-admin.js"
+			],
+			[
+				"agen",
+				"client/src/assets/scripts/agenda.js"
+			],
+			[
+				"routes",
+				"server/boot/routes.js"
+			],
+			[
+				"app.jade",
+				"server/views/layouts/app.jade"
+			],
+			[
+				"app.js",
+				"node_modules/loopback-datasource-juggler/examples/app.js"
+			],
+			[
+				"age",
+				"client/dist/assets/scripts/agenda.js"
+			],
+			[
+				"ag",
+				"server/views/pages/agenda.jade"
+			],
+			[
+				"topba",
+				"server/views/partials/topbar.jade"
+			],
+			[
+				"user",
+				"server/boot/user-feed.js"
+			],
+			[
+				"login",
+				"client/dist/assets/scripts/login.js"
+			],
+			[
+				"check-a",
+				"client/dist/assets/scripts/check-auth.js"
+			],
+			[
+				"top",
+				"server/views/partials/topbar.jade"
+			],
+			[
+				"topb",
+				"server/views/partials/topbar.jade"
+			],
+			[
+				"main",
+				"server/views/layouts/main.jade"
+			],
+			[
+				"server",
+				"server/server.js"
+			],
+			[
+				"home",
+				"resources/views/home.blade.php"
+			],
+			[
+				"",
+				"composer.lock"
+			],
+			[
+				"app.bl",
+				"resources/views/app.blade.php"
+			],
+			[
+				"registe",
+				"resources/views/register.blade.php"
+			],
+			[
+				"var",
+				"resources/assets/less/variables.less"
+			],
+			[
+				"varia",
+				"resources/assets/less/variables.less"
+			],
+			[
+				"vendor",
+				"resources/assets/bootstrap/less/mixins/vendor-prefixes.less"
+			],
+			[
+				"nav",
+				"resources/views/layouts/navbar.blade.php"
+			],
+			[
+				"cus",
+				"resources/assets/less/custom.less"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"form",
+				"resources/assets/less/component/form.less"
+			],
+			[
+				"nav.bla",
+				"resources/views/layouts/navbar.blade.php"
+			],
+			[
+				"sett",
+				"mysite/settings.py"
+			],
+			[
+				"pro",
+				"app/models/product.rb"
+			],
+			[
+				"dee",
+				"app/script/deep_cat.rb"
+			],
+			[
+				"db",
+				"config/database.yml"
+			],
+			[
+				"ptyte",
+				"PTYTextView.m"
+			],
+			[
+				"ptyt",
+				"Headers/iTerm/PTYTextView.h"
+			],
+			[
+				"foo",
+				"app/views/includes/footer.blade.php"
+			],
+			[
+				"order",
+				"app/models/OrderList.php"
+			],
+			[
+				"cart",
+				"app/views/pages/shop/cart.blade.php"
+			],
+			[
+				"shop",
+				"app/controllers/ShopController.php"
+			],
+			[
+				"header",
+				"app/views/includes/header.blade.php"
+			],
+			[
+				"shopco",
+				"app/controllers/ShopController.php"
+			],
+			[
+				".ht",
+				"public/.htaccess"
+			],
+			[
+				"attr",
+				"public/js/attribute.js"
+			],
+			[
+				"create",
+				"app/views/pages/product/create.blade.php"
+			],
+			[
+				"edit.",
+				"app/views/pages/product/edit.blade.php"
+			],
+			[
+				"index.",
+				"app/views/pages/product/index.blade.php"
+			],
+			[
+				"inde",
+				"public/index.php"
+			],
+			[
+				"prod",
+				"app/controllers/ProductController.php"
+			],
+			[
+				"fo",
+				"app/views/includes/footer.blade.php"
+			],
+			[
+				"head",
+				"app/views/includes/head.blade.php"
+			],
+			[
+				"brand",
+				"public/js/brand_manager.js"
+			],
+			[
+				"viewbra",
+				"app/views/pages/product/brand.blade.php"
+			],
+			[
+				"defua",
+				"app/views/layouts/default.blade.php"
+			],
+			[
+				"them",
+				"public/css/theme.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true
+}
