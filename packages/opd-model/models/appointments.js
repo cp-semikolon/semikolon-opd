@@ -1,0 +1,1 @@
+Model.Appointments = new Meteor.Collection('appointments');

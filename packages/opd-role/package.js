@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'opd-model',
+  name: 'opd-role',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -13,26 +13,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.use('aldeed:collection2');
-  api.use('kadira:flow-router');
-
-  api.addFiles([
-    'lib/namespace.js',
-    // models
-    'models/patients.js',
-    'models/appointments.js',
-
-    //schemas
-    'schemas/patients-schema.js',
-    'schemas/appointments-schema.js'
-  ]);
-
-  api.export('Model'); 
+  api.addFiles('opd-role.js');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('opd-model');
-  api.addFiles('opd-model-tests.js');
+  api.use('opd-role');
+  api.addFiles('opd-role-tests.js');
 });

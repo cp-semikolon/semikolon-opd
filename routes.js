@@ -1,11 +1,11 @@
 FlowRouter.route('/', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "makeAppointmentForm"});
+    BlazeLayout.render("MainLayout", {content: "PatientAuth"});
   }
 });
 
-// FlowRouter.route('/:postId', {
-//   action: function() {
-//     BlazeLayout.render("mainLayout", {content: "blogPost"});
-//   }
-// });
+FlowRouter.route('/appointment/new', {
+  action: function() {
+    BlazeLayout.render("MainLayout", {content: "MakeAppointment"});
+  }
+});

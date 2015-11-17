@@ -1,0 +1,22 @@
+<template name="PatientAuth">
+
+		<div class="row">
+			<div class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
+				<div class="valign-demo valign-wrapper" style="margin-top: 200px;">
+					<div class="valign" style="width: 100%">
+
+						{{#autoForm collection="OPD.Model.Patients" id="appointmentForm" type="method" meteormethod="Patients.auth"}}
+							{{> afQuickField name='ssidOrHn'}}
+							{{> afQuickField name='firstName'}}
+							{{> afQuickField name='lastName'}}
+							<button class="waves-effect waves-light btn">ทำนัด</button>
+							<button class="waves-effect waves-light btn">จัดการการนัด</button>
+						{{/autoForm}}
+
+						
+					</div>
+        </div>
+			</div>
+		</div>
+
+</template>
