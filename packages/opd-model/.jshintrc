@@ -1,0 +1,6 @@
+{
+	"globals": {
+		"Model": true,
+		"Schema": true
+	}
+}

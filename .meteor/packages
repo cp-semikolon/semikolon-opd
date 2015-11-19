@@ -20,11 +20,16 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 kadira:flow-router
 accounts-password
-materialize:materialize
+# materialize:materialize
+fourseven:scss
+poetic:materialize-scss
 useraccounts:materialize
 kadira:blaze-layout
 peerlibrary:blaze-components
 meteorflux:dispatcher
 aldeed:collection2
 aldeed:autoform
+gildaspk:autoform-materialize
+gildaspk:autoform-modals-materialize
+gildaspk:autoform-medium
 opd-core

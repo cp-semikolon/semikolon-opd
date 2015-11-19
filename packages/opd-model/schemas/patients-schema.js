@@ -1,9 +1,4 @@
 Schema.Patients = new SimpleSchema({
-    ssidOrHn: {
-      type: String,
-      label: "รหัสบัตรประชาชน หรือ รหัสผู้ป่วย",
-      max: 15
-    },
     ssid: {
       type: String,
       label: "รหัสบัตรประชาชน",
@@ -12,7 +7,7 @@ Schema.Patients = new SimpleSchema({
     },
     hn: {
       type: String,
-      label: "hn",
+      label: "รหัสผู้ป่วย",
       max: 13,
       optional: true
     },

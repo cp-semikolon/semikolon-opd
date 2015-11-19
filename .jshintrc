@@ -130,7 +130,10 @@
       "_": false,               // Underscore.js
       "$": false,               // jQuery
       "Router": false,          // iron-router
-      // custom packages
+      // atmosphere packages
+      "Dispatcher": false,
+      "AutoForm": false,
+      // local packages
       "OPD": true
     }
 }

@@ -1,53 +1,73 @@
-Model.Patients = new Meteor.Collection('patients');
+/* globals Model */ 
+
+let Patients = Model.Patients = new Meteor.Collection('patients');
 
 Meteor.methods({
 	'Patients.auth'(doc) {
-		if(Meteor.isServer) {
-			console.log(doc);
-		}
+		let idType = getIdType(doc.ssidOrHn);
 
-		let pattern = {
-			ssid: /[0-9]{13}/,
-			hn: /[a-zA-Z0-9]{10}/
+		let patientSelector = { 
+			[idType]: doc.ssidOrHn,
+			firstName: doc.firstName,
+			lastName: doc.lastName
 		};
 
-		let newAppointmentPath = '/appointment/new';
+		let matchedPateint = Patients.find(patientSelector).fetch();
+		let isPatientExists = matchedPateint.length > 0;
 
-		if( doc.ssidOrHn.match(pattern.hn) && 
-			ssidAuth(doc.ssidOrHn, doc.firstName, doc.lastName) ) {
-
-			console.log('it\'s ssid');
-			FlowRouter.go(newAppointmentPath);
-			return;
+		if ( doc.action === 'make' ) {
+			makeAppointment(isPatientExists, matchedPateint, patientSelector);
 		}
 
-		if ( doc.ssidOrHn.match(pattern.ssid) && 
-			hnAuth(doc.ssidOrHn, doc.firstName, doc.lastName) ) {
-			// for ssid
-			console.log('it\'s hn');
-			FlowRouter.go(newAppointmentPath);
-			return;
+		if ( doc.action === 'manage' ) {
+			manageAppointment(isPatientExists, matchedPateint);
 		}
-
-		console.log('you\'re fucked up');
 
 	}
+
 });
 
 // private method
 
-function ssidAuth(ssid, firstName, lastName) {
-	let matchedPateint = Model.Patients.find({ssid, firstName, lastName}).fetch();
-	if( matchedPateint !== 0) {
-		return true;
+function getIdType(id) {
+	let pattern = {
+		ssid: /[0-9]{13}/,
+		hn: /[a-zA-Z0-9]{10}/
+	};
+
+	let hasHN = id.match(pattern.hn);
+	let hasSSID = id.match(pattern.ssid);
+
+	if (hasSSID) {
+		return 'ssid';
 	}
-	return false;
+
+	if (hasHN) {
+		return 'hn';
+	}
+
+	return null;
 }
 
-function hnAuth(hn, firstName, lastName) {
-	let matchedPateint = Model.Patients.find({hn, firstName, lastName}).fetch();
-	if( matchedPateint !== 0) {
-		return true;
+function makeAppointment(isPatientExists, matchedPateint, patientSelector) {
+	let newPatient = {};
+
+	if(!isPatientExists) {
+		// insert new patient
+		newPatient = Patients.insert(patientSelector);
 	}
-	return false;
+
+	let payload = {
+		patientId: isPatientExists ? matchedPateint[0]._id : newPatient
+	};
+
+	Dispatcher.dispatch('PATIENT_MAKE_APPOINTMENT_REQUEST', payload);
+}
+
+function manageAppointment(isPatientExists, matchedPateint) {
+	if(isPatientExists) {
+		Dispatcher.dispatch('PATIENT_REQUIRE_OTP', { patient: matchedPateint[0] });
+	}
+
+	Dispatcher.dispatch('PATIENT_NOT_FOUND');
 }

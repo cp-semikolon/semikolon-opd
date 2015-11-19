@@ -27,7 +27,8 @@ Package.onUse(function(api) {
     'schemas/appointments-schema.js'
   ]);
 
-  api.export('Model'); 
+  api.export('Model');
+  api.export('Schema'); 
 });
 
 Package.onTest(function(api) {

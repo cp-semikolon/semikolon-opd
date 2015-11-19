@@ -1,3 +1,4 @@
 OPD = {
-	Model
+	Model,
+  Schema
 };

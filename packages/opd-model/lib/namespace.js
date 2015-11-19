@@ -1,2 +1,3 @@
 Model = {};
 Schema = {};
+Schema.CustomForm = {};
