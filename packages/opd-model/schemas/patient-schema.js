@@ -1,4 +1,4 @@
-OPD.Schema.Patient = new SimpleSchema({
+Schema.Patient = new SimpleSchema({
     Title: {
       type: String,
       label: 'คำนำหน้า',
@@ -31,14 +31,13 @@ OPD.Schema.Patient = new SimpleSchema({
       max: 50
     },
     Existing: {
-      type: String,
+      type: Boolean,
       label: 'มี HN หรือไม่',
-      allowedValues: ['YES', 'NO']
     },
     HN: {
       type: String,
       label: 'หมายเลข HN',
-      regEx: 'HN[0-9]{8}'
+      regEx: '/HN[0-9]{8}/'
     },
     
 });

@@ -1,4 +1,4 @@
-OPD.Schema.Disease = new SimpleSchema({
+Schema.Disease = new SimpleSchema({
     ICD: {
       type: String,
       label: 'รหัสโรค',

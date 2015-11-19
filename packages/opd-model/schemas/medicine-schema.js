@@ -1,4 +1,4 @@
-OPD.Schema.Medicine = new SimpleSchema({
+Schema.Medicine = new SimpleSchema({
     ID: {
       type: String,
       label: 'รหัสยา',

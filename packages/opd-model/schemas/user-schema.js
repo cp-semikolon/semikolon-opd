@@ -1,7 +1,7 @@
-OPD.Schema.User = new SimpleSchema({
+Schema.User = new SimpleSchema({
     UserID: {
       type: String,
-      label: 'รหัสประจำตัวพนังงาน',
+      label: 'รหัสประจำบุคลากร',
       max: 15
     },
     Password: {
@@ -36,7 +36,11 @@ OPD.Schema.User = new SimpleSchema({
       label: 'ประเภทผู้ใช้งาน',
       allowedValues: ['Staff', 'Doctor','Nurse','Pharmacist']
     },
-    
+    ID:{
+      type: String,
+      label: 'รหัสประจำแผนก',
+      max: 15
+    }
 });
 
 //Model.Patients.attachSchema(Schema.Patients);
