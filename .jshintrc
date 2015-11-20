@@ -133,6 +133,7 @@
       // atmosphere packages
       "Dispatcher": false,
       "AutoForm": false,
+      "ReactiveDict": false,
       // local packages
       "OPD": true
     }

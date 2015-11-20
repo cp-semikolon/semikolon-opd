@@ -5,13 +5,17 @@
 				<div class="valign-wrapper" style="margin-top: 200px;">
 					<div class="valign" style="width: 100%">
 
-						{{#autoForm schema="OPD.Schema.PatientAuthForm" id="appointmentForm" type="method" meteormethod="Patients.auth" resetOnSuccess=false}}
+						{{#autoForm schema="OPD.Schema.PatientAuthForm" id="appointmentForm" type=patientAuthFormState meteormethod="Patients.auth" resetOnSuccess=false}}
 							{{> afQuickField name='ssidOrHn'}}
 							{{> afQuickField name='firstName'}}
 							{{> afQuickField name='lastName'}}
 							{{> afQuickField name='action' value='make'}}
 							<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
 						{{/autoForm}}
+
+						{{#if isRequireOTP}}
+							yooooo
+						{{/if}}
 					
 					</div>
 				</div>
