@@ -172,7 +172,6 @@ This is called **action** with a payload attached to. We have to register an act
 ``` javascript
 // /client/templates/appointment/patient-auth.js
 
-// let Patients = OPD.Model.Patients;
 let newAppointmentPath = '/appointment/new';
 
 class PatientAuth extends BlazeComponent {
