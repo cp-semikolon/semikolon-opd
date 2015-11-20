@@ -2,33 +2,36 @@
 
 let Patients = Model.Patients = new Meteor.Collection('patients');
 
+Patients.OTP = {};
+
 Meteor.methods({
 	'Patients.auth'(doc) {
 		let idType = getIdType(doc.ssidOrHn);
 
 		let patientSelector = { 
 			[idType]: doc.ssidOrHn,
-			firstName: doc.firstName,
-			lastName: doc.lastName
+			FName: doc.firstName,
+			LName: doc.lastName
 		};
 
-		let matchedPateint = Patients.find(patientSelector).fetch();
-		let isPatientExists = matchedPateint.length > 0;
+		let matchedPatient = Patients.find(patientSelector).fetch();
+		let isPatientExists = matchedPatient.length > 0;
 
 		if ( doc.action === 'make' ) {
-			makeAppointment(isPatientExists, matchedPateint, patientSelector);
+			makeAppointment(isPatientExists, matchedPatient, patientSelector);
 		}
 
 		if ( doc.action === 'manage' ) {
-			manageAppointment(isPatientExists, matchedPateint);
+			manageAppointment(isPatientExists, matchedPatient);
 		}
 
 	},
 
 	'Patients.otpAuth'(doc) {
 		let otp = doc.otp;
+		let patientId = doc.patientId;
 
-		if (otp === '1234') {
+		if ( Patients.OTP[patientId] || otp === Patients.OTP[patientId] ) {
 			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS');
 			return;
 		}
@@ -49,17 +52,17 @@ function getIdType(id) {
 	let hasSSID = id.match(pattern.ssid);
 
 	if (hasSSID) {
-		return 'ssid';
+		return 'SSID';
 	}
 
 	if (hasHN) {
-		return 'hn';
+		return 'HN';
 	}
 
 	return null;
 }
 
-function makeAppointment(isPatientExists, matchedPateint, patientSelector) {
+function makeAppointment(isPatientExists, matchedPatient, patientSelector) {
 	let newPatient = {};
 
 	if(!isPatientExists) {
@@ -68,16 +71,48 @@ function makeAppointment(isPatientExists, matchedPateint, patientSelector) {
 	}
 
 	let payload = {
-		patientId: isPatientExists ? matchedPateint[0]._id : newPatient
+		patientId: isPatientExists ? matchedPatient[0]._id : newPatient
 	};
 
 	Dispatcher.dispatch('PATIENT_MAKE_APPOINTMENT_REQUEST', payload);
 }
 
-function manageAppointment(isPatientExists, matchedPateint) {
+function manageAppointment(isPatientExists, matchedPatient) {
 	if(isPatientExists) {
-		Dispatcher.dispatch('PATIENT_REQUIRE_OTP', { patient: matchedPateint[0] });
+		let otp = generateOtp();
+		let otpTimeout = 5*60*1000; // 5 minutes timeout
+
+		Patients.OTP[matchedPatient._id] = otp;
+
+		// Meteor.setTimeout(() => 
+		// 	delete Patients.OTP[matchedPatient._id], otpTimeout);
+
+		// this.unblock();
+
+		if ( Meteor.isServer) {
+			Email.send({
+				to: matchedPatient.Email,
+				from: 'noreply@semikolon',
+				subject: 'one-time-password สำหรับทจัดการการนัด',
+				text: `one-time-password ของคุณคือ ${otp}`
+			});
+		}
+
+		Dispatcher.dispatch('PATIENT_REQUIRE_OTP', { patient: matchedPatient[0] });
+		return;
 	}
 
 	Dispatcher.dispatch('PATIENT_NOT_FOUND');
+}
+
+function generateOtp() {
+	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 
+								 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+	let randomBoundary = possible.length;
+	let randomIndex = () => Math.abs(Math.ceil(Math.random()*randomBoundary-1));
+
+	let otp = ['', '', '', ''].map(() => possible[randomIndex()]).join('');
+
+	return otp;
 }

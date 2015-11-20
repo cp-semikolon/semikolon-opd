@@ -20,6 +20,11 @@ Schema.Patients = new SimpleSchema({
       min: 9,
       max: 10
     },
+    Email: {
+      type: String,
+      label: 'อีเมล',
+      regEx: SimpleSchema.RegEx.Email
+    },
     Nationality: {
       type: String,
       label: 'สํญชาติ',

@@ -12,6 +12,8 @@ class PatientAuth extends BlazeComponent {
     this.state.set('firstName', '');
     this.state.set('lastName', '');
 
+    this.state.set('currentPatientId', '');
+
     registerDispatcher(this.state);
   }
 
@@ -34,6 +36,10 @@ class PatientAuth extends BlazeComponent {
   lastName() {
     return this.state.get('lastName');
   }
+
+  currentPatientId() {
+    return this.state.get('currentPatientId');
+  }
 }
 
 // Action dispatcher for this component
@@ -50,7 +56,12 @@ function registerDispatcher(state) {
           state.set('require_otp', true);
           state.set('firstName', action.patient.firstName);
           state.set('lastName', action.patient.lastName);
+          state.set('currentPatientId', action.patient._id);
           state.set('show_patient_auth_form', false);
+          break;
+
+        case "PATIENT_NOT_FOUND":
+          console.log("PATIENT_NOT_FOUND");
           break;
 
         case "PATIENT_OTP_AUTH_SUCCESS":
