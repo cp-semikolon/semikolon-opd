@@ -1,27 +1,27 @@
-class PatientAuth extends BlazeComponent {
-  onCreated() {
-    super.onCreated();
+// class PatientAuth extends BlazeComponent {
+//   onCreated() {
+//     super.onCreated();
 
-    this.state = new ReactiveDict();
+//     this.state = new ReactiveDict();
 
-    registerDispatcher(this.state);
-  }
+//     registerDispatcher(this.state);
+//   }
 
-}
+// }
 
-// Action dispatcher for this component
+// // Action dispatcher for this component
 
-function registerDispatcher(state) {
+// function registerDispatcher(state) {
 
-  Dispatcher.register(action => {
-      switch( action.type ) {
-        case "PATIENT_MAKE_APPOINTMENT_REQUEST":
-          FlowRouter.go(state);
-          break;
+//   Dispatcher.register(action => {
+//       switch( action.type ) {
+//         case "PATIENT_MAKE_APPOINTMENT_REQUEST":
+//           FlowRouter.go(state);
+//           break;
 
-      }
-    });
+//       }
+//     });
 
-}
+// }
 
-PatientAuth.register('PatientAuth');
+// PatientAuth.register('PatientAuth');
