@@ -23,6 +23,16 @@ Meteor.methods({
 			manageAppointment(isPatientExists, matchedPateint);
 		}
 
+	},
+
+	'Patients.otpAuth'(doc) {
+		let otp = doc.otp;
+
+		if (otp === '1234') {
+			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS');
+			return;
+		}
+		Dispatcher.dispatch('PATIENT_OTP_AUTH_FAIL');
 	}
 
 });

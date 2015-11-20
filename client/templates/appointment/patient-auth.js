@@ -52,6 +52,14 @@ function registerDispatcher(state) {
           state.set('lastName', action.patient.lastName);
           state.set('show_patient_auth_form', false);
           break;
+
+        case "PATIENT_OTP_AUTH_SUCCESS":
+          console.log('success');
+          break;
+
+        case "PATIENT_OTP_AUTH_SUCCESS":
+          console.log('fail');
+          break;
       }
     });
 
