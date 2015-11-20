@@ -1,4 +1,4 @@
-Schema.Woks = new SimpleSchema({
+Schema.Works = new SimpleSchema({
     UserID: {
       type: String,
       label: 'รหัสยา',

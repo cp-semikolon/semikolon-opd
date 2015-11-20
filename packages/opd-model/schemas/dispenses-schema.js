@@ -1,4 +1,4 @@
-Schema.Dispense = new SimpleSchema({
+Schema.Dispenses = new SimpleSchema({
     UserID: {
       type: String,
       label: "รหัสประจำบุคลากร",

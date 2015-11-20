@@ -1,4 +1,4 @@
-Schema.Department = new SimpleSchema({
+Schema.Departments = new SimpleSchema({
     ID: {
       type: String,
       label: 'รหัสประจำแผนก',
@@ -8,8 +8,7 @@ Schema.Department = new SimpleSchema({
       type: String,
       label: 'ชื่อแผนก',
       max: 50
-    },
-   
+    }
 });
 
 //Model.Patients.attachSchema(Schema.Patients);

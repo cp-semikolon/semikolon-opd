@@ -1,25 +1,43 @@
 Schema.Patients = new SimpleSchema({
-    ssid: {
+    Title: {
       type: String,
-      label: "รหัสบัตรประชาชน",
-      max: 13,
-      optional: true
+      label: 'คำนำหน้า',
+      max: 15
     },
-    hn: {
+    FName: {
       type: String,
-      label: "รหัสผู้ป่วย",
-      max: 13,
-      optional: true
+      label: 'ชื่อ',
+      max: 50
     },
-    firstName: {
+    LName: {
       type: String,
-      label: "ชื่อ",
-      max: 200
+      label: 'นามสกุล',
+      max: 50
     },
-    lastName: {
+    TelNo: {
       type: String,
-      label: "นามสกุล",
-      max: 200
+      label: 'หมายเลขโทรศัพท์',
+      min: 9,
+      max: 10
+    },
+    Nationality: {
+      type: String,
+      label: 'สํญชาติ',
+      max: 50
+    },
+    SSID: {
+      type: String,
+      label: 'หมายเลขประจำตัวประชาชน',
+      max: 50
+    },
+    Existing: {
+      type: Boolean,
+      label: 'มี HN หรือไม่',
+    },
+    HN: {
+      type: String,
+      label: 'หมายเลข HN',
+      regEx: /HN[0-9]{8}/
     }
 });
 

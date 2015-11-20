@@ -1,4 +1,4 @@
-Schema.Medicine = new SimpleSchema({
+Schema.Medicines = new SimpleSchema({
     ID: {
       type: String,
       label: 'รหัสยา',

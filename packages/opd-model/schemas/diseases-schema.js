@@ -1,4 +1,4 @@
-Schema.Disease = new SimpleSchema({
+Schema.Diseases = new SimpleSchema({
     ICD: {
       type: String,
       label: 'รหัสโรค',
@@ -13,8 +13,7 @@ Schema.Disease = new SimpleSchema({
       type: String,
       label: 'คำอธิบาย',
       max: 200
-    },
-    
+    }
 });
 
 //Model.Patients.attachSchema(Schema.Patients);
