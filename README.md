@@ -23,6 +23,7 @@ Routing and Data flow
 
 - [FlowRouter](https://github.com/kadirahq/flow-router) - reactive router for url path specification
 - [Dispatcher](https://github.com/worona/meteorflux/tree/devel/packages/dispatcher) - data flow handler
+- [ReactiveDict](http://meteorcapture.com/a-look-at-local-template-state/) - reactive dictionary for holding template state
 
 
 
@@ -171,26 +172,41 @@ This is called **action** with a payload attached to. We have to register an act
 ``` javascript
 // /client/templates/appointment/patient-auth.js
 
+// let Patients = OPD.Model.Patients;
 let newAppointmentPath = '/appointment/new';
 
 class PatientAuth extends BlazeComponent {
+  onCreated() {
+    super.onCreated();
 
+    this.state = new ReactiveDict();
+    this.state.set('require_otp', false);
+
+    registerDispatcher(this.state);
+  }
+
+  isRequireOTP() {
+    return this.state.get('require_otp');
+  }
 }
 
-// Action dispatcher for the template
+// Action dispatcher for this component
 
-Dispatcher.register(action => {
-  switch( action.type ) {
-    case "PATIENT_MAKE_APPOINTMENT_REQUEST":
-      // we can also access action.patientId
-      FlowRouter.go(newAppointmentPath);
-      break;
+function registerDispatcher(state) {
 
-    case "PATIENT_AUTHENTICATION_FAIL":
-      console.log('fail');
-      break;
-  }
-});
+  Dispatcher.register(action => {
+      switch( action.type ) {
+        case "PATIENT_MAKE_APPOINTMENT_REQUEST":
+          FlowRouter.go(newAppointmentPath);
+          break;
+
+        case "PATIENT_REQUIRE_OTP":
+          state.set('require_otp', true);
+          break;
+      }
+    });
+
+}
 
 PatientAuth.register('PatientAuth');
 ```
