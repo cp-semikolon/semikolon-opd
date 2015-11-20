@@ -24,14 +24,14 @@ Package.onUse(function(api) {
 
     //schemas
     'schemas/appointments-schema.js',
-    'schemas/departments-schema.js',
-    'schemas/diseases-schema.js',
-    'schemas/dispenses-schema.js',
-    'schemas/medicines-schema.js',
+    // 'schemas/departments-schema.js',
+    // 'schemas/diseases-schema.js',
+    // 'schemas/dispenses-schema.js',
+    // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
-    'schemas/treatments-schema.js',
-    'schemas/users-schema.js',
-    'schemas/works-schema.js'
+    // 'schemas/treatments-schema.js',
+    // 'schemas/users-schema.js',
+    // 'schemas/works-schema.js'
   ]);
 
   api.export('Model');
