@@ -7,13 +7,17 @@ class PatientAuth extends BlazeComponent {
 
     this.state = new ReactiveDict();
     this.state.set('require_otp', false);
-    this.state.set('patientAuthFormType', 'method');
+    this.state.set('show_patient_auth_form', true);
 
     registerDispatcher(this.state);
   }
 
   isRequireOTP() {
     return this.state.get('require_otp');
+  }
+
+  isShowPatientAuthForm() {
+    return this.state.get('show_patient_auth_form');
   }
 
   patientAuthFormState() {

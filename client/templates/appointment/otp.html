@@ -1,15 +1,8 @@
 <template name="OTP">
 
-	{{#autoForm schema="OPD.Schema.OTP" id="otpForm" type="method" meteormethod="Patients.auth" resetOnSuccess=false}}
-		{{> afQuickField name='ssidOrHn'}}
-		{{> afQuickField name='firstName'}}
-		{{> afQuickField name='lastName'}}
-		{{> afQuickField name='action' value='make'}}
-		<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
+	{{#autoForm schema="OPD.Schema.OTPForm" id="otpForm" type="method" meteormethod="Patients.otpAuth" resetOnSuccess=false}}
+		{{> afQuickField name='otp'}}
+		<button type="submit" class="waves-effect waves-light btn">ยืนยัน</button>
 	{{/autoForm}}
-
-	{{#if isRequireOTP}}
-		yooooo
-	{{/if}}
 
 </template>
