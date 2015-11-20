@@ -9,3 +9,9 @@ FlowRouter.route('/appointment/new', {
     BlazeLayout.render("MainLayout", {content: "MakeAppointment"});
   }
 });
+
+FlowRouter.route('/patient/', {
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "PatientAuth"});
+  }
+});
