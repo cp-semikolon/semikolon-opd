@@ -9,6 +9,9 @@ class PatientAuth extends BlazeComponent {
     this.state.set('require_otp', false);
     this.state.set('show_patient_auth_form', true);
 
+    this.state.set('firstName', '');
+    this.state.set('lastName', '');
+
     registerDispatcher(this.state);
   }
 
@@ -22,6 +25,14 @@ class PatientAuth extends BlazeComponent {
 
   patientAuthFormState() {
     return this.state.get('patientAuthFormType');
+  }
+
+  firstName() {
+    return this.state.get('firstName');
+  }
+
+  lastName() {
+    return this.state.get('lastName');
   }
 }
 
@@ -37,7 +48,9 @@ function registerDispatcher(state) {
 
         case "PATIENT_REQUIRE_OTP":
           state.set('require_otp', true);
-          this.state.set('patientAuthFormType', 'disabled');
+          state.set('firstName', action.patient.firstName);
+          state.set('lastName', action.patient.lastName);
+          state.set('show_patient_auth_form', false);
           break;
       }
     });
