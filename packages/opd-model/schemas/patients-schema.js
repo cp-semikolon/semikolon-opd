@@ -36,11 +36,6 @@ Schema.Patients = new SimpleSchema({
     label: 'หมายเลขประจำตัวประชาชน',
     max: 50
   },
-  PassportNo: {
-    type: String,
-    label: 'หมายเลขหนังสือเดินทาง',
-    max: 50
-  },
   Existing: {
     type: Boolean,
     label: 'มี HN หรือไม่',

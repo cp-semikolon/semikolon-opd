@@ -1,7 +1,7 @@
 Schema.Works = new SimpleSchema({
     UserID: {
       type: String,
-      label: 'รหัสยา',
+      label: 'รหัสประจำบุคลากร',
       max: 15
     },
     Time: {

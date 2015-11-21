@@ -4,11 +4,6 @@ Schema.Appointments = new SimpleSchema({
     label: 'หมายเลขประจำตัวประชาชน',
     max: 50
   },
-  PassportNo: {
-    type: String,
-    label: 'หมายเลขหนังสือเดินทาง',
-    max: 50
-  },
   HN: {
     type: String,
     label: 'หมายเลข HN',
