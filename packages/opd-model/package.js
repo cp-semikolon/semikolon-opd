@@ -35,7 +35,7 @@ Package.onUse(function(api) {
   ]);
 
   api.export('Model');
-  api.export('Schema'); 
+  api.export('Schema');
 });
 
 Package.onTest(function(api) {

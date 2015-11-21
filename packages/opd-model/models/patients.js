@@ -1,8 +1,6 @@
-/* globals Model */ 
+/* globals Model, OTP */ 
 
 let Patients = Model.Patients = new Meteor.Collection('patients');
-
-Patients.OTP = {};
 
 Meteor.methods({
 	'Patients.auth'(doc) {
@@ -31,7 +29,7 @@ Meteor.methods({
 		let otp = doc.otp;
 		let patientId = doc.patientId;
 
-		if ( Patients.OTP[patientId] || otp === Patients.OTP[patientId] ) {
+		if ( OTP[patientId] === otp && OTP[patientId] ) {
 			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS');
 			return;
 		}
@@ -82,10 +80,11 @@ function manageAppointment(isPatientExists, matchedPatient) {
 		let otp = generateOtp();
 		let otpTimeout = 5*60*1000; // 5 minutes timeout
 
-		Patients.OTP[matchedPatient._id] = otp;
+		OTP[matchedPatient[0]._id] = otp;
+
 
 		// Meteor.setTimeout(() => 
-		// 	delete Patients.OTP[matchedPatient._id], otpTimeout);
+		// 	delete OTP[matchedPatient[0]._id], otpTimeout);
 
 		// this.unblock();
 

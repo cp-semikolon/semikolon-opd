@@ -54,8 +54,8 @@ function registerDispatcher(state) {
 
         case "PATIENT_REQUIRE_OTP":
           state.set('require_otp', true);
-          state.set('firstName', action.patient.firstName);
-          state.set('lastName', action.patient.lastName);
+          state.set('firstName', action.patient.FName);
+          state.set('lastName', action.patient.LName);
           state.set('currentPatientId', action.patient._id);
           state.set('show_patient_auth_form', false);
           break;
@@ -68,7 +68,7 @@ function registerDispatcher(state) {
           console.log('success');
           break;
 
-        case "PATIENT_OTP_AUTH_SUCCESS":
+        case "PATIENT_OTP_AUTH_FAIL":
           console.log('fail');
           break;
       }
