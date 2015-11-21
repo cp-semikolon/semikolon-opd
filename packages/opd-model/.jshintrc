@@ -1,6 +1,7 @@
 {
 	"globals": {
 		"Model": true,
-		"Schema": true
+		"Schema": true,
+		"OTP": true
 	}
 }

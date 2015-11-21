@@ -1,5 +1,6 @@
 // let Patients = OPD.Model.Patients;
 let newAppointmentPath = '/appointment/new';
+let newPatientPath = '/patient/new';
 
 class PatientAuth extends BlazeComponent {
   onCreated() {
@@ -11,6 +12,8 @@ class PatientAuth extends BlazeComponent {
 
     this.state.set('firstName', '');
     this.state.set('lastName', '');
+
+    this.state.set('currentPatientId', '');
 
     registerDispatcher(this.state);
   }
@@ -34,6 +37,10 @@ class PatientAuth extends BlazeComponent {
   lastName() {
     return this.state.get('lastName');
   }
+
+  currentPatientId() {
+    return this.state.get('currentPatientId');
+  }
 }
 
 // Action dispatcher for this component
@@ -42,23 +49,32 @@ function registerDispatcher(state) {
 
   Dispatcher.register(action => {
       switch( action.type ) {
+        case "PATIENT_CREATE_NEW":
+          FlowRouter.go(newPatientPath, action.patient);
+          break;
+
         case "PATIENT_MAKE_APPOINTMENT_REQUEST":
           FlowRouter.go(newAppointmentPath);
           break;
 
         case "PATIENT_REQUIRE_OTP":
           state.set('require_otp', true);
-          state.set('firstName', action.patient.firstName);
-          state.set('lastName', action.patient.lastName);
+          state.set('firstName', action.patient.FName);
+          state.set('lastName', action.patient.LName);
+          state.set('currentPatientId', action.patient._id);
           state.set('show_patient_auth_form', false);
           break;
 
-        case "PATIENT_OTP_AUTH_SUCCESS":
-          console.log('success');
+        case "PATIENT_NOT_FOUND":
+          console.log("PATIENT_NOT_FOUND");
           break;
 
         case "PATIENT_OTP_AUTH_SUCCESS":
-          console.log('fail');
+          Alert.success();
+          break;
+
+        case "PATIENT_OTP_AUTH_FAIL":
+          Alert.error('one-time-password ไม่ถูกต้อง');
           break;
       }
     });

@@ -135,6 +135,7 @@
       "AutoForm": false,
       "ReactiveDict": false,
       // local packages
-      "OPD": true
+      "OPD": true,
+      "Alert": true
     }
 }

@@ -1,6 +1,7 @@
 <template name="OTP">
 
 	{{#autoForm schema="OPD.Schema.OTPForm" id="otpForm" type="method" meteormethod="Patients.otpAuth" resetOnSuccess=true}}
+		{{> afQuickField name='patientId' value=patientId}}
 		{{> afQuickField name='otp'}}
 		<button type="submit" class="waves-effect waves-light btn">ยืนยัน</button>
 	{{/autoForm}}
