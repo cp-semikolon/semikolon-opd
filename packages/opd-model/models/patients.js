@@ -87,8 +87,8 @@ function manageAppointment(isPatientExists, matchedPatient) {
 		let otpTimeout = 5*60*1000; // 5 minutes timeout
 		let otp = generateOtp(matchedPatient[0]._id, otpTimeout);
 
-		Meteor.setTimeout(() => 
-			Model.Otps.remove({patientId: matchedPatient[0]._id }), otpTimeout);
+		// Meteor.setTimeout(() => 
+		// 	Model.Otps.remove({patientId: matchedPatient[0]._id }), otpTimeout);
 
 		// this.unblock();
 
