@@ -24,6 +24,7 @@ Package.onUse(function(api) {
     'models/appointments.js',
     'models/otps.js',
     'models/departments.js',
+    'models/healthDatas.js',
 
     //schemas
     'schemas/appointments-schema.js',
@@ -34,7 +35,8 @@ Package.onUse(function(api) {
     'schemas/patients-schema.js',
     // 'schemas/treatments-schema.js',
     // 'schemas/users-schema.js',
-    // 'schemas/works-schema.js'
+    // 'schemas/works-schema.js',
+    'schemas/healthDatas-schema.js'
   ]);
 
   api.export('Model');
