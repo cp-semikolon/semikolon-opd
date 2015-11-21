@@ -1,3 +1,9 @@
 <template name="MakeAppointment">
-	make appointment
+	{{#autoForm schema="OPD.Schema.Appointments" id="makeAppointment" type="insert" resetOnSuccess=false}}
+		{{> afQuickField name='DepartmentID'}}
+		{{> afQuickField name='UserID'}} <!-- ต้องแก้ให้เลือกชื่อ // default เป็นหมอที่ว่างไวสุด -->
+		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาที่เร็วสุด -->
+		{{> afQuickField name='AppTime'}}
+		<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
+	{{/autoForm}}
 </template>
