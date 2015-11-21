@@ -1,19 +1,28 @@
-Schema.Works = new SimpleSchema({
-  UserID: {
+Schema._DayTime = new SimpleSchema({
+  Day: {
     type: String,
-    label: 'รหัสประจำบุคลากร',
-    max: 15
+    label: "วัน",
+    allowedValues: ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
   },
   Time: {
     type: String,
     label: "ช่วงเวลา",
     allowedValues: ['เช้า', 'บ่าย']
-  },
-  Day: {
-    type: String,
-    label: "วัน",
-    allowedValues: ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-  }, 
+  }
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Schema.Works = new SimpleSchema({
+    UserID: {
+      type: String,
+      label: 'รหัสประจำบุคลากร',
+      max: 15
+    },
+    // A doctor can have many wardround day and times
+    dayTime:{
+      type: [_DayTime],
+      maxCount: 14,
+      unique: true 
+    }    
+});
+// Attach this to WardRound
+OPD.Model.Wardrounds.attachSchema(Schema.Works);

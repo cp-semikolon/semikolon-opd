@@ -18,6 +18,7 @@ Package.onUse(function(api) {
   api.use('opd-model');
 
   api.addFiles('opd-core.js');
+  api.addFiles('wardrounds.js');
   api.export('OPD');
 });
 
