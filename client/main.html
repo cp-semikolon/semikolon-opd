@@ -1,11 +1,20 @@
 <template name="MainLayout">
-  <header></header>
+  <header> 
+  <div class="container" >
+    <div id="opd-logo">  
+      <img src="/opd-logo.png" alt="OPD" >
+    </div>
+  </div>
+  </header>
   <main>
-	  <div class="container">
-	    {{>Template.dynamic template=content}}
+	  <div class="container" >
+      <div id="bg" align="middle">       
+        <img  src="/athphak-logo.png" alt="โรงพยาบาลอัฒภาค" >
+      </div>
+      {{>Template.dynamic template=content}}
     </div>
   </main>
-  <footer></footer>
+  <footer>{{> DashboardFooter}}</footer>
 </template>
 
 <template name="DashboardLayout">
