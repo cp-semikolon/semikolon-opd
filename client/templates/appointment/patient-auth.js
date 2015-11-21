@@ -1,5 +1,5 @@
 // let Patients = OPD.Model.Patients;
-let newAppointmentPath = '/appointment/new';
+let newAppointmentPath = (patientId) => `/patient/${patientId}/appointment/new`;
 let newPatientPath = '/patient/new';
 
 class PatientAuth extends BlazeComponent {
@@ -50,11 +50,14 @@ function registerDispatcher(state) {
   Dispatcher.register(action => {
       switch( action.type ) {
         case "PATIENT_CREATE_NEW":
-          FlowRouter.go(newPatientPath, action.patient);
+          Session.set('FName', action.patient.FName);
+          Session.set('LName', action.patient.LName);
+          Session.set('SSID', action.patient.SSID);
+          FlowRouter.go(newPatientPath);
           break;
 
         case "PATIENT_MAKE_APPOINTMENT_REQUEST":
-          FlowRouter.go(newAppointmentPath);
+          FlowRouter.go(newAppointmentPath(action.patientId));
           break;
 
         case "PATIENT_REQUIRE_OTP":
@@ -63,10 +66,6 @@ function registerDispatcher(state) {
           state.set('lastName', action.patient.LName);
           state.set('currentPatientId', action.patient._id);
           state.set('show_patient_auth_form', false);
-          break;
-
-        case "PATIENT_NOT_FOUND":
-          console.log("PATIENT_NOT_FOUND");
           break;
 
         case "PATIENT_OTP_AUTH_SUCCESS":

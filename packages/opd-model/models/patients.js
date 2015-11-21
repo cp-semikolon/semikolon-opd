@@ -66,15 +66,14 @@ function getIdType(id) {
 }
 
 function makeAppointment(isPatientExists, matchedPatient, patientSelector) {
-	let newPatient = {};
-
 	if(!isPatientExists) {
 		// insert new patient
 		Dispatcher.dispatch('PATIENT_CREATE_NEW', {patient: patientSelector});
+		return;
 	}
 
 	let payload = {
-		patientId: isPatientExists ? matchedPatient[0]._id : newPatient
+		patientId: matchedPatient[0]._id
 	};
 
 	Dispatcher.dispatch('PATIENT_MAKE_APPOINTMENT_REQUEST', payload);

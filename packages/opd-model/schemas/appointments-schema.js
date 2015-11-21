@@ -1,24 +1,48 @@
 Schema.Appointments = new SimpleSchema({
-    author: {
-      type: String,
-      label: "Author"
-    },
-    copies: {
-      type: Number,
-      label: "Number of copies",
-      min: 0
-    },
-    lastCheckedOut: {
-      type: Date,
-      label: "Last date this book was checked out",
-      optional: true
-    },
-    summary: {
-      type: String,
-      label: "Brief summary",
-      optional: true,
-      max: 1000
+  PatientID: {
+    type: String,
+    max: 50,
+    autoform: {
+      type: 'hidden'
     }
+  },
+  DepartmentID: {
+    type: String,
+    label: 'แผนก',
+    max: 50,
+    autoform: {
+      options() {
+        return Model.Departments.find()
+          .fetch()
+          .map(dept => {
+            return {label: dept.Name, value: dept._id};
+          });
+      }
+    }
+  },
+  DoctorID: {
+    type: String,
+    label: 'แพทย์',
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
+  },
+  AppDate: {
+    type: Date,
+    label: 'วันที่ต้องการนัดหมาย',
+    autoform: {
+      type: "pickadate"
+    }
+  },
+  AppTime: {
+    type: String,
+    label: "ช่วงเวลา",
+    allowedValues: ['เช้า', 'บ่าย'],
+    autoform: {
+      options: 'allowed'
+    }
+  },
 });
 
 Model.Appointments.attachSchema(Schema.Appointments);

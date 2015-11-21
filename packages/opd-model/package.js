@@ -18,21 +18,27 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'lib/namespace.js',
+    'lib/countries.js',
     // models
     'models/patients.js',
     'models/appointments.js',
     'models/otps.js',
+    'models/departments.js',
+    'models/healthData.js',
+    'models/wardrounds.js',
+    'models/medData.js',
 
     //schemas
     'schemas/appointments-schema.js',
-    // 'schemas/departments-schema.js',
+    'schemas/departments-schema.js',
     // 'schemas/diseases-schema.js',
     // 'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
-    // 'schemas/treatments-schema.js',
+    'schemas/medData-schema.js',
     // 'schemas/users-schema.js',
-    // 'schemas/works-schema.js'
+    'schemas/works-schema.js',
+    'schemas/healthData-schema.js'
   ]);
 
   api.export('Model');

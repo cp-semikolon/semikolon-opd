@@ -136,6 +136,8 @@
       "ReactiveDict": false,
       // local packages
       "OPD": true,
-      "Alert": true
+      // util
+      "Alert": true,
+      "countries": true
     }
 }
