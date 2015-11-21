@@ -12,8 +12,13 @@ footer{
   margin-top: 100px;
 }
 
+#semikolon-logo img{
+  margin-top: 24px;
+  width: 80px;
+}
 
-//Stickey Footer ..still bugging though
+
+//Sticky Footer ..still bugging though
   body {
     display: flex;
     min-height: 100vh;
@@ -27,19 +32,18 @@ footer{
 ///////////Css of First Page/////////////
 
 //Dynamic Img Size for Logo
+  //Header
+    #opd-logo img{
+    margin-top: 24px;
+    width: 200px;
+    }
 
-//Header
-  #opd-logo img{
-  margin-top: 24px;
-  width: 200px;
-  }
-
-//Athapak
-   #bg img{
-    margin: 150px 0px 20px ;
-    max-width: 40%;
-    height: auto;
-    width: auto\9; /* ie8 */
+  //Athapak
+     #bg img{
+      margin: 150px 0px 20px ;
+      max-width: 40%;
+      height: auto;
+      width: auto\9; /* ie8 */
 }
 
 //Gradient BG
@@ -53,30 +57,47 @@ footer{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cef5', endColorstr='#00bdf1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
   body.dashboardLayout{
-    background: #FFFFFF;
+    background: #ebecf0;
   }
 
   
-
-  //Form Color ...still digging
-
-   .input-field label {
-     color: #6E6E6E;
-   }
-
-      /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #1C1C1C;
-   }
-
-
 
 
 
 ///////////Css of Dashboard/////////////
 
-//Navbar shit
+//Navbar 
 
+//shift Navbar to the right
   nav .nav-wrapper{
     padding-left: 30px;
   }
+
+//Background Color of Header
+  #toplevel{
+    padding: 0 0 0 5%;
+    background: #07BDF1;
+  }
+
+//Effect of Activated Item 
+  #toplevel ul li a.active {
+    transition: all 300ms linear;
+    border-bottom: 3px solid #008db0;
+}
+
+
+//change menu height
+.toplevel-menu{
+   height: 36px;
+}
+
+//change navbar height
+.navbar-fixed {
+  height: 48px;
+}
+
+//level borderline up
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
+  line-height: 61px;
+}
+

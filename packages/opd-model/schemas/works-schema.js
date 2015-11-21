@@ -7,7 +7,7 @@ _DayTime = new SimpleSchema({
   Time: {
     type: String,
     label: "ช่วงเวลา",
-    allowedValues: ['เช้า', 'บ่าย']
+    allowedValues: ['เช้า', 'บ่าย'],
   }
 });
 
@@ -20,7 +20,7 @@ Schema.Works = new SimpleSchema({
     // A doctor can have many wardround day and times
     dayTime:{
       type: [_DayTime],
-      label: 'วันและช่วงเวลาออกตรวจ',
+      label:' ',
       maxCount: 14,
       unique: true 
     }    

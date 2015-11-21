@@ -24,8 +24,11 @@ Package.onUse(function(api) {
     'models/appointments.js',
     'models/otps.js',
     'models/departments.js',
-    'models/healthDatas.js',
+    'models/healthData.js',
+    'models/wardrounds.js',
+    'models/medData.js',
     'models/myusers.js',
+
 
     //schemas
     'schemas/appointments-schema.js',
@@ -34,10 +37,10 @@ Package.onUse(function(api) {
     // 'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
-    // 'schemas/treatments-schema.js',
+    'schemas/medData-schema.js',
     'schemas/users-schema.js',
-    // 'schemas/works-schema.js',
-    'schemas/healthDatas-schema.js'
+    'schemas/works-schema.js',
+    'schemas/healthData-schema.js'
   ]);
 
   api.export('Model');

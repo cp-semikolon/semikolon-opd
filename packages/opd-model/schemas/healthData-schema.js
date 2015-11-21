@@ -1,4 +1,4 @@
-Schema.HealthDatas = new SimpleSchema({
+Schema.HealthData = new SimpleSchema({
   UserID: {
     type: String,
     label: 'รหัสประจำบุคลากร',
@@ -45,4 +45,4 @@ Schema.HealthDatas = new SimpleSchema({
   }
 });
 
-Model.HealthDatas.attachSchema(Schema.HealthDatas);
+Model.HealthData.attachSchema(Schema.HealthData);
