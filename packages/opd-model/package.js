@@ -21,6 +21,7 @@ Package.onUse(function(api) {
     // models
     'models/patients.js',
     'models/appointments.js',
+    'models/otps.js',
 
     //schemas
     'schemas/appointments-schema.js',

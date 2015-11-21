@@ -1,4 +1,4 @@
-/* globals Model, OTP */ 
+/* globals Model */ 
 
 let Patients = Model.Patients = new Meteor.Collection('patients');
 
@@ -29,10 +29,17 @@ Meteor.methods({
 		let otp = doc.otp;
 		let patientId = doc.patientId;
 
-		if ( OTP[patientId] === otp && OTP[patientId] ) {
+		let generatedOtp = Model.Otps.find({patientId}).fetch()[0].otp;
+
+		console.log(generatedOtp, otp, generatedOtp === otp);
+
+		if ( generatedOtp === otp ) {
+			// set current user id
+			this.setUserId(patientId);
 			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS');
 			return;
 		}
+
 		Dispatcher.dispatch('PATIENT_OTP_AUTH_FAIL');
 	}
 
@@ -77,22 +84,19 @@ function makeAppointment(isPatientExists, matchedPatient, patientSelector) {
 
 function manageAppointment(isPatientExists, matchedPatient) {
 	if(isPatientExists) {
-		let otp = generateOtp();
 		let otpTimeout = 5*60*1000; // 5 minutes timeout
+		let otp = generateOtp(matchedPatient[0]._id, otpTimeout);
 
-		OTP[matchedPatient[0]._id] = otp;
-
-
-		// Meteor.setTimeout(() => 
-		// 	delete OTP[matchedPatient[0]._id], otpTimeout);
+		Meteor.setTimeout(() => 
+			Model.Otps.remove({patientId: matchedPatient[0]._id }), otpTimeout);
 
 		// this.unblock();
 
 		if ( Meteor.isServer) {
 			Email.send({
-				to: matchedPatient.Email,
+				to: matchedPatient[0].Email,
 				from: 'noreply@semikolon',
-				subject: 'one-time-password สำหรับทจัดการการนัด',
+				subject: 'one-time-password สำหรับจัดการการนัด',
 				text: `one-time-password ของคุณคือ ${otp}`
 			});
 		}
@@ -104,7 +108,7 @@ function manageAppointment(isPatientExists, matchedPatient) {
 	Dispatcher.dispatch('PATIENT_NOT_FOUND');
 }
 
-function generateOtp() {
+function generateOtp(patientId) {
 	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 
 								 'abcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -113,5 +117,7 @@ function generateOtp() {
 
 	let otp = ['', '', '', ''].map(() => possible[randomIndex()]).join('');
 
+	Model.Otps.remove({patientId});
+	Model.Otps.insert({patientId, otp});
 	return otp;
 }
