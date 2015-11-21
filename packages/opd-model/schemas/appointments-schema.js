@@ -1,32 +1,47 @@
 Schema.Appointments = new SimpleSchema({
-  SSID: {
+  PatientID: {
     type: String,
-    label: 'หมายเลขประจำตัวประชาชน',
-    max: 50
-  },
-  HN: {
-    type: String,
-    label: 'หมายเลข HN',
-    regEx: /^HN[0-9]{8}$/
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
   },
   DepartmentID: {
     type: String,
     label: 'แผนก',
-    max: 50
+    max: 50,
+    autoform: {
+      options() {
+        return Model.Departments.find()
+          .fetch()
+          .map(dept => {
+            return {label: dept.Name, value: dept._id};
+          });
+      }
+    }
   },
-  UserID: {
+  DoctorID: {
     type: String,
     label: 'แพทย์',
-    max: 50
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
   },
   AppDate: {
     type: Date,
-    label: 'วันที่ต้องการนัดหมาย'
+    label: 'วันที่ต้องการนัดหมาย',
+    autoform: {
+      type: "pickadate"
+    }
   },
   AppTime: {
     type: String,
     label: "ช่วงเวลา",
-    allowedValues: ['เช้า', 'บ่าย']
+    allowedValues: ['เช้า', 'บ่าย'],
+    autoform: {
+      options: 'allowed'
+    }
   },
 });
 

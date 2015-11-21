@@ -1,0 +1,11 @@
+<template name="RecordHealthData">
+	{{#autoForm schema="OPD.Schema.HealthDatas" id="recordHealthData" type="insert" resetOnSuccess=false}}
+		{{> afQuickField name='Weight'}} 
+		{{> afQuickField name='Height'}} 
+		{{> afQuickField name='BodyTemp'}} 
+		{{> afQuickField name='HeartRate'}} 
+		{{> afQuickField name='SystolicBP'}} 
+		{{> afQuickField name='DiastolicBP'}} 
+		<button type="submit" class="waves-effect waves-light btn">บันทึก</button>
+	{{/autoForm}}
+</template>

@@ -23,17 +23,21 @@ Package.onUse(function(api) {
     'models/patients.js',
     'models/appointments.js',
     'models/otps.js',
+    'models/departments.js',
+    'models/healthDatas.js',
+    'models/wardrounds.js',
 
     //schemas
     'schemas/appointments-schema.js',
-    // 'schemas/departments-schema.js',
+    'schemas/departments-schema.js',
     // 'schemas/diseases-schema.js',
     // 'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
     // 'schemas/treatments-schema.js',
     // 'schemas/users-schema.js',
-    // 'schemas/works-schema.js'
+    'schemas/works-schema.js',
+    'schemas/healthDatas-schema.js'
   ]);
 
   api.export('Model');

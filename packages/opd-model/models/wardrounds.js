@@ -1,0 +1,1 @@
+Model.Wardrounds = new Meteor.Collection('wardrounds');
