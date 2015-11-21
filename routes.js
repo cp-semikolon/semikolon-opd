@@ -10,13 +10,13 @@ FlowRouter.route('/patient/new', {
   }
 });
 
-FlowRouter.route('/appointment/new', {
+FlowRouter.route('/patient/:patientId/appointment/new', {
   action: function() {
     BlazeLayout.render("MainLayout", {content: "MakeAppointment"});
   }
 });
 
-FlowRouter.route('/patient/appointment/', {
+FlowRouter.route('/patient/:patientId/appointment/', {
   action: function() {
     BlazeLayout.render("MainLayout", {content: "ManageAppointment"});
   }

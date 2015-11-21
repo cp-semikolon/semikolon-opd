@@ -18,6 +18,7 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'lib/namespace.js',
+    'lib/countries.js',
     // models
     'models/patients.js',
     'models/appointments.js',
