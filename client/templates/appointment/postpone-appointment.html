@@ -1,5 +1,5 @@
 <template name="PoseponeAppointment">
-	{{#autoForm schema="OPD.Schema.Appointments" id="makeAppointment" type="insert" resetOnSuccess=false}}
+	{{#autoForm schema="OPD.Schema.Appointments" id="postponeAppointment" type="insert" resetOnSuccess=false}}
 		{{> afQuickField name='DepartmentID'}} <!-- ไม่ให้เปลี่ยน -->
 		{{> afQuickField name='DoctorID'}} <!-- Fix?! -->
 		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาเก่า -->
