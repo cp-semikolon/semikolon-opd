@@ -1,4 +1,4 @@
-Schema._DayTime = new SimpleSchema({
+_DayTime = new SimpleSchema({
   Day: {
     type: String,
     label: "วัน",
@@ -20,9 +20,10 @@ Schema.Works = new SimpleSchema({
     // A doctor can have many wardround day and times
     dayTime:{
       type: [_DayTime],
+      label: 'วันและช่วงเวลาออกตรวจ',
       maxCount: 14,
       unique: true 
     }    
 });
 // Attach this to WardRound
-OPD.Model.Wardrounds.attachSchema(Schema.Works);
+Model.Wardrounds.attachSchema(Schema.Works);
