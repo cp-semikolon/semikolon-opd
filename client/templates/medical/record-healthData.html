@@ -1,0 +1,9 @@
+<template name="RecordHealthData">
+	{{#autoForm schema="OPD.Schema.RecordHealth" id="recordHealthData" type="insert" resetOnSuccess=false}}
+		{{> afQuickField name='DepartmentID'}} <!-- ไม่ให้เปลี่ยน -->
+		{{> afQuickField name='DoctorID'}} <!-- Fix?! -->
+		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาเก่า -->
+		{{> afQuickField name='AppTime'}} <!-- ต้อง default เป็นวันเวลาเก่า -->
+		<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
+	{{/autoForm}}
+</template>
