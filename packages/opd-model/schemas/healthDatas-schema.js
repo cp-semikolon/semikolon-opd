@@ -1,36 +1,39 @@
-Schema.RecordHealth = new SimpleSchema({
+Schema.HealthDatas = new SimpleSchema({
   UserID: {
     type: String,
     label: 'รหัสประจำบุคลากร',
     max: 15
   },
   Weight: {
-    type: double,
+    type: Number,
     label: 'น้ำหนัก',
-    max: 10
+    max: 10,
+    decimal: true
   },
   Height: {
-    type: double,
+    type: Number,
     label: 'ส่วนสูง',
-    max: 10
+    max: 10,
+    decimal: true
   },
   BodyTemp: {
-    type: double,
+    type: Number,
     label: 'อุณหภูมิร่างกาย',
-    max: 10
+    max: 10,
+    decimal: true
   },
   HeartRate: {
-    type: int,
+    type: Number,
     label: 'อัตราการเต้นของหัวใจ',
-    max: 10;
+    max: 10
   },
   SystolicBP: {
-    type: int,
+    type: Number,
     label: 'ความดันสูงสุด',
     max: 10
   },
   DiastolicBP: {
-    type: int,
+    type: Number,
     label: 'ความดันต่ำสุด',
     max: 10
   },
@@ -42,4 +45,4 @@ Schema.RecordHealth = new SimpleSchema({
   }
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Model.HealthDatas.attachSchema(Schema.HealthDatas);
