@@ -17,6 +17,7 @@ Schema.Patients = new SimpleSchema({
     TelNo: {
       type: String,
       label: 'หมายเลขโทรศัพท์',
+      regEx: /[0-9]/,
       min: 9,
       max: 10
     },
@@ -42,7 +43,8 @@ Schema.Patients = new SimpleSchema({
     HN: {
       type: String,
       label: 'หมายเลข HN',
-      regEx: /HN[0-9]{8}/
+      regEx: /HN[0-9]{8}/,
+      optional: true
     }
 });
 

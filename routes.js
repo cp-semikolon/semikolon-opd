@@ -4,6 +4,12 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/patient/new', {
+  action: function() {
+    BlazeLayout.render("MainLayout", {content: "NewPatientForm"});
+  }
+});
+
 FlowRouter.route('/appointment/new', {
   action: function() {
     BlazeLayout.render("MainLayout", {content: "MakeAppointment"});

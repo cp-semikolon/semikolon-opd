@@ -1,29 +1,19 @@
 <template name="PatientAuth">
+		
+	{{#if isShowPatientAuthForm}}
+		{{#autoForm schema="OPD.Schema.PatientAuthForm" id="appointmentForm" type="method" meteormethod="Patients.auth" resetOnSuccess=false}}
+			{{> afQuickField name='ssidOrHn'}}
+			{{> afQuickField name='firstName'}}
+			{{> afQuickField name='lastName'}}
+			{{> afQuickField name='action' value='make'}}
+			<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
+		{{/autoForm}}
+	{{/if}}
 
-		<div class="row">
-			<div class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
-				<div class="valign-wrapper" style="margin-top: 200px;">
-					<div class="valign" style="width: 100%">
-
-						{{#if isShowPatientAuthForm}}
-							{{#autoForm schema="OPD.Schema.PatientAuthForm" id="appointmentForm" type="method" meteormethod="Patients.auth" resetOnSuccess=false}}
-								{{> afQuickField name='ssidOrHn'}}
-								{{> afQuickField name='firstName'}}
-								{{> afQuickField name='lastName'}}
-								{{> afQuickField name='action' value='make'}}
-								<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
-							{{/autoForm}}
-						{{/if}}
-
-						{{#if isRequireOTP}}
-							<p>คุณ {{firstName}} {{lastName}}</p>
-							<p>one-time-password ได้ถูกส่งไปที่อีเมลของคุณ</p>
-							{{> OTP patientId=currentPatientId}}
-						{{/if}}
-
-					</div>
-				</div>
-			</div>
-		</div>
+	{{#if isRequireOTP}}
+		<p>คุณ {{firstName}} {{lastName}}</p>
+		<p>one-time-password ได้ถูกส่งไปที่อีเมลของคุณ</p>
+		{{> OTP patientId=currentPatientId}}
+	{{/if}}
 
 </template>

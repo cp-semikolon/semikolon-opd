@@ -1,5 +1,6 @@
 // let Patients = OPD.Model.Patients;
 let newAppointmentPath = '/appointment/new';
+let newPatientPath = '/patient/new';
 
 class PatientAuth extends BlazeComponent {
   onCreated() {
@@ -48,6 +49,10 @@ function registerDispatcher(state) {
 
   Dispatcher.register(action => {
       switch( action.type ) {
+        case "PATIENT_CREATE_NEW":
+          FlowRouter.go(newPatientPath, action.patient);
+          break;
+
         case "PATIENT_MAKE_APPOINTMENT_REQUEST":
           FlowRouter.go(newAppointmentPath);
           break;
@@ -65,11 +70,11 @@ function registerDispatcher(state) {
           break;
 
         case "PATIENT_OTP_AUTH_SUCCESS":
-          console.log('success');
+          Alert.success();
           break;
 
         case "PATIENT_OTP_AUTH_FAIL":
-          console.log('fail');
+          Alert.error('one-time-password ไม่ถูกต้อง');
           break;
       }
     });

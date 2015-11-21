@@ -31,8 +31,6 @@ Meteor.methods({
 
 		let generatedOtp = Model.Otps.find({patientId}).fetch()[0].otp;
 
-		console.log(generatedOtp, otp, generatedOtp === otp);
-
 		if ( generatedOtp === otp ) {
 			// set current user id
 			this.setUserId(patientId);
@@ -72,7 +70,7 @@ function makeAppointment(isPatientExists, matchedPatient, patientSelector) {
 
 	if(!isPatientExists) {
 		// insert new patient
-		newPatient = Patients.insert(patientSelector);
+		Dispatcher.dispatch('PATIENT_CREATE_NEW', {patient: patientSelector});
 	}
 
 	let payload = {
@@ -95,7 +93,7 @@ function manageAppointment(isPatientExists, matchedPatient) {
 		if ( Meteor.isServer) {
 			Email.send({
 				to: matchedPatient[0].Email,
-				from: 'noreply@semikolon',
+				from: 'semikolon@semikolon',
 				subject: 'one-time-password สำหรับจัดการการนัด',
 				text: `one-time-password ของคุณคือ ${otp}`
 			});
