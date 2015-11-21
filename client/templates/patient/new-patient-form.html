@@ -2,12 +2,12 @@
 
 	<h5>ผู้ป่วยใหม่</h5>
 	<br>
-	{{#autoForm collection="OPD.Model.Patients" id="newPatientForm" type="insert"}}
+	{{#autoForm collection="OPD.Model.Patients" id="newPatientForm" type="insert" doc=currentPatient}}
 		{{> afQuickField name='Title'}}
-		{{> afQuickField name='FName' value=Fname}}
-		{{> afQuickField name='LName' value=Lname}}
+		{{> afQuickField name='FName'}}
+		{{> afQuickField name='LName'}}
 		{{> afQuickField name='Nationality'}}
-		{{> afQuickField name='SSID' value=SSID}}
+		{{> afQuickField name='SSID'}}
 		{{> afQuickField name='TelNo'}}
 		{{> afQuickField name='Email'}}
 		<button type="submit" class="waves-effect waves-light btn">ยืนยัน</button>
