@@ -1,82 +1,25 @@
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/components/_color.scss";
-//$primary-color: #00bcd4 ;
+$primary-color: #00bcd4 ;
 
 // import main scss file
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";
 
-
-//////Universal Shit//////////
-
-//add space above footer
-footer{
-  margin-top: 100px;
-}
-
-
-//Stickey Footer ..still bugging though
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
   }
-
-  main {
-    flex: 1 0 auto;
-  }
-
-///////////Css of First Page/////////////
-
-//Dynamic Img Size for Logo
-
-//Header
-  #opd-logo img{
-  margin-top: 24px;
-  width: 200px;
-  }
-
-//Athapak
-   #bg img{
-    margin: 150px 0px 20px ;
-    max-width: 40%;
-    height: auto;
-    width: auto\9; /* ie8 */
-}
-
-//Gradient BG
   body.mainLayout{
-    //    background: color("blue", "lighten-2");
-     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00cef5+0,00c4f2+53,00bdf1+100 */
-    background: #00cef5; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  #00cef5 0%, #00c4f2 53%, #00bdf1 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover,  #00cef5 0%,#00c4f2 53%,#00bdf1 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center,  #00cef5 0%,#00c4f2 53%,#00bdf1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cef5', endColorstr='#00bdf1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: color("blue", "lighten-2");
   }
   body.dashboardLayout{
     background: #FFFFFF;
   }
 
+  main {
+    flex: 1 0 auto;
+  }
   
-
-  //Form Color ...still digging
-
-   .input-field label {
-     color: #ffffff;
-   }
-
-      /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #ffffff;
-   }
-
-
-
-
-
-///////////Css of Dashboard/////////////
-
-//Navbar shit
-
   nav .nav-wrapper{
-    padding-left: 30px;
+  	padding-left: 30px;
   }
