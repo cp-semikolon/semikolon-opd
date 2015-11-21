@@ -12,7 +12,7 @@ Schema.Treatments = new SimpleSchema({
     HN: {
       type: String,
       label: 'หมายเลข HN',
-      regEx: '/HN[0-9]{8}/'
+      regEx: '/^HN[0-9]{8}$/'
     },
     Description: {
       type: String,

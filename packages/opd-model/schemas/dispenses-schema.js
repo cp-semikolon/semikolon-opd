@@ -8,7 +8,7 @@ Schema.Dispenses = new SimpleSchema({
     HN: {
       type: String,
       abel: 'หมายเลข HN',
-      regEx: '/HN[0-9]{8}/'
+      regEx: /^HN[0-9]{8}$/
     },
     ID: {
       type: String,
