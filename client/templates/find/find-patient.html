@@ -1,0 +1,21 @@
+<template name="FindPatient">
+
+	<h5>ค้นหาผู้ป่วย</h5>
+	<br>
+	<span>ชื่อ</span>{{> EasySearch.FieldInput field="FName" index=patientsIndex}}
+	<span>นามสกุล</span>{{> EasySearch.FieldInput field="LName" index=patientsIndex}}
+	<span>หมายเลข HN</span>{{> EasySearch.FieldInput field="HN" index=patientsIndex}}
+	<span>เลขประจำตัวประชาชน</span>{{> EasySearch.FieldInput field="SSID" index=patientsIndex}}
+	<ul>
+	<span>รายชื่อผู้ป่วย</span>
+    {{#EasySearch.Each index=patientsIndex}}
+      <li>Patient: {{FName}} {{LName}}</li>
+    {{/EasySearch.Each}}
+  	</ul>
+
+  	{{> EasySearch.LoadMore index=patientsIndex}}
+
+  	{{#EasySearch.IfNoResults index=patientsIndex}}
+    <div class="no-results">No results found!</div>
+  	{{/EasySearch.IfNoResults}}
+</template>

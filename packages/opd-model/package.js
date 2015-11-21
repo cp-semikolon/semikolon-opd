@@ -23,10 +23,11 @@ Package.onUse(function(api) {
     'models/patients.js',
     'models/appointments.js',
     'models/otps.js',
+    'models/departments.js',
 
     //schemas
     'schemas/appointments-schema.js',
-    // 'schemas/departments-schema.js',
+    'schemas/departments-schema.js',
     // 'schemas/diseases-schema.js',
     // 'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
