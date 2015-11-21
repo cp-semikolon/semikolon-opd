@@ -1,24 +1,38 @@
 Schema.Appointments = new SimpleSchema({
-    author: {
-      type: String,
-      label: "Author"
-    },
-    copies: {
-      type: Number,
-      label: "Number of copies",
-      min: 0
-    },
-    lastCheckedOut: {
-      type: Date,
-      label: "Last date this book was checked out",
-      optional: true
-    },
-    summary: {
-      type: String,
-      label: "Brief summary",
-      optional: true,
-      max: 1000
-    }
+  SSID: {
+    type: String,
+    label: 'หมายเลขประจำตัวประชาชน',
+    max: 50
+  },
+  PassportNo: {
+    type: String,
+    label: 'หมายเลขหนังสือเดินทาง',
+    max: 50
+  },
+  HN: {
+    type: String,
+    label: 'หมายเลข HN',
+    regEx: /^HN[0-9]{8}$/
+  },
+  DepartmentID: {
+    type: String,
+    label: 'แผนก',
+    max: 50
+  },
+  UserID: {
+    type: String,
+    label: 'แพทย์',
+    max: 50
+  },
+  AppDate: {
+    type: Date,
+    label: 'วันที่ต้องการนัดหมาย'
+  },
+  AppTime: {
+    type: String,
+    label: "ช่วงเวลา",
+    allowedValues: ['เช้า', 'บ่าย']
+  },
 });
 
 Model.Appointments.attachSchema(Schema.Appointments);
