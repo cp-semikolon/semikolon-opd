@@ -1,32 +1,33 @@
 Schema.Appointments = new SimpleSchema({
-  SSID: {
+  PatientID: {
     type: String,
-    label: 'หมายเลขประจำตัวประชาชน',
-    max: 50
-  },
-  PassportNo: {
-    type: String,
-    label: 'หมายเลขหนังสือเดินทาง',
-    max: 50
-  },
-  HN: {
-    type: String,
-    label: 'หมายเลข HN',
-    regEx: /^HN[0-9]{8}$/
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
   },
   DepartmentID: {
     type: String,
     label: 'แผนก',
-    max: 50
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
   },
-  UserID: {
+  DoctorID: {
     type: String,
     label: 'แพทย์',
-    max: 50
+    max: 50,
+    autoform: {
+      type: 'hidden'
+    }
   },
   AppDate: {
     type: Date,
-    label: 'วันที่ต้องการนัดหมาย'
+    label: 'วันที่ต้องการนัดหมาย',
+    autoform: {
+      type: "pickadate"
+    }
   },
   AppTime: {
     type: String,

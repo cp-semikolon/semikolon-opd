@@ -50,15 +50,9 @@ function registerDispatcher(state) {
   Dispatcher.register(action => {
       switch( action.type ) {
         case "PATIENT_CREATE_NEW":
-          console.log(action);
           Session.set('FName', action.patient.FName);
           Session.set('LName', action.patient.LName);
-          if(action.SSID) {
-            Session.set('SSID', action.patient.SSID);
-          } else {
-            Session.set('Passport', action.Passport);
-          }
-          
+          Session.set('SSID', action.patient.SSID);
           FlowRouter.go(newPatientPath);
           break;
 
@@ -72,10 +66,6 @@ function registerDispatcher(state) {
           state.set('lastName', action.patient.LName);
           state.set('currentPatientId', action.patient._id);
           state.set('show_patient_auth_form', false);
-          break;
-
-        case "PATIENT_NOT_FOUND":
-          console.log("PATIENT_NOT_FOUND");
           break;
 
         case "PATIENT_OTP_AUTH_SUCCESS":

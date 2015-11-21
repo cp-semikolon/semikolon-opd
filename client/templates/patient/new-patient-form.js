@@ -1,16 +1,4 @@
 class NewPatientForm extends BlazeComponent {
-  FName() {
-    return Session.get('FName');
-  }
-
-  LName() {
-    return Session.get('LName');
-  }
-
-  SSID() {
-    return Session.get('SSID');
-  }
-
   currentPatient() {
     return {
       FName: Session.get('FName'),
@@ -19,5 +7,18 @@ class NewPatientForm extends BlazeComponent {
     };
   }
 }
+
+AutoForm.hooks({
+  newPatientForm: {
+    onSuccess: function(formType, result) {
+      let patientId = result;
+      FlowRouter.go(`/patient/${patientId}/appointment/new`);
+    },
+
+    onError: function(formType, error) {
+      Alert.error(error);
+    },
+  }
+});
 
 NewPatientForm.register('NewPatientForm');
