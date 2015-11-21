@@ -11,7 +11,13 @@ Schema.Appointments = new SimpleSchema({
     label: 'แผนก',
     max: 50,
     autoform: {
-      type: 'hidden'
+      options() {
+        return Model.Departments.find()
+          .fetch()
+          .map(dept => {
+            return {label: dept.Name, value: dept._id};
+          });
+      }
     }
   },
   DoctorID: {
@@ -32,7 +38,10 @@ Schema.Appointments = new SimpleSchema({
   AppTime: {
     type: String,
     label: "ช่วงเวลา",
-    allowedValues: ['เช้า', 'บ่าย']
+    allowedValues: ['เช้า', 'บ่าย'],
+    autoform: {
+      options: 'allowed'
+    }
   },
 });
 

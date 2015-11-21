@@ -1,5 +1,5 @@
 // let Patients = OPD.Model.Patients;
-let newAppointmentPath = (patientId) => `patient/${patientId}/appointment/new`;
+let newAppointmentPath = (patientId) => `/patient/${patientId}/appointment/new`;
 let newPatientPath = '/patient/new';
 
 class PatientAuth extends BlazeComponent {
