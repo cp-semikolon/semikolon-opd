@@ -48,7 +48,7 @@ FlowRouter.route('/patient/:patientId/appointment/:appointmentId/print', {
 
 
 //บันทึกการตรวจสุขภาพเบื้องต้น
-FlowRouter.route('/record/healthData/:patientId/:date', {
+FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
   action: function() {
     BlazeLayout.render("DashboardLayout", {content: "RecordHealthData"});
   }
