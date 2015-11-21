@@ -34,10 +34,6 @@ Schema.RecordHealth = new SimpleSchema({
     label: 'ความดันต่ำสุด',
     max: 10
   },
-  Existing: {
-    type: Boolean,
-    label: 'มี HN หรือไม่',
-  },
   HN: {
     type: String,
     label: 'หมายเลข HN',
