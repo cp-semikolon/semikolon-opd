@@ -1,10 +1,10 @@
-Schema.Users = new SimpleSchema({
+Schema.Myusers = new SimpleSchema({
     UserID: {
       type: String,
       label: 'รหัสประจำบุคลากร',
       max: 15
     },
-    Password: {
+    UPassword: {
       type: String,
       label: 'รหัสผ่าน',
       max: 15
@@ -43,4 +43,4 @@ Schema.Users = new SimpleSchema({
     }
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Model.Myusers.attachSchema(Schema.Myusers);

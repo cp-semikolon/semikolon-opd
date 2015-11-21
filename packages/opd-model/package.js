@@ -25,7 +25,7 @@ Package.onUse(function(api) {
     'models/otps.js',
     'models/departments.js',
     'models/healthDatas.js',
-    'models/wardrounds.js',
+    'models/myusers.js',
 
     //schemas
     'schemas/appointments-schema.js',
@@ -35,8 +35,8 @@ Package.onUse(function(api) {
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
     // 'schemas/treatments-schema.js',
-    // 'schemas/users-schema.js',
-    'schemas/works-schema.js',
+    'schemas/users-schema.js',
+    // 'schemas/works-schema.js',
     'schemas/healthDatas-schema.js'
   ]);
 
