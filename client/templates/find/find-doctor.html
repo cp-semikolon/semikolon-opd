@@ -21,9 +21,10 @@
 		  	
 		  	{{else}}
 			    {{#EasySearch.Each index=doctorIndex}}
-			  	 <li>Patient: {{UserID}} {{FName}} {{LName}}
-			  	 <button class="waves-effect waves-light btn">ทำนัด</button>
-			  	 <button class="waves-effect waves-light btn">ดูข้อมูล</button></li>
+			  	 <li>Doctor: {{UserID}} {{FName}} {{LName}}
+			  	 <a href={{pathFor '/view/wardRound/:doctorId' doctorId=_id}}>
+			  	  <button class="waves-effect waves-light btn" >จัดการนัด</button></a>
+			  	  </li>
 			    {{/EasySearch.Each}}
 
 			    {{> EasySearch.LoadMore index=doctorIndex}}
