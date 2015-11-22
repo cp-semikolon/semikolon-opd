@@ -34,7 +34,7 @@ Meteor.methods({
 		if ( generatedOtp === otp ) {
 			// set current user id
 			this.setUserId(patientId);
-			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS');
+			Dispatcher.dispatch('PATIENT_OTP_AUTH_SUCCESS', {patientId});
 			return;
 		}
 
@@ -84,9 +84,10 @@ function manageAppointment(isPatientExists, matchedPatient) {
 		let otpTimeout = 5*60*1000; // 5 minutes timeout
 		let otp = generateOtp(matchedPatient[0]._id, otpTimeout);
 
+		// if (Meteor.isServer) {
 		// Meteor.setTimeout(() => 
 		// 	Model.Otps.remove({patientId: matchedPatient[0]._id }), otpTimeout);
-
+		// }
 		// this.unblock();
 
 		if ( Meteor.isServer) {
