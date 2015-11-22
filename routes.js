@@ -4,6 +4,11 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/login', {
+  action: function() {
+    BlazeLayout.render("MainLayout", {content: "Login"});
+  }
+});
 //
 FlowRouter.route('/patient/', {
   action: function() {
