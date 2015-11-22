@@ -32,6 +32,8 @@ aldeed:autoform
 gildaspk:autoform-materialize
 gildaspk:autoform-modals-materialize
 gildaspk:autoform-medium
+arillo:flow-router-helpers
+alanning:roles
 reactive-dict
 email
 opd-core
