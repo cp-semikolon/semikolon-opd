@@ -136,10 +136,13 @@
       "ReactiveDict": false,
       "Roles": false,
       "AccountsTemplates": false,
+      "EasySearch": false,
       // local packages
       "OPD": true,
       // util
       "Alert": true,
-      "countries": true
+      "countries": true,
+      // index
+      "PatientsIndex": true
     }
 }

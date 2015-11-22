@@ -24,10 +24,7 @@ Schema.Appointments = new SimpleSchema({
     type: String,
     label: 'แพทย์',
     max: 50,
-    autoform: {
-      type: 'hidden'
-    },
-    optional: true //false later
+    optional: false
   },
   AppDate: {
     type: Date,
