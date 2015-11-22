@@ -14,50 +14,44 @@ class WardroundImportForm extends BlazeComponent {
 }
 
 Template.ImportWardRoundSchedule.events({
-	'change .monday input':function(event){
-		Session.set('disable_monday',!event.target.checked);
-	},
-	'change .tuesday input':function(event){
-		Session.set('disable_tuesday',!event.target.checked);
-	},
-	'change .wednesday input':function(event){
-		Session.set('disable_wednesday',!event.target.checked);
-	},
-	'change .thursday input':function(event){
-		Session.set('disable_thursday',!event.target.checked);
-	},
-	'change .friday input':function(event){
-		Session.set('disable_friday',!event.target.checked);
-	},
-	'change .saturday input':function(event){
-		Session.set('disable_saturday',!event.target.checked);
-	},
-	'change .sunday input':function(event){
-		Session.set('disable_sunday',!event.target.checked);
+	'change input':function(event){
+		let id =event.target.id;
+		let checked=event.target.checked;
+		Session.set('disable_'+id,!checked);
+		if(!checked){
+			$('#'+id+'_morning').attr('checked',false);
+			$('#'+id+'_afternoon').attr('checked',false);
+		}
 	}
 });
 
+let days=['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
 Template.ImportWardRoundSchedule.helpers({
-	disable_monday: function(){
-		return Session.get('disable_monday');
+	disable: function(day){
+		switch(day){
+			case 'monday': return Session.get('disable_monday');
+			case 'tuesday': return Session.get('disable_tuesday');
+			case 'wednesday': return Session.get('disable_wednesday');
+			case 'thursday': return Session.get('disable_thursday');
+			case 'friday': return Session.get('disable_friday');
+			case 'saturday': return Session.get('disable_saturday');
+			case 'sunday': return Session.get('disable_sunday');
+		}
 	},
-	disable_tuesday: function(){
-		return Session.get('disable_tuesday');
+	days: function(){
+		return days;
 	},
-	disable_wednesday: function(){
-		return Session.get('disable_wednesday');
-	},
-	disable_thursday: function(){
-		return Session.get('disable_thursday');
-	},
-	disable_friday: function(){
-		return Session.get('disable_friday');
-	},
-	disable_saturday: function(){
-		return Session.get('disable_saturday');
-	},
-	disable_sunday: function(){
-		return Session.get('disable_sunday');
+	day:function(day){
+		switch(day){
+			case 'monday': return 'จันทร์';
+			case 'tuesday': return 'อังคาร';
+			case 'wednesday': return 'พุธ';
+			case 'thursday': return 'พฤหัส';
+			case 'friday': return 'ศุกร์';
+			case 'saturday': return 'เสาร์';
+			case 'sunday': return 'อาทิตย์';
+		}
 	}
 
 });
