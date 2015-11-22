@@ -10,12 +10,17 @@
 							<label for='userID'>รหัสประจำบุคลากร</label>
 						</div>
 					</div>
+
+					<div class='row'>
+						<p>เลือกวันและระบุเวลาออกตรวจ</p>
+						<div class='divider'></div>
+					</div>
 					
-					
+										
 					<div class='row'>
 						<form action='#' id='day-time-form'>
 							{{#each days}}
-								<div class='col s1'>
+							<div class='col s1'>
 								<div class='row {{this}}'>
 									<input type="checkbox" id='{{this}}'/>
 									<label for='{{this}}'>{{day this}}</label>
