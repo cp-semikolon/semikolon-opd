@@ -11,6 +11,7 @@ Schema.Appointments = new SimpleSchema({
     label: 'แผนก',
     max: 50,
     autoform: {
+      firstOption: '-- กรุณาเลือก --',
       options() {
         return Model.Departments.find()
           .fetch()
@@ -24,7 +25,9 @@ Schema.Appointments = new SimpleSchema({
     type: String,
     label: 'แพทย์',
     max: 50,
-    optional: false
+    autoform: {
+      firstOption: '-- กรุณาเลือก --'
+    }
   },
   AppDate: {
     type: Date,
@@ -45,6 +48,7 @@ Schema.Appointments = new SimpleSchema({
     label: "ช่วงเวลา",
     allowedValues: ['เช้า', 'บ่าย'],
     autoform: {
+      firstOption: '-- กรุณาเลือก --',
       options: 'allowed'
     }
   },

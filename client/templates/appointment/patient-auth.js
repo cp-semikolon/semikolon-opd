@@ -1,5 +1,6 @@
 // let Patients = OPD.Model.Patients;
 let newAppointmentPath = (patientId) => `/patient/${patientId}/appointment/new`;
+let manageAppointmentPath = (patientId) => `/patient/${patientId}/appointment/`;
 let newPatientPath = '/patient/new';
 
 class PatientAuth extends BlazeComponent {
@@ -70,6 +71,7 @@ function registerDispatcher(state) {
 
         case "PATIENT_OTP_AUTH_SUCCESS":
           Alert.success();
+          FlowRouter.go(manageAppointmentPath(action.patientId));
           break;
 
         case "PATIENT_OTP_AUTH_FAIL":
