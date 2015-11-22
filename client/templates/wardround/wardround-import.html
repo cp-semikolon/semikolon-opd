@@ -18,20 +18,20 @@
 					
 										
 					<div class='row'>
-						<form action='#' id='day-time-form'>
+						<form class='new-wardround' id='day-time-form'>
 							{{#each days}}
 							<div class='col s1'>
-								<div class='row {{this}}'>
-									<input type="checkbox" id='{{this}}'/>
+								<div class='row day-of-week {{this}}'>
+									<input type="checkbox" id='{{this}}' checked='{{check this}}' />
 									<label for='{{this}}'>{{day this}}</label>
 								</div>
-								<div class='row'>
-									<input type="checkbox" id='{{this}}_morning' disabled='{{disable this}}' />
-									<label for='{{this}}_morning'>เช้า</label>
+								<div class='row time'>
+									<input type="checkbox" id='{{this}}Morning' checked="{{checkTime this 'Morning'}}" disabled='{{disable this}}' />
+									<label for='{{this}}Morning'>เช้า</label>
 								</div>
-								<div class='row'>
-									<input type="checkbox" id='{{this}}_afternoon' disabled='{{disable this}}' />
-									<label for='{{this}}_afternoon'>บ่าย</label>
+								<div class='row time'>
+									<input type="checkbox" id='{{this}}Afternoon' checked="{{checkTime this 'Afternoon'}}" disabled='{{disable this}}' />
+									<label for='{{this}}Afternoon'>บ่าย</label>
 								</div>
 							</div>
 							{{/each}}
