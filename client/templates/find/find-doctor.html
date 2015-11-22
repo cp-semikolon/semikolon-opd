@@ -2,12 +2,10 @@
 
 	<h5>ค้นหาหมอ</h5>
 	<br>
-	<span>หมายเลขประจำตัวบุคลากร</span>
-	{{> EasySearch.FieldInput field="UserID" attributes=getInputAttributes index=doctorIndex}}
 	<span>ชื่อ</span>
-	{{> EasySearch.FieldInput field="FName" attributes=getInputAttributes index=doctorIndex}}
+	{{> EasySearch.FieldInput field="profile.FName" attributes=getInputAttributes index=doctorIndex}}
 	<span>นามสกุล</span>
-	{{> EasySearch.FieldInput field="LName" attributes=getInputAttributes index=doctorIndex}}
+	{{> EasySearch.FieldInput field="profile.LName" attributes=getInputAttributes index=doctorIndex}}
 	
 
 	<div class="row">
@@ -24,21 +22,16 @@
 				<div class="col s2">
 			  	 Doctor:
 			  	</div>
-			    <div class="col s2">
-			  	 {{UserID}}
-			  	</div>
 			  	<div class="col s2">
-			  	 {{FName}}
+			  	 {{profile.FName}}
 			  	</div>
-			  	<div class="col s2">
-			  	 {{LName}}
-			  	</div>
-			  	<div class="col s2">
+			  	<div class="col s6">
+			  	 {{profile.LName}}
 			  	</div>
 			  	<div class="col s2">
 			  	 <a href={{pathFor '/view/wardRound/:doctorId' doctorId=_id}}>
 			  	  <button class="waves-effect waves-light btn" >จัดการนัด</button></a>
-			  	</div>
+			  	</div><br>
 			    {{/EasySearch.Each}}
 			    {{> EasySearch.LoadMore index=doctorIndex}}
 			{{/EasySearch.IfNoResults}}
