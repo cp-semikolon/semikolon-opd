@@ -34,7 +34,11 @@ Schema.Appointments = new SimpleSchema({
     autoform: {
       type: "pickadate",
       pickadateOptions: {
-        min: true
+        min: true,
+        max: 365,
+        formatSubmit: 'ddd dd//mm/yyyy',
+        selectYears: true,
+        selectMonths: true
       }
     }
   },
