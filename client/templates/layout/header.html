@@ -7,7 +7,13 @@
 </template>
  
 <template name="LogoHeader">
+
 	<div class="navbar-fixed ">
+<!-- 			{{#if isPatient}}
+			    <nav class = "z-depth-0" id="toplevel-patient">
+			    {{else}}
+			    <nav class = "z-depth-0" id="toplevel-personel">
+			    {{/if}} -->
 			    <nav class = "z-depth-0" id="toplevel">
 			    	<!--<div class = "container">-->
 					    <div class="nav-wrapper ">
@@ -26,7 +32,7 @@
  											<div class="col l1 offset-l2" style="padding-top: 5px"><i class="material-icons small">person_pin</i></div>
  											<div class="col l9">
  												<div class="row" style=" padding-top: 0px; padding-bottom: 0px;">
- 													<div class="col l12" style="height: 18px; font-size: 1.11vw;">ปิเมธ วงศ์สัตยนนท์</div>
+ 													<div class="col l12" style="height: 18px; font-size: 1.11vw;"> {{name}}</div>
  													<div class="col l12" style="height:15px"><a href="#logout" style="height: 6px;font-size:10pt;">ออกจากระบบ</a>
  													</div>
  												</div>
@@ -38,7 +44,7 @@
 							        <li><a href="">Components</a></li> -->
 						        
 						        <ul class="side-nav" id="mobile-demo">
-				                  	<li style="font-size: 18pt; color:grey; padding:20% 0% 3% 8%;">ปิเมธ วงศ์สัตยนนท์</li>
+				                  	<li style="font-size: 18pt; color:grey; padding:20% 0% 3% 8%;">{{currentUser.username}}</li>
 							        <li><a href="">Sass</a></li>
 							        <li><a href="">Components</a></li>
 							        <li><a href="#logout">Log Out</a></li>
@@ -52,12 +58,19 @@
 
 
 <template name="NavHeader" >
-	<div class="toplevel-menu">
+	<div class="toplevel-menu" style="margin-bottom:56px">
     <nav class= "z-depth-0" id="toplevel">
           <ul class="left hide-on-med-and-down">
           <li><a href="sass.html">Sass</a></li>
           <li><a href="badges.html">Components</a></li>
           <li><a class="waves-effect active" href="collapsible.html">JavaScript</a></li>
+        
+
+         <!-- Try to do something -->
+       	<!-- {{#each menus}}
+        	{{> menu}}
+      	{{/each}}
+ -->
         </ul>
 
     </nav>
@@ -77,6 +90,18 @@
 </template>
 
 
+
+<template name="menu">
+	<li><a class="{{#if active}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
+</template>
+
+
+
+
+
+<!-- ///////////////////////////FOOTER///////////////////////////
+ -->
+
 <template name="DashboardFooter"> 
     <footer class="page-footer grey darken-4">
         <div class="container">
@@ -91,12 +116,7 @@
               		<div id="semikolon-logo"> 
 	                <img src="/semikolon-logo.png" alt="OPD" >
 	                </div>
-	               <!-- <ul>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-	                </ul>-->
+
               	</div>
             </div>
         </div>
