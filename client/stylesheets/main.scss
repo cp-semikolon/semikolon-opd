@@ -61,6 +61,17 @@ footer{
     background: radial-gradient(ellipse at center,  #00cef5 0%,#00c4f2 53%,#00bdf1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cef5', endColorstr='#00bdf1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
+
+  body.loginLayout{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#01caad+0,01c1a0+53,01caad+100 */
+    background: #01caad; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #01caad 0%, #01c1a0 53%, #01caad 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #01caad 0%,#01c1a0 53%,#01caad 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #01caad 0%,#01c1a0 53%,#01caad 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01caad', endColorstr='#01caad',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  }
+
   body.dashboardLayout{
     background: #ebecf0;
   }

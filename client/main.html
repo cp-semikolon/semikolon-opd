@@ -29,6 +29,42 @@
   <footer></footer>
 </template>
 
+<template name="LoginLayout">
+  <header> 
+  <div class="container" >
+    <div id="opd-logo">  
+      <img src="/opd-logo.png" alt="OPD" >
+
+    </div>
+
+  </div>
+  </header>
+  <main>
+    <div class="container" >
+      <div id="bg" align="middle">       
+        <img  src="/athphak-logo.png" alt="โรงพยาบาลอัฒภาค" >
+        <h5 style="color:white">Personel Edition</h5>
+      </div>
+      <div class="row">
+        <div class="col s10 offset-s1 m6 offset-m3">
+           <div class="card-panel hoverable" style="margin-top: 45px; padding: 40px;"> 
+            <div class="container">
+              <div class="valign-wrapper">
+                <div class="valign" style="width: 100%"> 
+                  {{>Template.dynamic template=content}}
+               </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </main>
+  <footer></footer>
+</template>
+
+
+
 <template name="DashboardLayout">
   	<header>
   	{{> DashboardHeader}}

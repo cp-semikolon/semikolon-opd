@@ -7,3 +7,4 @@ class MainLayout extends BlazeComponent{
 }
 
 MainLayout.register('MainLayout');
+
