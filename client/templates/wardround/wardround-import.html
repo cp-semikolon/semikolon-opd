@@ -1,10 +1,37 @@
 <template name="ImportWardRoundSchedule">
-	<h5>นำเข้าตารางการออกตรวจ</h5>
-	<br>
-	{{#autoForm collection="OPD.Model.Wardrounds" id="importWardroundForm"}}
-		{{> afQuickField name='UserID'}}
-		<p>วันและช่วงเวลาออกตรวจ</p>
-		{{> afQuickField name='dayTime' }}
-		<button type="submit" class="waves-effect waves-light btn">ยืนยัน</button>
-	{{/autoForm}}
+	<div class='row'>
+		<div class='col s12'>
+			<div class='card'>
+				<div class='card-content'>
+					<span class='card-title black-text'>นำเข้าตารางการออกตรวจ</span>
+					<div class='row'>
+						<div class='input-field col s12'>
+							<textarea id="userID" class="materialize-textarea"></textarea>
+          					<label for='userID'>รหัสประจำบุคลากร</label>
+						</div>
+					</div>
+					
+					<form action='#'>
+					<div class='row'>
+						<div class='col s2 offset-s1'>
+							<div class='row monday'>
+								<input type="checkbox" id='monday'/>
+								<label for='monday'>วันจันทร์</label>
+							</div>
+							<div class='row'>
+								<input type="checkbox" id='monday_morning' disabled='{{disable_monday}}' />
+								<label for='monday_morning'>เข้า</label>
+							</div>
+							<div class='row'>
+								<input type="checkbox" id='monday_afternoon' disabled='{{disable_monday}}'/>
+								<label for='monday_afternoon'>บ่าย</label>
+							</div>
+						</div>
+					</div>
+					</form>
+																
+				</div>
+			</div>
+		</div>
+	</div>	
 </template>
