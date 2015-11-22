@@ -2,20 +2,42 @@
 
 	<h5>ค้นหาผู้ป่วย</h5>
 	<br>
-	<span>ชื่อ</span>{{> EasySearch.FieldInput field="FName" index=patientsIndex}}
-	<span>นามสกุล</span>{{> EasySearch.FieldInput field="LName" index=patientsIndex}}
-	<span>หมายเลข HN</span>{{> EasySearch.FieldInput field="HN" index=patientsIndex}}
-	<span>เลขประจำตัวประชาชน</span>{{> EasySearch.FieldInput field="SSID" index=patientsIndex}}
+	<span>ชื่อ</span>
+	{{> EasySearch.FieldInput field="FName" attributes=getInputAttributes index=patientsIndex}}
+	<span>นามสกุล</span>
+	{{> EasySearch.FieldInput field="LName" attributes=getInputAttributes index=patientsIndex}}
+	<span>หมายเลข HN</span>
+	{{> EasySearch.FieldInput field="HN" attributes=getInputAttributes index=patientsIndex}}
+	<span>เลขประจำตัวประชาชน</span>
+	{{> EasySearch.FieldInput field="SSID" attributes=getInputAttributes index=patientsIndex}}
+	
+
 	<ul>
-	<span>รายชื่อผู้ป่วย</span>
-    {{#EasySearch.Each index=patientsIndex}}
-      <li>Patient: {{FName}} {{LName}}</li>
-    {{/EasySearch.Each}}
-  	</ul>
+		<span>รายชื่อผู้ป่วย</span>
+		{{#EasySearch.IfInputEmpty index=patientsIndex}}
+		  	<div>Start searching!</div>
 
-  	{{> EasySearch.LoadMore index=patientsIndex}}
+	  	{{else}}
+	  		{{#EasySearch.IfNoResults index=patientsIndex}}
+		    	<div >No results found!</div>
+		  	
+		  	{{else}}
+			    {{#EasySearch.Each index=patientsIndex}}
+			  	 <li>Patient: {{HN}} {{FName}} {{LName}}
+			  	 <button class="waves-effect waves-light btn">ทำนัด</button>
+			  	 <button class="waves-effect waves-light btn">ดูข้อมูล</button></li>
+			    {{/EasySearch.Each}}
 
-  	{{#EasySearch.IfNoResults index=patientsIndex}}
-    <div class="no-results">No results found!</div>
-  	{{/EasySearch.IfNoResults}}
+			    {{> EasySearch.LoadMore index=patientsIndex}}
+			{{/EasySearch.IfNoResults}}
+		  	
+
+		{{/EasySearch.IfInputEmpty}}
+
+	</ul>
+     
+
+  	
+
+  	
 </template>

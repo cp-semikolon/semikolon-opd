@@ -1,4 +1,4 @@
-let Patients = OPD.Model.Patients
+let Patients = OPD.Model.Patients;
 
 PatientsIndex = new EasySearch.Index({
   collection: Patients,

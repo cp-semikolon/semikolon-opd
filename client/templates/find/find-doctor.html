@@ -1,0 +1,42 @@
+<template name="FindDoctor">
+
+	<h5>ค้นหาหมอ</h5>
+	<br>
+	<span>หมายเลขประจำตัวบุคลากร</span>
+	{{> EasySearch.FieldInput field="UserID" attributes=getInputAttributes index=doctorIndex}}
+	<span>ชื่อ</span>
+	{{> EasySearch.FieldInput field="FName" attributes=getInputAttributes index=doctorIndex}}
+	<span>นามสกุล</span>
+	{{> EasySearch.FieldInput field="LName" attributes=getInputAttributes index=doctorIndex}}
+	
+
+	<ul>
+		<span>รายชื่อหมอ</span>
+		{{#EasySearch.IfInputEmpty index=doctorIndex}}
+		  	<div>Start searching!</div>
+
+	  	{{else}}
+	  		{{#EasySearch.IfNoResults index=doctorIndex}}
+		    	<div >No results found!</div>
+		  	
+		  	{{else}}
+			    {{#EasySearch.Each index=doctorIndex}}
+			  	 <li>Patient: {{UserID}} {{FName}} {{LName}}
+			  	 <button class="waves-effect waves-light btn">ทำนัด</button>
+			  	 <button class="waves-effect waves-light btn">ดูข้อมูล</button></li>
+			    {{/EasySearch.Each}}
+
+			    {{> EasySearch.LoadMore index=doctorIndex}}
+			{{/EasySearch.IfNoResults}}
+		  	
+
+		{{/EasySearch.IfInputEmpty}}
+
+	</ul>
+     
+
+  	
+
+  	
+</template>
+

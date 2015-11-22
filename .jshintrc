@@ -134,6 +134,8 @@
       "Dispatcher": false,
       "AutoForm": false,
       "ReactiveDict": false,
+      "Roles": false,
+      "AccountsTemplates": false,
       // local packages
       "OPD": true,
       // util
