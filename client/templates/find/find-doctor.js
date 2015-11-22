@@ -1,8 +1,8 @@
-let Doctor = OPD.Model.Myusers;
+let Doctor = Meteor.users;
 
 DoctorIndex = new EasySearch.Index({
   collection: Doctor,
-  fields: ['FName', 'LName','UserID'],
+  fields: ['profile.FName', 'profile.LName'],
   engine: new EasySearch.Minimongo()
 });
 
