@@ -26,14 +26,16 @@ Schema.Appointments = new SimpleSchema({
     max: 50,
     autoform: {
       type: 'hidden'
-    },
-    optional: true //false later
+    }
   },
   AppDate: {
     type: Date,
     label: 'วันที่ต้องการนัดหมาย',
     autoform: {
-      type: "pickadate"
+      type: "pickadate",
+      pickadateOptions: {
+        min: true
+      }
     }
   },
   AppTime: {
