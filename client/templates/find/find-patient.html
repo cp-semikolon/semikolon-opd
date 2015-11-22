@@ -23,9 +23,12 @@
 		  	
 		  	{{else}}
 			    {{#EasySearch.Each index=patientsIndex}}
-			  	 <li>Patient: {{HN}} {{FName}} {{LName}}
-			  	 <button class="waves-effect waves-light btn">ทำนัด</button>
-			  	 <button class="waves-effect waves-light btn">ดูข้อมูล</button></li>
+			  	 <li>Patient: {{SSID}} {{FName}} {{LName}}
+			  	  <a href={{pathFor '/patient/:patientId/appointment/' patientId=_id}}>
+			  	  <button class="waves-effect waves-light btn" >จัดการนัด</button></a>
+			  	  <a href={{pathFor '/view/patientData/:patientId' patientId=_id}}>
+			  	  <button class="waves-effect waves-light btn">ดูข้อมูล</button>
+			  	  </a></li>
 			    {{/EasySearch.Each}}
 
 			    {{> EasySearch.LoadMore index=patientsIndex}}

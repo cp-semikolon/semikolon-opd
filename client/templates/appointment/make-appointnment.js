@@ -1,10 +1,4 @@
 class MakeAppointment extends BlazeComponent {
-  thisAppointment() {
-    return {
-      PatientId: FlowRouter.getParam('patientId')
-    };
-  }
-
   patientId() {
     return FlowRouter.getParam('patientId');
   }
@@ -12,14 +6,15 @@ class MakeAppointment extends BlazeComponent {
 
 AutoForm.hooks({
   makeAppointment: {
-    // onSuccess: function(formType, result) {
-    //   let patientId = result;
-    //   FlowRouter.go(`/patient/${patientId}/appointment/new`);
-    // },
+    onSuccess() {
+      Alert.success('คุณทำการนัดสำเร็จ');
+      // Meteor.call('Appointment.sendConfirmationEmail', result);
+      FlowRouter.go('/');
+    },
 
-    // onError: function(formType, error) {
-    //   Alert.error(error);
-    // },
+    onError(formType, error) {
+      Alert.error(error);
+    },
   }
 });
 
