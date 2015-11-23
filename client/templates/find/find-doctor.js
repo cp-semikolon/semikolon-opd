@@ -30,6 +30,11 @@ DoctorIndex = new EasySearch.Index({
 
 if (Meteor.isClient) {
 	Template.FindDoctor.helpers({
-  		doctorIndex: () => DoctorIndex // instanceof EasySearch.Index
+  		doctorIndex: () => DoctorIndex, // instanceof EasySearch.Index
+  		DepartmentMap : function(departmentID){
+  			return OPD.Model.Departments.findOne(departmentID).Name;
+  			// return departmentID
+  		}
 	});
+
 }
