@@ -89,11 +89,11 @@ Template.NavHeader.helpers({
 			}
 			if(path.text===""){
 				let cur = path.link;
-				if(cur==='/patient/:patientId/appointment/posepone/:appointmentId'){
+				if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "เลื่อนนัด";
 				}
 
-				else if(cur==='/patient/:patientId/appointment/posepone/:appointmentId'){
+				else if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
 				else if(cur==='/record/medData/:docId/:patientId/:date'){
