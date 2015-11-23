@@ -136,3 +136,23 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
     margin-left: 45px;
   }
 }
+
+// activity icons
+
+.activity-icons {
+  .material-icons {
+   font-size: 27px;
+
+    &.grey-text:hover {
+      color: #424242 !important;
+    }
+
+    &.red-text:hover {
+      color: #c62828 !important;
+    }
+  }
+}
+
+.material-tooltip {
+  font-size: 0.9rem;
+}

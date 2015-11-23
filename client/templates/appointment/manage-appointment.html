@@ -1,3 +1,53 @@
 <template name="ManageAppointment">
-	manage apppppp
+	<div class="container">
+		<table class="highlight">
+		<!-- table header -->
+		<thead>
+		 <tr>
+		     <th data-field="id">วันที่</th>
+		     <th data-field="name">ช่วง</th>
+		     <th data-field="price">แผนก</th>
+		     <th data-field="price">แพทย์</th>
+		     <th>จัดการ</th>
+		 </tr>
+		</thead>
+
+		<!-- table body -->
+		<tbody>
+		<!-- start loop #each appointment -->
+		 <tr>
+		   <td>11/12/2015</td>
+		   <td>เช้า</td>
+		   <td>แผนกสูตินารีเวช</td>
+		   <td>สมคง วงศ์สวรรค์</td>
+		   <td class="activity-icons">
+		   	<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
+			   	<i class="material-icons grey-text">av_timer</i>
+			</a>
+
+			<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="พิมพ์ใบนัด">
+			   	<i class="material-icons grey-text">print</i>
+		   	</a>
+
+		   	<a href class="right tooltipped" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+			   	<i class="material-icons red-text">delete</i>
+		   	</a>
+		   </td>
+		 </tr>
+		 <tr>
+		   <td>11/12/2015</td>
+		   <td>เช้า</td>
+		   <td>แผนกศัลยกรรมทั่วไป</td>
+		   <td>สมใจ ยาราไน</td>
+		 </tr>
+		 <tr>
+		   <td>11/12/2015</td>
+		   <td>บ่าย</td>
+		   <td>แผนกอายุรกรรม</td>
+		   <td>คิโมชิ เดสกะ</td>
+		 </tr>
+		 <!-- end loop /each -->
+		</tbody>
+     </table>
+	</div>
 </template>
