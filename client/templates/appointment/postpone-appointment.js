@@ -1,12 +1,15 @@
 class PostponeAppointment extends BlazeComponent {
   onCreated() {
     super.onCreated();
-    Session.setDefault('selectedDepartment', '');
+    Session.setDefault('selectedDepartment', ''); 
   }
 
   currentAppointment() {
     let Appointment = FlowRouter.getParam('appointmentId');
-    return OPD.Model.Appointments.findOne(Appointment);
+    let currentAppointmentValue = OPD.Model.Appointments.findOne(Appointment);
+
+    Session.set('selectedDepartment', currentAppointmentValue.DepartmentID);
+    return currentAppointmentValue;
   }
 
   patientId() {
@@ -14,14 +17,12 @@ class PostponeAppointment extends BlazeComponent {
   }
 
   doctors() {
-    let doctorList = Meteor.users.find(
+    return Meteor.users.find(
       {
         'profile.roles.0': 'doctor',
         'profile.Department': Session.get('selectedDepartment')
       }
-    ).fetch();
-
-    return doctorList.map(d => {
+    ).map(d => {
       return {
           label: `แพทย์ ${d.profile.FName} ${d.profile.LName}`,
           value: d._id
@@ -40,19 +41,5 @@ class PostponeAppointment extends BlazeComponent {
 
 }
 
-// // Action dispatcher for this component
-
-// function registerDispatcher(state) {
-
-//   Dispatcher.register(action => {
-//       switch( action.type ) {
-//         case "PATIENT_MAKE_APPOINTMENT_REQUEST":
-//           FlowRouter.go(state);
-//           break;
-
-//       }
-//     });
-
-// }
 
 PostponeAppointment.register('PostponeAppointment');
