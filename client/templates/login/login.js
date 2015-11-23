@@ -11,22 +11,22 @@ AccountsTemplates.configure({
 
         switch(role) {
           case 'doctor':
-            FlowRouter.go('/');
+            FlowRouter.go('/view/dailyAppointment/:date');
             break;
 
           case 'nurse':
-            FlowRouter.go('/');
+            FlowRouter.go('/find/patient');
             break;
           case 'pharmacist':
-            FlowRouter.go('/');
+            FlowRouter.go('/find/patient');
             break;
 
           case 'staff':
-            FlowRouter.go('/');
+            FlowRouter.go('/find/patient');
             break;
 
           default:
-            FlowRouter.go('/');
+            FlowRouter.go('/login');
         }
       }
     } else {
