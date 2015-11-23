@@ -1,13 +1,17 @@
-// class PatientAuth extends BlazeComponent {
-//   onCreated() {
-//     super.onCreated();
+class ManageAppointment extends BlazeComponent {
+  onCreated() {
+    super.onCreated();
+    // this.state = new ReactiveDict();
 
-//     this.state = new ReactiveDict();
+    // registerDispatcher(this.state);
+  }
 
-//     registerDispatcher(this.state);
-//   }
+  onRendered() {
+    super.onRendered();
+    $('.tooltipped').tooltip({delay: 50});
+  }
 
-// }
+}
 
 // // Action dispatcher for this component
 
@@ -24,4 +28,4 @@
 
 // }
 
-// PatientAuth.register('PatientAuth');
+ManageAppointment.register('ManageAppointment');

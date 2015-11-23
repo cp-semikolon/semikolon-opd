@@ -7,62 +7,74 @@
 </template>
  
 <template name="LogoHeader">
+
 	<div class="navbar-fixed ">
-			    <nav class = "z-depth-0" id="toplevel">
-			    	<!--<div class = "container">-->
-					    <div class="nav-wrapper ">
-						    <div class ="col s12">	
-						        <a href="#top" class="brand-logo" >
-						        	<div id="opd-logo">  
-									    <img src="/opd-logo.png" alt="OPD" >
-									</div>
-								</a>
-						        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-						        <!-- <ul class="right hide-on-med-and-down">
-						        <li><i class="material-icons">person_pin</i>ปริเมธ วงศ์สัตยนนท์</li> </ul>-->
-						        <div class="row" >
-						        	<div class="col l4 offset-l8  m4 offset-m7  hide-on-med-and-down" style="height:60px">
- 										<div class="row" >
- 											<div class="col l1 offset-l2" style="padding-top: 5px"><i class="material-icons small">person_pin</i></div>
- 											<div class="col l9">
- 												<div class="row" style=" padding-top: 0px; padding-bottom: 0px;">
- 													<div class="col l12" style="height: 18px; font-size: 1.11vw;">ปิเมธ วงศ์สัตยนนท์</div>
- 													<div class="col l12" style="height:15px"><a href="#logout" style="height: 6px;font-size:10pt;">ออกจากระบบ</a>
- 													</div>
- 												</div>
- 											</div>
+	    <nav class = "z-depth-0" id="toplevel">
+	    {{> getBGColor}}
+		    <div class="nav-wrapper ">
+			    <div class ="col s12">	
+			        <a href="#top" class="brand-logo" >
+			        	<div id="opd-logo">  
+						    <img src="/opd-logo.png" alt="OPD" >
+						</div>
+					</a>
+			        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			        <!-- <ul class="right hide-on-med-and-down">
+			        <li><i class="material-icons">person_pin</i>ปริเมธ วงศ์สัตยนนท์</li> </ul>-->
+			        <div class="row" >
+			        	<div class="col l4 offset-l8  m4 offset-m7  hide-on-med-and-down" style="height:60px">
+								<div class="row" >
+									<div class="col l1 offset-l2" style="padding-top: 5px"><i class="material-icons small">person_pin</i></div>
+									<div class="col l9">
+										<div class="row" style=" padding-top: 0px; padding-bottom: 0px;">
+											<div class="col l12" style="height: 18px; font-size: 1.11vw;">
+												{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}
+											</div>
+											<div class="col l12" style="height:15px"><a href="#logout" id="logout" style="height: 6px;font-size:10pt;">ออกจากระบบ</a>
+											</div>
 										</div>
- 						 			</div>
-						        </div>						        
-								<!--  <li><a href="">Sass</a></li>
-							        <li><a href="">Components</a></li> -->
-						        
-						        <ul class="side-nav" id="mobile-demo">
-				                  	<li style="font-size: 18pt; color:grey; padding:20% 0% 3% 8%;">ปิเมธ วงศ์สัตยนนท์</li>
-							        <li><a href="">Sass</a></li>
-							        <li><a href="">Components</a></li>
-							        <li><a href="#logout">Log Out</a></li>
-							    </ul>
-						    </div>		     
-					    </div>
-					<!--</div>-->
-			    </nav>
+									</div>
+							</div>
+				 			</div>
+			        </div>						        
+					<!--  <li><a href="">Sass</a></li>
+				        <li><a href="">Components</a></li> -->
+			        
+			        <ul class="side-nav" id="mobile-demo">
+	                  	<li style="font-size: 18pt; color:grey; padding:20% 0% 3% 8%;">{{ currentUser.profile.name }}</li>
+				        <li><a href="">Sass</a></li>
+				        <li><a href="">Components</a></li>
+				        <li><a href="#logout" id="logout">Log Out</a></li>
+				    </ul>
+			    </div>		     
+		    </div>
+		<!--</div>-->
+    </nav>
 	 </div>	
 </template>
 
 
 <template name="NavHeader" >
-	<div class="toplevel-menu">
+	<div class="toplevel-menu" style="margin-bottom:56px">
     <nav class= "z-depth-0" id="toplevel">
+{{> getBGColor}}
           <ul class="left hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
+        <!--   <li><a href="sass.html">Sass</a></li>
           <li><a href="badges.html">Components</a></li>
           <li><a class="waves-effect active" href="collapsible.html">JavaScript</a></li>
+         -->
+
+         <!-- Try to do something -->
+       	{{#each menu}}
+        	{{> menuGenerator}}
+      	{{/each}}
+
         </ul>
 
     </nav>
     </div>
         
+
 
 <!--   <nav class= "z-depth-0" id="toplevel">
     <div class="nav-wrapper ">
@@ -77,26 +89,48 @@
 </template>
 
 
+
+<template name="menuGenerator">
+	<li><a class="{{#if active}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
+</template>
+
+<template name="getBGColor">
+				    {{#if isPatient}}
+			    <script type="text/javascript">
+			    var sheet = window.document.styleSheets[0]
+			sheet.insertRule('#toplevel { background: #07BDF1; }', sheet.cssRules.length);
+			    // document.getElementById("toplevel").style.background =  '#07BDF1' 
+			    </script> 
+			    {{else}}
+			    <script type="text/javascript">
+			    			    var sheet = window.document.styleSheets[0]
+			sheet.insertRule('#toplevel {  background: #01b791; }', sheet.cssRules.length);
+			    // document.getElementById("toplevel").style.background = '#01b791' 
+			    </script>
+			     {{/if}}
+
+</template>
+
+
+
+<!-- ///////////////////////////FOOTER///////////////////////////
+ -->
+
 <template name="DashboardFooter"> 
     <footer class="page-footer grey darken-4">
         <div class="container">
             <div class="row">
-              	<div class="col l6 s12">
+              	<div class="col l6 s5 offset-s4">
 	               	<div id="opd-logo">  
 				      <img src="/opd-logo.png" alt="OPD" >
 			    	</div>
 	                
               	</div>
-              	<div class="col l2 offset-l4 s12">
+              	<div class="col l2 offset-l4 s6 offset-s5">
               		<div id="semikolon-logo"> 
 	                <img src="/semikolon-logo.png" alt="OPD" >
 	                </div>
-	               <!-- <ul>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-	                </ul>-->
+
               	</div>
             </div>
         </div>

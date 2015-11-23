@@ -6,7 +6,7 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/login', {
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "Login"});
+    BlazeLayout.render("LoginLayout", {content: "Login"});
   }
 });
 //
