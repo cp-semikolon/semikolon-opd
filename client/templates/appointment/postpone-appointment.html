@@ -1,9 +1,10 @@
-<template name="PoseponeAppointment">
-	{{#autoForm schema="OPD.Schema.Appointments" id="postponeAppointment" type="insert" resetOnSuccess=false}}
-		{{> afQuickField name='DepartmentID'}} <!-- ไม่ให้เปลี่ยน -->
-		{{> afQuickField name='DoctorID'}} <!-- Fix?! -->
-		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาเก่า -->
-		{{> afQuickField name='AppTime'}} <!-- ต้อง default เป็นวันเวลาเก่า -->
-		<button type="submit" class="waves-effect waves-light btn">ดำเนินการต่อ</button>
+<template name="PostponeAppointment">
+	{{#autoForm schema="OPD.Schema.Appointments" id="postponeAppointment" type="update" resetOnSuccess=false doc=currentAppointment}}
+		{{> afQuickField name="PatientID" value=patientId}}
+		{{> afQuickField name='DepartmentID' value='cFRp9z7azukZkNNPN'}}
+		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาที่เร็วสุด -->
+		{{> afQuickField name='AppTime'}}
+		{{> afQuickField name='DoctorID' options=doctors}}
+		<button type="submit" class="waves-effect waves-light btn">ยืนยันการเปลี่ยนแปลง</button>
 	{{/autoForm}}
 </template>
