@@ -15,11 +15,13 @@
 		<!-- table body -->
 		<tbody>
 		<!-- start loop #each appointment -->
+		{{#each currentPatientAppointments}}
 		 <tr>
-		   <td>11/12/2015</td>
-		   <td>เช้า</td>
-		   <td>แผนกสูตินารีเวช</td>
-		   <td>สมคง วงศ์สวรรค์</td>
+		   <td>{{Date}}</td>
+		   <td>{{AppTime}}</td>
+		   <td>{{DepartmentName}}</td>
+		   <td>{{DoctorName}}</td>
+
 		   <td class="activity-icons">
 		   	<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
 			   	<i class="material-icons grey-text">av_timer</i>
@@ -34,18 +36,8 @@
 		   	</a>
 		   </td>
 		 </tr>
-		 <tr>
-		   <td>11/12/2015</td>
-		   <td>เช้า</td>
-		   <td>แผนกศัลยกรรมทั่วไป</td>
-		   <td>สมใจ ยาราไน</td>
-		 </tr>
-		 <tr>
-		   <td>11/12/2015</td>
-		   <td>บ่าย</td>
-		   <td>แผนกอายุรกรรม</td>
-		   <td>คิโมชิ เดสกะ</td>
-		 </tr>
+		 
+		 {{/each}}
 		 <!-- end loop /each -->
 		</tbody>
      </table>
