@@ -24,7 +24,7 @@
 		  	{{else}}
 			    {{#EasySearch.Each index=patientsIndex}}
 			    <div class="col s2">
-			  	 Patient:
+			  	 ผู้ป่วย :
 			  	</div>
 			    <div class="col s2">
 			  	 {{SSID}}
@@ -36,6 +36,7 @@
 			  	 {{LName}}
 			  	</div>
 			  	<div class="col s4">
+			  	
 			  	  <a href={{pathFor '/patient/:patientId/appointment/' patientId=_id}}>
 			  	  <button class="waves-effect waves-light btn" >ดูรายการการนัด</button></a>
 			  	  <a href={{pathFor '/view/patientData/:patientId' patientId=_id}}>

@@ -2,7 +2,7 @@ class MainLayout extends BlazeComponent{
 	onRendered(){
 		super.onRendered();
 		// Add style for main page
-		$('body').addClass('mainLayout');
+		$('body').removeClass().addClass('mainLayout');
 	}
 }
 
