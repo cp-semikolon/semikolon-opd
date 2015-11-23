@@ -1,9 +1,9 @@
 Schema.HealthData = new SimpleSchema({
-  UserID: {
-    type: String,
-    label: 'รหัสประจำบุคลากร',
-    max: 15
-  },
+  // UserID: {
+  //   type: String,
+  //   label: 'รหัสประจำบุคลากร',
+  //   max: 15
+  // },
   Weight: {
     type: Number,
     label: 'น้ำหนัก',
@@ -37,12 +37,20 @@ Schema.HealthData = new SimpleSchema({
     label: 'ความดันต่ำสุด',
     max: 10
   },
-  HN: {
-    type: String,
-    label: 'หมายเลข HN',
-    regEx: /^HN[0-9]{8}$/,
-    optional: true
-  }
+  // HN: {
+  //   type: String,
+  //   label: 'หมายเลข HN',
+  //   regEx: /^HN[0-9]{8}$/,
+  //   optional: true
+  // }
+    patientid:{
+      type: String,
+      max: 50
+    },
+    doctorid:{
+      type:String,
+      max:50
+    }
 });
 
 Model.HealthData.attachSchema(Schema.HealthData);
