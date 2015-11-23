@@ -40,9 +40,9 @@ FlowRouter.route('/patient/:patientId/appointment/', {
 });
 
 //เลื่อนนัด
-FlowRouter.route('/patient/:patientId/appointment/posepone/:appointmentId', {
+FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "PoseponeAppointment",
+    BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
         permission:['staff','patient']      
   });
   }
