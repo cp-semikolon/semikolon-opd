@@ -11,6 +11,28 @@ class ManageAppointment extends BlazeComponent {
     $('.tooltipped').tooltip({delay: 50});
   }
 
+  currentPatientAppointments() {
+    let PatientID = FlowRouter.getParam('patientId');
+    return OPD.Model.Appointments.find({PatientID})
+      .map(appointment => {
+
+        let department =
+          OPD.Model.Departments.findOne(appointment.DepartmentID);
+        let doctor = Meteor.users.findOne(appointment.DoctorID);
+        let d = new Date(appointment.AppDate);
+
+        appointment.Date = 
+          `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getFullYear()}`;
+
+        appointment.DoctorName = 
+          `${doctor.profile.FName} ${doctor.profile.LName}`;
+
+        appointment.DepartmentName = department.Name;
+
+        return appointment;
+      });
+  }
+
 }
 
 // // Action dispatcher for this component

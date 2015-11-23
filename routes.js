@@ -114,13 +114,3 @@ FlowRouter.route('/import/wardRound/:doctorId', {
     BlazeLayout.render("DashboardLayout", {content: "ImportWardRoundSchedule"});
   }
 });
-
-
-
-
-
-
-
-
-
-
