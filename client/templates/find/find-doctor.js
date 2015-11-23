@@ -5,33 +5,24 @@ DoctorIndex = new EasySearch.Index({
   fields: ['profile.FName', 'profile.LName','profile.roles.0'],
   engine: new EasySearch.Minimongo({
   	selector: function (searchObject, options, aggregation) {
-  		// console.log(searchObject);
-  		// if(!searchObject['profile.FName']){
-  		// 	return {_id: 'non_exist'};
-  		// }
+
   		if(!searchObject['profile.LName']){
-  			return {_id: 'non_exist'};
+  			searchObject['profile.LName']='------';
   		}
-  		if(!searchObject){
-  			return {_id: 'non_exist'};
+  		if(!searchObject['profile.FName']){
+  			searchObject['profile.FName']='------';
   		}
-  		// console.log(options);
 
-  		// let fname = Meteor.users.find({'profile.FName':searchObject['profile.FName']});
-  		// let lname = Meteor.users.find({'profile.FName':searchObject['profile.FName']});
-  		// let doc = Meteor.users.find({ 'roles.0': 'doctor'});
-		
 
-  		// var query = {	 $and : [
-	   //      					{ $or : [ fname, lname ] },
-	   //      					{ doc }
-	   //  					]
-    // 				};
-    // 	console.log(query);
-  		searchObject['profile.roles.0'] = 'doctor';
-  		let selector = this.defaultConfiguration().selector(searchObject, options, aggregation);	 
-  		 // console.log(searchObject);
-  	return selector;
+  		searchObject = {	 $and : [
+	        					{ $or : [ {'profile.FName':searchObject['profile.FName']}, 
+	        							{'profile.LName':searchObject['profile.LName']}]},
+	        					{ 'profile.roles.0': 'doctor'}
+	    					]
+    				};
+    	console.log(searchObject);
+
+  	return searchObject;
   	}
 
   })
