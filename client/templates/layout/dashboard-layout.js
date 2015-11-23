@@ -7,5 +7,21 @@ class DashboardLayout extends BlazeComponent{
 		// initialize side nav functionality
 		$(".button-collapse").sideNav();
 	}
+
+	isPermitted(permission){
+
+		let role = Session.get('currentRole');
+		for (var i = permission.length - 1; i >= 0; i--) {
+			if(role===permission[i]) return true;
+		}
+		return false;
+	}
 }
+
+Template.DashboardLayout.helpers({
+	authenFailed: function(){
+		FlowRouter.go('/noPermission');
+	}
+});
+
 DashboardLayout.register('DashboardLayout');

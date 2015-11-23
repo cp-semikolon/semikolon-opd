@@ -6,23 +6,15 @@ class NavHeader extends BlazeComponent {
   }
 }
 
-Template.NavHeader.onCreated(function(){
-		this.data.role = "";
-		try {
-			this.data.role = Meteor.user().roles[0];
-		}
-		catch(err) {
-		 	this.data.role = 'patient';
-		}
-    
-});
 
 
 Template.NavHeader.helpers({
 
 	menu: function (){
+		_dep.depend();
+
 //		console.log(FlowRouter.current().path);
-		let role = Template.instance().data.role;
+		let role = Session.get('currentRole');
 		let temp = [];
 		let path = {
 						link: FlowRouter.current().path,
@@ -68,7 +60,7 @@ Template.NavHeader.helpers({
 					link:"/view/wardRound/:deptId"
 			},{
 					text:"นำเข้าตารางออกตรวจ",
-					link:"/import/wardRound/:doctorId"
+					link:"/import/wardRound/"
 			}];
 		}
 		else{
@@ -89,11 +81,11 @@ Template.NavHeader.helpers({
 			}
 			if(path.text===""){
 				let cur = path.link;
-				if(cur==='/patient/:patientId/appointment/posepone/:appointmentId'){
+				if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "เลื่อนนัด";
 				}
 
-				else if(cur==='/patient/:patientId/appointment/posepone/:appointmentId'){
+				else if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
 				else if(cur==='/record/medData/:docId/:patientId/:date'){
@@ -120,18 +112,17 @@ Template.NavHeader.helpers({
 	},
 
 	isPatient: function(){
-					
-		let role = Template.instance().data.role;
-
-			if(role==='doctor'){return false;}
-			else if(role==='nurse'){return false;}
-			else if(role==='pharmacist'){return false;}
-			else if(role==='staff'){return false;}
-			else{return true;} 
-
-			
+		_dep.depend();
+			let role = Session.get('currentRole');
+			if(role==='patient'){return true;}
+			else return false;
 	}
   });
+
+
+
+
+
 
 Template.DashboardHeader.events({
         'click #logout': function () {
@@ -139,6 +130,10 @@ Template.DashboardHeader.events({
             FlowRouter.go('/login');
             $('body').removeClass('dashboardLayout').addClass('loginLayout');
         }
+
+
+
+
 });
 
 
