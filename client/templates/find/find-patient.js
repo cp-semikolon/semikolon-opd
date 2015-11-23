@@ -6,21 +6,20 @@ PatientsIndex = new EasySearch.Index({
   engine: new EasySearch.Minimongo({
   	selector: function (searchObject, options, aggregation) {
   		console.log(searchObject);
-  		if(searchObject['FName']===''){
-  			return {_id: 'non_exist'};
+  		if(!searchObject['LName']){
+  			searchObject['LName']='------';
   		}
-  		if(searchObject['LName']===''){
-  			return {_id: 'non_exist'};
+  		if(!searchObject['FName']){
+  			searchObject['FName']='------';
   		}
-  		if(searchObject['SSID']===''){
-  			return {_id: 'non_exist'};
+  		if(!searchObject['SSID']){
+  			searchObject['SSID']='------';
   		}
-  		if(searchObject['HN']===''){
-  			return {_id: 'non_exist'};
+  		if(!searchObject['HN']){
+  			searchObject['HN']='------';
   		}
-  		searchObject['profile.roles.0'] = 'doctor';
+
   		let selector = this.defaultConfiguration().selector(searchObject, options, aggregation);	 
-  		 console.log(searchObject);
   	return selector;
   	}
 

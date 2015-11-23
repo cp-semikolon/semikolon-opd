@@ -3,65 +3,78 @@ let days=['monday','tuesday','wednesday','thursday','friday','saturday','sunday'
 class WardroundImportForm extends BlazeComponent {
 	onCreated(){
 		super.onCreated();
-		let i;
-		for(i in days){
-			// For cheked values
-			Session.set(days[i],false);
-			Session.set(days[i]+'Morning',false);
-			Session.set(days[i]+'Afternoon',false);
-			// For disabling checkboxes
-			Session.set('disable_'+days[i],true);
-		}
+
+		this.state=new ReactiveDict();
+
+		let dayTime={};
+		days.forEach((day)=>{
+			dayTime[day]={
+				selected:false,
+				morning:false,
+				afternoon:false
+			};
+		});
+		this.state.set('dayTime',dayTime);
 	}
+	onRendered(){
+		super.onRendered();
+		// Make select funcitonality
+		$('select').material_select();
+	}
+	events(){
+		return super.events().concat({
+			'change .day-of-week input':function(event){
+				let day =event.target.id;
+				let checked=event.target.checked;
+				// Get current dayTime state
+				let dayTime=this.state.get('dayTime');
+				// Edited selected day
+				dayTime[day].selected = checked;
+				// If that day is unchecked, uncheck all time
+				if(!checked){
+					dayTime[day].morning=false;
+					dayTime[day].afternoon=false;
+				}
+				this.state.set('dayTime',dayTime);
+			},
+			'change .time input':function(event){
+				let day=event.target.getAttribute('day');
+				let time=event.target.getAttribute('time');
+				let checked=event.target.checked;
 
-}
+				let dayTime=this.state.get('dayTime');
+				dayTime[day][time]=checked;
 
-Template.ImportWardRoundSchedule.events({
-	'change .day-of-week input':function(event){
-		let id =event.target.id;
-		let checked=event.target.checked;
-		Session.set(id,checked);
-		if(!checked){
-			Session.set(id+'Morning',false);
-			Session.set(id+'Afternoon',false);
-		}
-		Session.set('disable_'+id,!checked);		
-	},
-	'change .time input':function(event){
-		let id =event.target.id;
-		let checked=event.target.checked;
-		Session.set(id,checked);
-	},
-	'submit .new-wardround':function(event){
-		event.preventDefault();
-		let i;
-		for(i in days){
-			if(Session.get(days[i])===true){
-				console.log(days[i]);
-				console.log(days[i]+'Morning :',Session.get(days[i]+'Morning'));
-				console.log(days[i]+'Afternoon :',Session.get(days[i]+'Afternoon'));
+				this.state.set('dayTime',dayTime);
+			},
+			'submit .new-wardround':function(event){
+				event.preventDefault();
+				
+				let dayTime=this.state.get('dayTime');
+				OPD.Model.Wardrounds.insert({
+					UserID: doctorId,
+					dayTime: dayTime
+				});
+				//Meteor.call('addWardround',doctorId,dayTimes);
 			}
-		}
-
+		});
 	}
-});
-
-
-
-Template.ImportWardRoundSchedule.helpers({
-	disable: function(day){
-		return Session.get('disable_'+day);
-	},
-	check: function(day){
-		return Session.get(day);
-	},
-	checkTime: function(day, time){
-		return Session.get(day+time);
-	},
-	days: function(){
+	disable(day){
+		let dayTime = this.state.get('dayTime');
+		return !dayTime[day].selected;
+	}
+	check(day){
+		let dayTime = this.state.get('dayTime');
+		return dayTime[day].selected;
+	}
+	checkTime(day, time){
+		let dayTime = this.state.get('dayTime');
+		return dayTime[day][time];
+	}
+	days(){
 		return days;
-	},
-	day:function(day){
+	}
+	day(day){
 		// Returns thai language of days of week
 		switch(day){
 			case 'monday': return 'จันทร์';
@@ -73,7 +86,18 @@ Template.ImportWardRoundSchedule.helpers({
 			case 'sunday': return 'อาทิตย์';
 		}
 	}
+	departments(){					
+		return	OPD.Model.departments.find({});
+	}
+}
 
+Meteor.methods({
+	'addWardround': function(id,dayTimes){
+		OPD.Model.Wardrounds.insert({
+			UserID: id,
+			dayTime:dayTimes
+		});
+	}
 });
 
 WardroundImportForm.register('ImportWardRoundSchedule');

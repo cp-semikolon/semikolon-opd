@@ -1,15 +1,15 @@
 Schema.Dispenses = new SimpleSchema({
-    UserID: {
-      type: String,
-      label: "รหัสประจำบุคลากร",
-      max: 15,
-      optional: true
-    },
-    HN: {
-      type: String,
-      abel: 'หมายเลข HN',
-      regEx: /^HN[0-9]{8}$/
-    },
+    // UserID: {
+    //   type: String,
+    //   label: "รหัสประจำบุคลากร",
+    //   max: 15,
+    //   optional: true
+    // },
+    // HN: {
+    //   type: String,
+    //   abel: 'หมายเลข HN',
+    //   regEx: /^HN[0-9]{8}$/
+    // },
     ID: {
       type: String,
       label: "รหัสยา",
@@ -33,7 +33,15 @@ Schema.Dispenses = new SimpleSchema({
       type: String,
       label: "หน่วย",
       //allowedValues: ['Staff', 'Doctor','Nurse','Pharmacist'] *** มีอะไรบ้างวะเม็ด แผง ขวด ?
+    },
+    patientid:{
+      type: String,
+      max: 50
+    },
+    doctorid:{
+      type:String,
+      max:50
     }
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Model.Dispense.attachSchema(Schema.Dispenses);

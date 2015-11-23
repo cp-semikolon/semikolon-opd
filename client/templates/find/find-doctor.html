@@ -1,6 +1,6 @@
 <template name="FindDoctor">
 
-	<h5>ค้นหาหมอ</h5>
+	<h5>ค้นหาแพทย์</h5>
 	<br>
 	<span>ชื่อ</span>
 	{{> EasySearch.FieldInput field="profile.FName" attributes=getInputAttributes index=doctorIndex}}
@@ -9,7 +9,7 @@
 	
 
 	<div class="row">
-		<div class="col s12">รายชื่อหมอ</div><br>
+		<div class="col s12">รายชื่อแพทย์</div><br>
 		{{#EasySearch.IfInputEmpty index=doctorIndex}}
 		  	<div class="col s12">Start searching!</div><br>
 
@@ -20,14 +20,20 @@
 		  	{{else}}
 			    {{#EasySearch.Each index=doctorIndex}}
 				<div class="col s2">
-			  	 Doctor:
+			  	 แพทย์ :
 			  	</div>
 			  	<div class="col s2">
 			  	 {{profile.FName}}
 			  	</div>
-			  	<div class="col s6">
+			  	<div class="col s2">
 			  	 {{profile.LName}}
 			  	</div>
+			  	<div class="col s4">
+			  	 {{DepartmentMap profile.Department}}
+			  	</div>
+			  	<!-- <div class="col s4">
+			  	 {{profile.department}}
+			  	</div> -->
 			  	<div class="col s2">
 			  	 <a href={{pathFor '/view/wardRound/:doctorId' doctorId=_id}}>
 			  	  <button class="waves-effect waves-light btn" >จัดการนัด</button></a>
