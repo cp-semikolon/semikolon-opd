@@ -25,9 +25,15 @@
 			  	<div class="col s2">
 			  	 {{profile.FName}}
 			  	</div>
-			  	<div class="col s6">
+			  	<div class="col s2">
 			  	 {{profile.LName}}
 			  	</div>
+			  	<div class="col s4">
+			  	 {{DepartmentMap profile.Department}}
+			  	</div>
+			  	<!-- <div class="col s4">
+			  	 {{profile.department}}
+			  	</div> -->
 			  	<div class="col s2">
 			  	 <a href={{pathFor '/view/wardRound/:doctorId' doctorId=_id}}>
 			  	  <button class="waves-effect waves-light btn" >จัดการนัด</button></a>

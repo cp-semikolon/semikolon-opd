@@ -109,7 +109,7 @@ FlowRouter.route('/view/wardRound/:deptId', {
 });
 
 //นำเข้าตารางออกตรวจ
-FlowRouter.route('/import/wardRound/:doctorId', {
+FlowRouter.route('/import/wardRound', {
   action: function() {
     BlazeLayout.render("DashboardLayout", {content: "ImportWardRoundSchedule"});
   }
