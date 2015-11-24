@@ -37,7 +37,7 @@ Schema.Appointments = new SimpleSchema({
       pickadateOptions: {
         min: true,
         max: 365,
-        formatSubmit: 'ddd dd//mm/yyyy',
+        //formatSubmit: 'ddd d/mm/yyyy',
         selectYears: true,
         selectMonths: true
       }

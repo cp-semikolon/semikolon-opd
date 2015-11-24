@@ -1,5 +1,6 @@
 <template name="MainLayout">
   <header> 
+
   <div class="container" >
     <div id="opd-logo">  
       <img src="/opd-logo.png" alt="OPD" >
@@ -71,15 +72,14 @@
   	{{> DashboardHeader}}
     </header>
 
-  <main>
- 
-
-	  <div class="container">
-	    {{>Template.dynamic template=content}}
-    </div>
-     {{#if isPermitted permission}}
+    <main>
+   	  <div class="page-flexbox-wrapper container">
+  	   {{>Template.dynamic template=content}}
+      </div>
+    {{#if isPermitted permission}}
     {{else}}
-      {{authenFailed}}
+    <script type="text/javascript">console.log(FlowRouter.current().path)</script>
+    {{authenFailed}}
     {{/if}}
 
   </main>

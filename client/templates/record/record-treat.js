@@ -1,33 +1,85 @@
-/*global MedIndex: true */
+class RecordMedData extends BlazeComponent {
+  onCreate(){
+    super.onCreate();
+    this.state = new ReactiveDict();
+    this.state.set('id','');
+  }
+  event(){
+    return super.event().concat({
+      'change #selectdate'(e){
+        this.state.set('id',e.target.value);
+      }
+    });
+  }
 
-let MedData = OPD.Model.MedData;
-let HealthData = OPD.Model.HealthData;
-let DispenseData = OPD.Model.DispenseData;
+  getrecord(){
+    let id = this.state.get('id');
+    return OPD.Model.Record.findOne(id);
+  }
 
-MedIndex = new EasySearch.Index({
-  collection: [MedData,HealthData,DispenseData],
-  fields: ['patientid'],
+  getdisease(icd){
+    return OPD.Model.diseaseData.findOne(icd).Name;
+  }
+
+  getmedicine(id){
+    return OPD.Model.medicineData.findOne(id).Name;
+  }
+
+  patient(){
+    let patientId = FlowRouter.getParam('patientId');
+    return OPD.Model.Patients.findOne(patientId);
+  }
+
+  date(){
+    let patientId = FlowRouter.getParam('patientId');
+    let medrecs = OPD.Model.Record.find(
+      {patientid:patientId},
+      {sort: {Date: 1}
+    });
+    
+     return medrecs.map((medrec)=>{
+      return {
+        label:
+          `${medrec.Date.getUTCDate()}` +
+          `/${medrec.Date.getUTCMonth()+1}` +
+          `/${medrec.Date.getFullYear()}` +
+          `(${medrec.Time})`,
+        value:medrec._id
+      };
+     });
+}
+
+}
+
+
+let RecordData = OPD.Model.Record;
+
+
+RecordIndex = new EasySearch.Index({
+  collection: RecordData,
+  fields: ['patientid','Date','Time'],
   engine: new EasySearch.Minimongo({
-    sort: () => ['Date'],
-  	selector: function (searchObject, options, aggregation) {
-  		console.log(searchObject);
+  	// selector: function (searchObject, options, aggregation) {
+  	// 	console.log(searchObject);
 
-  	let selector =
-      this.defaultConfiguration().selector(searchObject, options, aggregation);
+  	// let selector =
+   //    this.defaultConfiguration().selector(searchObject, options, aggregation);
       
-  	return selector;
-  	}
+  	// return selector;
+  	// }
 
   })
 });
 
-if (Meteor.isClient) {
-	Template.RecordMedData.helpers({
-  		medIndex() { return MedIndex; }, // instanceof EasySearch.Index
-      medrecord() {
-          let patientId = FlowRouter.getParam(patientId);
-          let temp = MedIndex.search(patientId).fetch();
-          return temp;
-      }
-	});
-}
+
+Template.RecordMedData.helpers({
+
+		
+    // medrecord() {
+    //   console.log('check');
+    //     let patientId = FlowRouter.getParam('patientId');
+    //     let temp = MedIndex.search(patientId).fetch();
+    //     console.log(temp);
+    //     return temp;
+    // }
+});

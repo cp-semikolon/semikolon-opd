@@ -1,4 +1,14 @@
 class DashboardLayout extends BlazeComponent{
+	onCreated(){
+		  if(!Meteor.user()){
+    Session.set('currentRole','patient');
+    return;
+  }
+	  	let role = Meteor.user().roles[0];
+  		Session.set('currentRole',role);
+	}
+
+
 	onRendered(){
 		super.onRendered();
 		// Remove style of main page then add style of dashboard
@@ -10,11 +20,14 @@ class DashboardLayout extends BlazeComponent{
 	}
 
 	isPermitted(permission){
-
+		if(!permission)return true;
+		console.log(permission);
 		let role = Session.get('currentRole');
+		console.log(role);
 		for (var i = permission.length - 1; i >= 0; i--) {
-			if(role===permission[i]) return true;
+			if(role===permission[i]) {console.log('true ka'); return true;}
 		}
+		console.log('oops');
 		return false;
 	}
 }
@@ -22,6 +35,18 @@ class DashboardLayout extends BlazeComponent{
 Template.DashboardLayout.helpers({
 	authenFailed: function(){
 		FlowRouter.go('/noPermission');
+	},
+
+	getColorClass: function(){
+		let role = Session.get('currentRole');
+		if(role==='patient'){return 'toplevel-patient';}
+		else return 'toplevel-personel';
+	},
+
+	getUserName: function(){
+		let role = Session.get('currentRole');
+		if(role==='patient'){return 		console.log(OPD.Model.Patient.find({PatientID}));}
+		else return '{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}';
 	}
 });
 

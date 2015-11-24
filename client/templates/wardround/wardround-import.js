@@ -19,6 +19,8 @@ class WardroundImportForm extends BlazeComponent {
 		this.state.set('departmentID','');
 		this.state.set('doctorID','');
 
+		this.state.set('dayTimeValidate',false);
+
 
 	}
 	onRendered(){
@@ -36,6 +38,8 @@ class WardroundImportForm extends BlazeComponent {
 				if(departmentID!==oldID){
 					this.state.set('departmentID',departmentID);
 				}	
+				// Re-initialize select form
+				this.vanz();
 			},
 			'change .doctSelect':function(event){
 				let doctorID=event.target.value;
@@ -72,13 +76,62 @@ class WardroundImportForm extends BlazeComponent {
 				event.preventDefault();
 				let doctorID=this.state.get('doctorID');
 				let dayTime=this.state.get('dayTime');
-				OPD.Model.Wardrounds.insert({
-					UserID: doctorID,
-					dayTime: dayTime
+				Meteor.call('Wardrounds.add',doctorID,dayTime,function(error,result){
+					if(error){
+						console.log(error);
+						Materialize.toast('ล้มเหลว เนื่องจากมีข้อมูลของแพทย์คนนี้แล้ว', 2000,'red lighten-1');
+					}
+					if(result){
+						Materialize.toast('เพิ่มข้อมูลสำเร็จ', 2000,'light-green lighten-1');
+					}					
 				});
-				//Meteor.call('addWardround',doctorId,dayTimes);
+
 			}
 		});
+	}
+	warningMessage(){
+		let msg = '';
+		let doctorID = this.state.get('doctorID');
+		let isDoctorSelected = doctorID!=='';
+		let isDayTimeValidate=this.state.get('dayTimeValidate');
+
+		if(!isDoctorSelected){
+			msg='*กรุณาเลือกแพทย์ ';
+		}else if(!isDayTimeValidate){
+			msg='*กรุณาระบุช่วงเวลาออกตรวจ';
+		}
+		return msg;
+	}
+	disableSubmit(){
+		let doctorID = this.state.get('doctorID');
+		if(doctorID===''){
+			return true;
+		}
+		let dayTime = this.state.get('dayTime');
+		let isDisabled = false;
+		let found = false;
+		days.forEach((day)=>{
+			if(dayTime[day].selected){
+				found=true;
+				let isTimeSelected = dayTime[day].morning||dayTime[day].afternoon;
+				if(!isTimeSelected){
+					this.state.set('dayTimeValidate',false);
+					isDisabled =true;
+				}
+			}
+		});
+		if(!isDisabled){
+			this.state.set('dayTimeValidate',true);
+		}
+		return isDisabled||!found;
+	}
+	disableDay(){
+		let doctorID = this.state.get('doctorID');
+		if(doctorID===''){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	disable(day){
 		let dayTime = this.state.get('dayTime');
@@ -122,13 +175,6 @@ class WardroundImportForm extends BlazeComponent {
 }
 
 
-Meteor.methods({
-	'addWardround': function(id,dayTimes){
-		OPD.Model.Wardrounds.insert({
-			UserID: id,
-			dayTime:dayTimes
-		});
-	}
-});
+
 
 WardroundImportForm.register('ImportWardRoundSchedule');

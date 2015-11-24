@@ -20,10 +20,7 @@ Schema.Dispenses = new SimpleSchema({
       label: "คำอธิบาย",
       max: 200
     },
-    Date: {
-      type: [Date],
-      label: "วันที่จ่ายยา"
-    },
+    
     Amount: {
       type: Number,
       label: "จำนวน",
@@ -34,14 +31,9 @@ Schema.Dispenses = new SimpleSchema({
       label: "หน่วย",
       //allowedValues: ['Staff', 'Doctor','Nurse','Pharmacist'] *** มีอะไรบ้างวะเม็ด แผง ขวด ?
     },
-    patientid:{
-      type: String,
-      max: 50
-    },
-    doctorid:{
-      type:String,
-      max:50
-    }
+
 });
 
-Model.Dispense.attachSchema(Schema.Dispenses);
+Model.DispenseData.attachSchema(Schema.DispenseData);
+
+// OPD.Model.DispenseData.insert({ID:'1',Description:'1',Date:new Date('2015-11-11'),Amount:'1',Unit:'1',patientid:'1',doctorid:'1'})
