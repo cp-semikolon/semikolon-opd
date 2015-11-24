@@ -3,7 +3,7 @@
 	<br>
 	{{#autoForm collection="OPD.Model.Appointments" id="makeAppointment" type="insert" resetOnSuccess=true}}
 		{{> afQuickField name="PatientID" value=patientId}}
-		{{> afQuickField name='DepartmentID' value='qCbranpGE6KczqGug'}}
+		{{> afQuickField name='DepartmentID'}}
 		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาที่เร็วสุด -->
 		{{> afQuickField name='AppTime'}}
 		{{> afQuickField name='DoctorID' options=doctors}} <!-- ต้องแก้ให้เลือกชื่อ // default เป็นหมอที่ว่างไวสุด -->

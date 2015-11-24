@@ -66,15 +66,23 @@
 
 
 <template name="DashboardLayout">
+    <!-- {{#if isPermitted permission}} --> 
   	<header>
   	{{> DashboardHeader}}
     </header>
 
   <main>
+ 
+
 	  <div class="container">
 	    {{>Template.dynamic template=content}}
     </div>
+<!--      {{#if isPermitted permission}}
+    {{else}}
+      {{authenFailed}}
+    {{/if}} -->
+
   </main>
-  <footer> {{> DashboardFooter}}</footer>
+  <footer> {{> DashboardFooter}} </footer>
 </template>
 

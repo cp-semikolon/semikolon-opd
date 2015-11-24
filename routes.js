@@ -1,3 +1,22 @@
+// authentication section
+
+Authentication = {
+  patientOTP(context) {
+    let patientId = context.context.params.patientId;
+
+    if (patientId === Meteor.userId() && !Meteor.user()) {
+      return;
+    } else if( Meteor.user() ){
+      // some auth function
+      console.log('there is a user');
+    } else {
+      FlowRouter.go('/noPermission');
+    }
+  }
+};
+
+// routing section
+
 FlowRouter.route('/', {
   action: function() {
     BlazeLayout.render("MainLayout", {content: "PatientAuth"});
@@ -32,22 +51,30 @@ FlowRouter.route('/patient/:patientId/appointment/new', {
 
 //จัดการนัด(มีดูตารางการนัด + console ให้เลื่อนนัด + ยกเลิกนัดได้ทันที)
 FlowRouter.route('/patient/:patientId/appointment/', {
+  triggersEnter: [Authentication.patientOTP],
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ManageAppointment"});
+    BlazeLayout.render("DashboardLayout", {content: "ManageAppointment",
+      permission:['staff','patient']
+    });
   }
 });
 
 //เลื่อนนัด
-FlowRouter.route('/patient/:patientId/appointment/posepone/:appointmentId', {
+FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
+  triggersEnter: [Authentication.patientOTP],
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "PoseponeAppointment"});
+    BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
+        permission:['staff','patient']      
+  });
   }
 });
 
 //ออกบัตรนัด
 FlowRouter.route('/patient/:patientId/appointment/:appointmentId/print', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "PrintAppointmentCard"});
+    BlazeLayout.render("DashboardLayout", {content: "PrintAppointmentCard",
+       permission:['staff'] 
+  });
   }
 });
 
@@ -55,7 +82,9 @@ FlowRouter.route('/patient/:patientId/appointment/:appointmentId/print', {
 //บันทึกการตรวจสุขภาพเบื้องต้น
 FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "RecordHealthData"});
+    BlazeLayout.render("DashboardLayout", {content: "RecordHealthData",
+       permission:['nurse','pharmacist'] 
+  });
   }
 });
 
@@ -64,55 +93,110 @@ FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
   FlowRouter.route('/record/medData/:patientId/', {
 
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "RecordMedData"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "RecordMedData",
+       permission:['doctor'] 
+    });
   }
 });
 
 //ค้นหาผู้ป่วย
 FlowRouter.route('/find/patient', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "FindPatient"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "FindPatient",
+       permission:['staff','nurse','pharmacist'] 
+    });
   }
 });
 
 //ค้นหาแพทย์
 FlowRouter.route('/find/doctor', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "FindDoctor"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "FindDoctor",
+      permission:['staff']       
+    });
   }
 });
 
 //ดูตารางนัดหมายประจำวัน //เจ้าหน้าที่
 FlowRouter.route('/view/dailyAppointment/:date', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ViewDailyAppointment"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "ViewDailyAppointment",
+     permission:['staff','doctor']       
+    });
   }
 });
 
 //ดูข้อมูลผู้ป่วย //จนท หมอ เภสัข ต่างกัน
 FlowRouter.route('/view/patientData/:patientId', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ViewPatientData"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "ViewPatientData",
+      permission:['nurse','pharmacist']       
+    });
   }
 });
 
 //ดูตารางออกตรวจ
 FlowRouter.route('/view/wardRound/:doctorId', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ViewWardRound"});
+    BlazeLayout.render("DashboardLayout", {
+      content: "ViewWardRound",
+      permission:['staff','doctor']       
+    }
+    );
   }
 });
 
 //ดูตารางออกตรวจรายแผนก
-FlowRouter.route('/view/wardRound/:deptId', {
+FlowRouter.route('/view/wardRound/department/:deptId', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ViewDeptWardRound"});
+    BlazeLayout.render("DashboardLayout", 
+      {content: "ViewDeptWardRound",
+       permission:['staff']       
+      }
+      );
   }
 });
 
 //นำเข้าตารางออกตรวจ
 FlowRouter.route('/import/wardRound', {
   action: function() {
-    BlazeLayout.render("DashboardLayout", {content: "ImportWardRoundSchedule"});
+    BlazeLayout.render(
+      "DashboardLayout",
+      {content: "ImportWardRoundSchedule",
+       permission:['staff'] 
+      }
+      );
   }
 });
+
+FlowRouter.route('/noPermission', {
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "AuthenticationFailed"});
+  }
+});
+
+
+// global triggers
+
+_dep = new Deps.Dependency();
+
+FlowRouter.triggers.enter(function() {
+  _dep.changed();
+   
+  if(!Meteor.user()){
+    Session.set('currentRole','patient');
+    return;
+  }
+  let role = Meteor.user().roles[0];
+
+  Session.set('currentRole',role);
+ });
+
+
+
+
