@@ -2,7 +2,10 @@ class ViewDeptWardRound extends BlazeComponent {
   onCreated() {
     super.onCreated();
     this.state = new ReactiveDict();
-     this.state.set('departmentID', "NONE");
+    this.state.set('departmentID', "NONE");
+    var d = new Date();
+    var my = "" + d.getFullYear() + d.getMonth();
+    this.state.set('monthYear', my);
     // registerDispatcher(this.state);
   }
 
@@ -15,12 +18,34 @@ class ViewDeptWardRound extends BlazeComponent {
     return super.events().concat({
       'change #selectDepartment'(e) {
         this.state.set('departmentID', $(e.target).val());
+      },
+      'change #selectMonth'(e) {
+        this.state.set('monthYear', $(e.target).val());
       }
     });
   }
 
   departments() {
     return OPD.Model.Departments.find();
+  }
+
+  months() {
+    var totalMonthShown = 12;
+    var currentMonth = new Date().getMonth();
+    var currentYear = new Date().getFullYear();
+    var monthNames = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var Months = [];
+    for (var i = 0; i < totalMonthShown; i++) {
+      var sel = (i === 0? 'selected': '');
+      var id = ("" + currentYear + currentMonth);
+      Months[i] = {Name: (monthNames[currentMonth] + " " + currentYear), selected: sel, ID: id};
+      currentMonth++;
+      if (currentMonth >= 12) {
+        currentMonth = 0;
+        currentYear++;
+      }
+    }
+    return Months;
   }
 
   selectedDepartment() {
