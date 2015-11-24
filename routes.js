@@ -59,7 +59,7 @@ FlowRouter.route('/patient/:patientId/appointment/:appointmentId/print', {
 
 
 //บันทึกการตรวจสุขภาพเบื้องต้น
-FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
+FlowRouter.route('/record/healthData/:staffId/:patientId', {
   action: function() {
     BlazeLayout.render("DashboardLayout", {content: "RecordHealthData",
        permission:['nurse','pharmacist'] 
@@ -68,7 +68,7 @@ FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
 });
 
 //บันทึกการตรวจของหมอ
-FlowRouter.route('/record/medData/:docId/:patientId/:date', {
+FlowRouter.route('/record/medData/:docId/:patientId', {
   action: function() {
     BlazeLayout.render("DashboardLayout", {
       content: "RecordMedData",
@@ -98,7 +98,7 @@ FlowRouter.route('/find/doctor', {
 });
 
 //ดูตารางนัดหมายประจำวัน //เจ้าหน้าที่
-FlowRouter.route('/view/dailyAppointment/:date', {
+FlowRouter.route('/view/dailyAppointment', {
   action: function() {
     BlazeLayout.render("DashboardLayout", {
       content: "ViewDailyAppointment",
@@ -129,7 +129,7 @@ FlowRouter.route('/view/wardRound/:doctorId', {
 });
 
 //ดูตารางออกตรวจรายแผนก
-FlowRouter.route('/view/wardRound/department/:deptId', {
+FlowRouter.route('/view/wardRound/department/', {
   action: function() {
     BlazeLayout.render("DashboardLayout", 
       {content: "ViewDeptWardRound",
