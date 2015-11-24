@@ -48,15 +48,21 @@ class ManageAppointment extends BlazeComponent {
     });
   }
 
-  
-  onError() {
-    return function (error) { alert("BOO!"); console.log(error); };
+  currentPatient(){
+    let PatientID = FlowRouter.getParam('patientId');
+    return OPD.Model.Patients.findOne(PatientID);
   }
-  onSuccess() {
-    let patientId = FlowRouter.getParam('patientId');
-    Alert.success('คุณทำการยกเลิกนัดสำเร็จ');
-    FlowRouter.go(`/patient/${patientId}/appointment/`);
-  }
+
+  // onError() {
+  //   return function (error) { alert("BOO!"); console.log(error); };
+  // }
+  // onSuccess() {
+  //   let patientId = FlowRouter.getParam('patientId');
+  //   Alert.success('คุณทำการยกเลิกนัดสำเร็จ');
+  //   FlowRouter.go(`/patient/${patientId}/appointment/`);
+  // }
+
+
 
 }
 
