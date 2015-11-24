@@ -30,14 +30,16 @@ Package.onUse(function(api) {
     'models/myusers.js',
     'models/dispenseData.js',
     'models/record.js',
+    'models/diseaseData.js',
+    'models/medicineData.js',
 
 
     //schemas
     'schemas/appointments-schema.js',
     'schemas/departments-schema.js',
-    // 'schemas/diseases-schema.js',
+    'schemas/diseases-schema.js',
     'schemas/dispenses-schema.js',
-    // 'schemas/medicines-schema.js',
+    'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
     'schemas/medData-schema.js',
     'schemas/users-schema.js',

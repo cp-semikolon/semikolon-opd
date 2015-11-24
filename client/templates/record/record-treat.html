@@ -16,4 +16,23 @@
 	<label>Select Date</label>
 </div><br>
 
+<div>
+	{{#with getrecord}}
+		<div>ข้อมูลสุขภาพเบื้องต้น</div><br>
+		<span>น้ำหนัก: {{Health.Weight}} ส่วนสูง: {{Health.Height}} อุณหภูมิ: {{Health.BodyTemp}}</span><br>
+		<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} ความดันสูงสุด: {{Health.SystolicBP}} ความดันต่ำสุด: {{Health.DiastolicBP}}</span><br>
+
+		<div>การรักษา</div><br>
+		<span>ชื่อโรค: {{getdisease Med.ICD}} คำอธิบาย: {{Med.Description}}</span><br>
+
+		<div>การจ่ายยา</div><br>
+		{{#each Dispense}}
+			<span>ชื่อยา: {{getmedicine ID}} จำนวน: {{Amount}} หน่วย: {{Unit}}</span><br>
+		{{/each}}s
+	{{/with}}
+</div>
+
+
+
+
 </template>

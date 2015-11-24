@@ -24,22 +24,16 @@ footer{
 
 
 //Sticky Footer ..still bugging though
-  body {
+.page-flexbox-wrapper{
     display: flex;
-    min-height: 100vh;
+    min-height: 80vh;
     flex-direction: column;
   }
 
   main {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
   }
 
-  //fixed footer
-  .page-footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-  }
 
 ///////////Css of First Page/////////////
 
@@ -97,20 +91,14 @@ footer{
   }
 
 //Background Color of Header
-  #toplevel{
-    padding: 0 0 0 5%;
-   // background: #07BDF1;
-  }
-
-/*  
-  #toplevel-patient{
+  .toplevel-patient nav{
     padding: 0 0 0 5%;
     background: #07BDF1;
   }
-  #toplevel-personel{
+  .toplevel-personel nav{
     padding: 0 0 0 5%;
     background: #01b791;
-  }*/
+  }
 
   
 
