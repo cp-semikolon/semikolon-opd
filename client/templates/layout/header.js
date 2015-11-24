@@ -119,12 +119,25 @@ Template.NavHeader.helpers({
 			if(role==='patient'){return true;}
 			else return false;
 	}
+
+
+	
   });
 
 
 
 
+Template.printName.helpers({
 
+	patientName: function(){
+		let PatientID = FlowRouter.getParam('patientId');
+		console.log(OPD.Model.Patient.find({PatientID}));
+		console.log('Name');
+    	return 'name';
+    }
+
+}
+);
 
 Template.DashboardHeader.events({
         'click #logout': function () {
@@ -132,14 +145,17 @@ Template.DashboardHeader.events({
         	//console.log(role);
 
             Meteor.logout();
-            if(role==="patient"){ console.log(role); FlowRouter.go('/');}
-			else {console.log('fuck'); FlowRouter.go('/login');}
-            $('body').removeClass('dashboardLayout').addClass('loginLayout');
+            if(role==="patient"){ 
+            	console.log(role);
+            	FlowRouter.go('/');
+	            $('body').removeClass('dashboardLayout').addClass('MainLayout');
+            }
+			else {
+				console.log('fuck'); 
+				FlowRouter.go('/login');
+	            $('body').removeClass('dashboardLayout').addClass('loginLayout');
+			}
         }
-
-
-
-
 });
 
 

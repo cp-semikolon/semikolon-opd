@@ -34,6 +34,18 @@ class DashboardLayout extends BlazeComponent{
 Template.DashboardLayout.helpers({
 	authenFailed: function(){
 		FlowRouter.go('/noPermission');
+	},
+
+	getColorClass: function(){
+		let role = Session.get('currentRole');
+		if(role==='patient'){return 'toplevel-patient';}
+		else return 'toplevel-personel';
+	},
+
+	getUserName: function(){
+		let role = Session.get('currentRole');
+		if(role==='patient'){return 		console.log(OPD.Model.Patient.find({PatientID}));}
+		else return '{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}';
 	}
 });
 
