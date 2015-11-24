@@ -17,20 +17,10 @@ Schema.MedData = new SimpleSchema({
     Description: {
       type: String,
       label: 'คำอธิบาย',
-      max: 200
+      max: 500
     }, 
-    Date: {
-      type: Date,
-      label: "วันที่รักษา"
-    },
-    patientid:{
-      type: String,
-      max: 50
-    },
-    doctorid:{
-      type:String,
-      max:50
-    }
+
+    
     
 });
 

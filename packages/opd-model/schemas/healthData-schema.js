@@ -43,18 +43,7 @@ Schema.HealthData = new SimpleSchema({
   //   regEx: /^HN[0-9]{8}$/,
   //   optional: true
   // }
-  Date: {
-      type: Date,
-      label: "วันที่รักษา"
-    },
-    patientid:{
-      type: String,
-      max: 50
-    },
-    doctorid:{
-      type:String,
-      max:50
-    }
+
 });
 
 Model.HealthData.attachSchema(Schema.HealthData);

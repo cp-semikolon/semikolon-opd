@@ -29,6 +29,7 @@ Package.onUse(function(api) {
     'models/medData.js',
     'models/myusers.js',
     'models/dispenseData.js',
+    'models/record.js',
 
 
     //schemas
@@ -41,7 +42,8 @@ Package.onUse(function(api) {
     'schemas/medData-schema.js',
     'schemas/users-schema.js',
     'schemas/works-schema.js',
-    'schemas/healthData-schema.js'
+    'schemas/healthData-schema.js',
+    'schemas/record-schema.js',
   ]);
 
   api.export('Model');

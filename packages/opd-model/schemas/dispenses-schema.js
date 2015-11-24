@@ -20,10 +20,7 @@ Schema.Dispenses = new SimpleSchema({
       label: "คำอธิบาย",
       max: 200
     },
-    Date: {
-      type: [Date],
-      label: "วันที่จ่ายยา"
-    },
+    
     Amount: {
       type: Number,
       label: "จำนวน",
@@ -34,14 +31,7 @@ Schema.Dispenses = new SimpleSchema({
       label: "หน่วย",
       //allowedValues: ['Staff', 'Doctor','Nurse','Pharmacist'] *** มีอะไรบ้างวะเม็ด แผง ขวด ?
     },
-    patientid:{
-      type: String,
-      max: 50
-    },
-    doctorid:{
-      type:String,
-      max:50
-    }
+
 });
 
 Model.DispenseData.attachSchema(Schema.DispenseData);
