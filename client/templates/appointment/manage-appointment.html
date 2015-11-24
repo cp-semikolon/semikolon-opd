@@ -16,30 +16,53 @@
 		<tbody>
 		<!-- start loop #each appointment -->
 		{{#each currentPatientAppointments}}
-		 <tr>
-		   <td>{{Date}}</td>
-		   <td>{{AppTime}}</td>
-		   <td>{{DepartmentName}}</td>
-		   <td>{{DoctorName}}</td>
+		 	<tr>
+			  <td>{{Date}}</td>
+			  <td>{{AppTime}}</td>
+			  <td>{{DepartmentName}}</td>
+			  <td>{{DoctorName}}</td>
 
-		   <td class="activity-icons">
-		   	<a href="/patient/{{param 'patientId'}}/appointment/postpone/{{_id}}" class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
-			   	<i class="material-icons grey-text">av_timer</i>
-			</a>
+			  <td class="activity-icons">
+			   	<a href="/patient/{{param 'patientId'}}/appointment/postpone/{{_id}}" class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
+				   	<i class="material-icons grey-text">av_timer</i>
+					</a>
 
-			<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="พิมพ์ใบนัด">
-			   	<i class="material-icons grey-text">print</i>
-		   	</a>
+					<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="พิมพ์ใบนัด">
+			  	 	<i class="material-icons grey-text">print</i>
+		   		</a>
 
-		   	<a href class="right tooltipped" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
-			   	<i class="material-icons red-text">delete</i>
-		   	</a>
-		   </td>
-		 </tr>
+		   		<a href="#modal_{{_id}}" class="right tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+			   		<i class="material-icons red-text">delete</i>
+		   		</a>
+		   	</td>
+		 	</tr>
+
+		 	<!-- Modal Structure -->
+		  <div id="modal_{{_id}}" class="modal">
+		    <div class="modal-content">
+		    	<h4>ยกเลิกนัดหมาย</h4>
+		    	<div class="container">
+		    		<div class="col offset-s1">
+			      	<p>วันที่ : {{Date}}</p>
+						  <p>ช่วงเวลา : {{AppTime}}</p>
+						  <p>แผนก : {{DepartmentName}}</p>
+						  <p>แพทย์ : {{DoctorName}}</p>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="modal-footer">
+		      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+		      	{{#quickRemoveButton collection="OPD.Model.Appointments" _id=_id onError=onError onSuccess=onSuccess class="at-btn waves-effect waves-light btn red"}}ยกเลิกการนัด{{/quickRemoveButton}}
+		      </a>
+		      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+		      	<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่รายการนัด</button>
+		      </a>
+		    </div>
+		  </div>
 		 
 		 {{/each}}
 		 <!-- end loop /each -->
 		</tbody>
-     </table>
+    </table>
 	</div>
 </template>

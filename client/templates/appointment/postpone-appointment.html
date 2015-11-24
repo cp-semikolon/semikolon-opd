@@ -1,7 +1,7 @@
 <template name="PostponeAppointment">
-	{{#autoForm schema="OPD.Schema.Appointments" id="postponeAppointment" type="update" resetOnSuccess=false doc=currentAppointment}}
+	{{#autoForm collection="OPD.Model.Appointments" id="postponeAppointment" type="update" resetOnSuccess=true doc=currentAppointment}}
 		{{> afQuickField name="PatientID" value=patientId}}
-		{{> afQuickField name='DepartmentID' value='cFRp9z7azukZkNNPN'}}
+		{{> afQuickField name='DepartmentID'}}
 		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาที่เร็วสุด -->
 		{{> afQuickField name='AppTime'}}
 		{{> afQuickField name='DoctorID' options=doctors}}

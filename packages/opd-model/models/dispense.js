@@ -1,1 +1,0 @@
-Model.DispenseData = new Meteor.Collection('medData');

@@ -34,6 +34,13 @@ footer{
     flex: 1 0 auto;
   }
 
+  //fixed footer
+  .page-footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+  }
+
 ///////////Css of First Page/////////////
 
 //Dynamic Img Size for Logo

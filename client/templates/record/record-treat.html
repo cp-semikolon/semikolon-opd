@@ -1,0 +1,19 @@
+<template name="RecordMedData">
+<div>
+{{#with patient}}
+	{{Title}} {{FName}} {{LName}}
+{{/with}}
+</div><br>
+
+
+
+<div class="input-field col s12">
+	<select id="selectdate">
+	  {{#each date}}
+	  	<option value={{value}}>{{label}}</option>
+	  {{/each}}
+	</select>
+	<label>Select Date</label>
+</div><br>
+
+</template>

@@ -2,7 +2,8 @@ Schema.Departments = new SimpleSchema({
     Name: {
       type: String,
       label: 'ชื่อแผนก',
-      max: 50
+      max: 50,
+      unique: true
     }
 });
 

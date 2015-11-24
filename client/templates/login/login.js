@@ -11,7 +11,7 @@ AccountsTemplates.configure({
 
         switch(role) {
           case 'doctor':
-            FlowRouter.go('/view/dailyAppointment/:date');
+            FlowRouter.go('/view/dailyAppointment');
             break;
 
           case 'nurse':

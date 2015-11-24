@@ -1,0 +1,1 @@
+Model.DispenseData = new Meteor.Collection('dispenseData');

@@ -20,11 +20,11 @@ Template.NavHeader.helpers({
 						link: FlowRouter.current().path,
 						text: ""
 					};
-		console.log(path.link);
+		// console.log(path.link);
 		if(role==='doctor'){
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
-					link:"/view/dailyAppointment/:date"
+					link:"/view/dailyAppointment"
 			},{
 					text:"ดูตารางการออกตรวจ",
 					link:"/view/wardRound/:doctorId"
@@ -45,19 +45,21 @@ Template.NavHeader.helpers({
 		else if(role==='staff'){
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
-					link:"/view/dailyAppointment/:date"
+					link:"/view/dailyAppointment"
 			},{
 					text:"ค้นหาผู้ป่วย",
 					link:"/find/patient"
 			},{
 					text:"ค้นหาแพทย์",
 					link:"/find/doctor"
-			},{
+			},
+			{
 					text:"ดูตารางการออกตรวจ",
 					link:"/view/wardRound/:doctorId"
-			},{
+			}
+			,{
 					text:"ดูตารางออกตรวจรายแผนก",
-					link:"/view/wardRound/:deptId"
+					link:"/view/wardRound/department/"
 			},{
 					text:"นำเข้าตารางออกตรวจ",
 					link:"/import/wardRound/"
@@ -88,7 +90,7 @@ Template.NavHeader.helpers({
 				else if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
-				else if(cur==='/record/medData/:docId/:patientId/:date'){
+				else if(cur==='/record/medData/:docId/:patientId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
 				else if(cur==='/patient/:patientId/appointment/'){
@@ -103,7 +105,7 @@ Template.NavHeader.helpers({
 			}
 			
 			temp.unshift(path);
-			console.log(temp);
+			// console.log(temp);
 			return temp;
 
 
@@ -126,8 +128,12 @@ Template.NavHeader.helpers({
 
 Template.DashboardHeader.events({
         'click #logout': function () {
+        	let role = Session.get('currentRole');
+        	//console.log(role);
+
             Meteor.logout();
-            FlowRouter.go('/login');
+            if(role==="patient"){ console.log(role); FlowRouter.go('/');}
+			else {console.log('fuck'); FlowRouter.go('/login');}
             $('body').removeClass('dashboardLayout').addClass('loginLayout');
         }
 

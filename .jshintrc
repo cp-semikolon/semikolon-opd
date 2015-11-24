@@ -141,6 +141,8 @@
       "OPD": true,
       // util
       "Alert": true,
+      "Authentication": true,
+      "_dep": true,
       "countries": true,
       // index
       "PatientsIndex": true
