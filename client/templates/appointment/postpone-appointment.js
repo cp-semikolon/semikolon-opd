@@ -38,8 +38,22 @@ class PostponeAppointment extends BlazeComponent {
       }
     });
   }
-
 }
+
+AutoForm.hooks({
+  postponeAppointment: {
+    onSuccess() {
+      let patientId = FlowRouter.getParam('patientId');
+      Alert.success('คุณทำการเลื่อนนัดสำเร็จ');
+      // Meteor.call('Appointment.sendConfirmationEmail', result);
+      FlowRouter.go(`/patient/${patientId}/appointment/`);
+    },
+
+    onError(formType, error) {
+      Alert.error(error);
+    },
+  }
+});
 
 
 PostponeAppointment.register('PostponeAppointment');
