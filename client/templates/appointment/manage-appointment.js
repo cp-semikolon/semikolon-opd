@@ -9,6 +9,7 @@ class ManageAppointment extends BlazeComponent {
   onRendered() {
     super.onRendered();
     $('.tooltipped').tooltip({delay: 50});
+    $('.modal-trigger').leanModal();
   }
 
   currentPatientAppointments() {
