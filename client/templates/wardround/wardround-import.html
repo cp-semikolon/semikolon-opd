@@ -36,7 +36,7 @@
 							{{#each days}}
 							<div class='col s1'>
 								<div class='row day-of-week'>
-									<input type="checkbox" id='{{this}}' checked='{{check this}}' />
+									<input type="checkbox" id='{{this}}' checked='{{check this}}' disabled="{{disableDay}}" />
 									<label for='{{this}}'>{{day this}}</label>
 								</div>
 								<div class='row time'>
@@ -51,7 +51,10 @@
 							{{/each}}
 							<div class='row'>
 								<div class='col s1'>
-									<button type="submit" class="at-btn waves-effect waves-light btn">ยืนยัน</button>
+									<button type="submit" class="at-btn waves-effect waves-light btn" disabled="{{disableSubmit}}" id='wardroundSubmit'>ยืนยัน</button>
+								</div>
+								<div class='col s4'>
+									<p class='red-text condensed-text' style="margin-top: 5px">{{warningMessage}}</p>
 								</div>
 							</div>
 						</form>
