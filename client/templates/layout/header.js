@@ -20,11 +20,11 @@ Template.NavHeader.helpers({
 						link: FlowRouter.current().path,
 						text: ""
 					};
-		console.log(path.link);
+		// console.log(path.link);
 		if(role==='doctor'){
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
-					link:"/view/dailyAppointment/:date"
+					link:"/view/dailyAppointment"
 			},{
 					text:"ดูตารางการออกตรวจ",
 					link:"/view/wardRound/:doctorId"
@@ -45,19 +45,25 @@ Template.NavHeader.helpers({
 		else if(role==='staff'){
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
-					link:"/view/dailyAppointment/:date"
+					link:"/view/dailyAppointment"
 			},{
 					text:"ค้นหาผู้ป่วย",
 					link:"/find/patient"
 			},{
 					text:"ค้นหาแพทย์",
 					link:"/find/doctor"
-			},{
+			},
+			{
 					text:"ดูตารางการออกตรวจ",
 					link:"/view/wardRound/:doctorId"
-			},{
+			}
+			,{
 					text:"ดูตารางออกตรวจรายแผนก",
+<<<<<<< HEAD
 					link:"/view/wardRound/department/:deptId"
+=======
+					link:"/view/wardRound/department/"
+>>>>>>> fa16d99d9774e197feaf843aebbb1955965b764c
 			},{
 					text:"นำเข้าตารางออกตรวจ",
 					link:"/import/wardRound/"
@@ -88,7 +94,7 @@ Template.NavHeader.helpers({
 				else if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
-				else if(cur==='/record/medData/:docId/:patientId/:date'){
+				else if(cur==='/record/medData/:docId/:patientId'){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
 				else if(cur==='/patient/:patientId/appointment/'){
@@ -103,7 +109,7 @@ Template.NavHeader.helpers({
 			}
 			
 			temp.unshift(path);
-			console.log(temp);
+			// console.log(temp);
 			return temp;
 
 
@@ -117,23 +123,43 @@ Template.NavHeader.helpers({
 			if(role==='patient'){return true;}
 			else return false;
 	}
+
+
+	
   });
 
 
 
 
+Template.printName.helpers({
 
+	patientName: function(){
+		let PatientID = FlowRouter.getParam('patientId');
+		console.log(OPD.Model.Patient.find({PatientID}));
+		console.log('Name');
+    	return 'name';
+    }
+
+}
+);
 
 Template.DashboardHeader.events({
         'click #logout': function () {
+        	let role = Session.get('currentRole');
+        	//console.log(role);
+
             Meteor.logout();
-            FlowRouter.go('/login');
-            $('body').removeClass('dashboardLayout').addClass('loginLayout');
+            if(role==="patient"){ 
+            	console.log(role);
+            	FlowRouter.go('/');
+	            $('body').removeClass('dashboardLayout').addClass('MainLayout');
+            }
+			else {
+				console.log('fuck'); 
+				FlowRouter.go('/login');
+	            $('body').removeClass('dashboardLayout').addClass('loginLayout');
+			}
         }
-
-
-
-
 });
 
 
