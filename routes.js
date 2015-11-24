@@ -60,7 +60,9 @@ FlowRouter.route('/record/healthData/:staffId/:patientId/:date', {
 });
 
 //บันทึกการตรวจของหมอ
-FlowRouter.route('/record/medData/:docId/:patientId/:date', {
+// FlowRouter.route('/record/medData/:docId/:patientId/:date', {
+  FlowRouter.route('/record/medData/:patientId/', {
+
   action: function() {
     BlazeLayout.render("DashboardLayout", {content: "RecordMedData"});
   }

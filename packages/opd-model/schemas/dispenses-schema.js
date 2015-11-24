@@ -44,4 +44,6 @@ Schema.Dispenses = new SimpleSchema({
     }
 });
 
-Model.Dispense.attachSchema(Schema.Dispenses);
+Model.DispenseData.attachSchema(Schema.DispenseData);
+
+// OPD.Model.DispenseData.insert({ID:'1',Description:'1',Date:new Date('2015-11-11'),Amount:'1',Unit:'1',patientid:'1',doctorid:'1'})

@@ -28,13 +28,14 @@ Package.onUse(function(api) {
     'models/wardrounds.js',
     'models/medData.js',
     'models/myusers.js',
+    'models/dispenseData.js',
 
 
     //schemas
     'schemas/appointments-schema.js',
     'schemas/departments-schema.js',
     // 'schemas/diseases-schema.js',
-    // 'schemas/dispenses-schema.js',
+    'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
     'schemas/medData-schema.js',

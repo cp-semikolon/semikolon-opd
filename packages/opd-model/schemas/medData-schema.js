@@ -20,7 +20,7 @@ Schema.MedData = new SimpleSchema({
       max: 200
     }, 
     Date: {
-      type: [Date],
+      type: Date,
       label: "วันที่รักษา"
     },
     patientid:{
