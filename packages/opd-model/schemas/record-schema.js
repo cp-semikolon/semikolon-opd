@@ -19,10 +19,10 @@ Schema.Record = new SimpleSchema({
       type: Schema.HealthData
     },
     Med:{
-      type:Schema.MedData
+      type: Schema.MedData
     },
     Dispense:{
-      type:[Schema.Dispenses]
+      type: [Schema.Dispenses]
     }
 });
 

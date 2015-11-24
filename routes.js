@@ -49,6 +49,13 @@ FlowRouter.route('/patient/:patientId/appointment/new', {
   }
 });
 
+//ทำการนัดหมาย
+FlowRouter.route('/staff/patient/:patientId/appointment/new', {
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "MakeAppointmentStaff"});
+  }
+});
+
 //จัดการนัด(มีดูตารางการนัด + console ให้เลื่อนนัด + ยกเลิกนัดได้ทันที)
 FlowRouter.route('/patient/:patientId/appointment/', {
   triggersEnter: [Authentication.patientOTP],

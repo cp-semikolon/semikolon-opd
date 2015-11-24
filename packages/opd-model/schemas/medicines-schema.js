@@ -16,4 +16,4 @@ Schema.Medicines = new SimpleSchema({
     }, 
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Model.MedicineData.attachSchema(Schema.Medicines);

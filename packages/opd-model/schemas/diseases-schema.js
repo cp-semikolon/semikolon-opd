@@ -16,4 +16,4 @@ Schema.Diseases = new SimpleSchema({
     }
 });
 
-//Model.Patients.attachSchema(Schema.Patients);
+Model.DiseaseData.attachSchema(Schema.Diseases);
