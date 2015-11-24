@@ -2,8 +2,7 @@ Schema.Works = new SimpleSchema({
     UserID: {
       type: String,
       label: 'รหัสประจำบุคลากร',
-      unique: true,
-      max: 15
+      unique: true
     },
     // A doctor can have many wardround day and times
     dayTime:{

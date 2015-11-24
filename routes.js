@@ -1,3 +1,22 @@
+// authentication section
+
+Authentication = {
+  patientOTP(context) {
+    let patientId = context.context.params.patientId;
+
+    if (patientId === Meteor.userId() && !Meteor.user()) {
+      return;
+    } else if( Meteor.user() ){
+      // some auth function
+      console.log('there is a user');
+    } else {
+      FlowRouter.go('/noPermission');
+    }
+  }
+};
+
+// routing section
+
 FlowRouter.route('/', {
   action: function() {
     BlazeLayout.render("MainLayout", {content: "PatientAuth"});
@@ -32,17 +51,19 @@ FlowRouter.route('/patient/:patientId/appointment/new', {
 
 //จัดการนัด(มีดูตารางการนัด + console ให้เลื่อนนัด + ยกเลิกนัดได้ทันที)
 FlowRouter.route('/patient/:patientId/appointment/', {
+  triggersEnter: [Authentication.patientOTP],
   action: function() {
     BlazeLayout.render("DashboardLayout", {content: "ManageAppointment",
-          permission:['staff','patient']
-        });
+      permission:['staff','patient']
+    });
   }
 });
 
 //เลื่อนนัด
-FlowRouter.route('/patient/:patientId/appointment/posepone/:appointmentId', {
+FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
+  triggersEnter: [Authentication.patientOTP],
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "PoseponeAppointment",
+    BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
         permission:['staff','patient']      
   });
   }
@@ -156,6 +177,9 @@ FlowRouter.route('/noPermission', {
     BlazeLayout.render("DashboardLayout", {content: "AuthenticationFailed"});
   }
 });
+
+
+// global triggers
 
 _dep = new Deps.Dependency();
 

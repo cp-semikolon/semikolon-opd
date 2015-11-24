@@ -6,30 +6,31 @@
 					<span class='card-title black-text'>นำเข้าตารางการออกตรวจ</span>
 					<div class='row'>
 						<div class="input-field col s6">
-				          <select>
-				          	<option value="" disabled selected>Choose your option</option>
-					        {{#each departments}}
-					        	<option value="{{name}}">{{name}}</option>
-					        {{/each}}				          	
-				          </select>
-				          <label>แผนก</label>
-				        </div>
+							<select class='deptSelect'>
+								<option value="" disabled selected>เลือกแผนก</option>
+								{{#each departments}}
+								<option value="{{_id}}">{{Name}}</option>
+								{{/each}}				          	
+							</select>
+							<label>แผนก</label>
+						</div>
 						<div class="input-field col s6">
-						  <select>
-						  	{{#each departments}}
-					        	<option value="{{name}}">{{name}}</option>
-					        {{/each}}						  	
-						  </select>
-				          <label>แพทย์</label>
-				        </div>
+							<select class='doctSelect'>
+							<option value="" disabled selected>เลือกแพทย์</option>
+								{{#each doctors}}				        		
+								<option value="{{_id}}">{{profile.FName}} {{profile.LName}}</option>
+								{{vanz}}
+								{{/each}}			
+							</select>
+						</div>
 					</div>
 
 					<div class='row'>
 						<p>เลือกวันและระบุเวลาออกตรวจ</p>
 						<div class='divider'></div>
 					</div>
-					
-										
+
+
 					<div class='row'>
 						<form class='new-wardround' id='day-time-form'>
 							{{#each days}}
@@ -49,9 +50,9 @@
 							</div>
 							{{/each}}
 							<div class='row'>
-							<div class='col s1'>
-							<button type="submit" class="at-btn waves-effect waves-light btn">ยืนยัน</button>
-							</div>
+								<div class='col s1'>
+									<button type="submit" class="at-btn waves-effect waves-light btn">ยืนยัน</button>
+								</div>
 							</div>
 						</form>
 					</div>																

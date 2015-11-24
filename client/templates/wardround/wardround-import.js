@@ -15,14 +15,35 @@ class WardroundImportForm extends BlazeComponent {
 			};
 		});
 		this.state.set('dayTime',dayTime);
+
+		this.state.set('departmentID','');
+		this.state.set('doctorID','');
+
+
 	}
 	onRendered(){
 		super.onRendered();
 		// Make select funcitonality
 		$('select').material_select();
 	}
+
 	events(){
 		return super.events().concat({
+			'change .deptSelect':function(event){
+				let departmentID=event.target.value;
+				let oldID=this.state.get('departmentID');
+
+				if(departmentID!==oldID){
+					this.state.set('departmentID',departmentID);
+				}	
+			},
+			'change .doctSelect':function(event){
+				let doctorID=event.target.value;
+				let oldID=this.state.get('doctorID');
+				if(doctorID!==oldID){
+					this.state.set('doctorID',doctorID);
+				}
+			},
 			'change .day-of-week input':function(event){
 				let day =event.target.id;
 				let checked=event.target.checked;
@@ -49,10 +70,10 @@ class WardroundImportForm extends BlazeComponent {
 			},
 			'submit .new-wardround':function(event){
 				event.preventDefault();
-				
+				let doctorID=this.state.get('doctorID');
 				let dayTime=this.state.get('dayTime');
 				OPD.Model.Wardrounds.insert({
-					UserID: doctorId,
+					UserID: doctorID,
 					dayTime: dayTime
 				});
 				//Meteor.call('addWardround',doctorId,dayTimes);
@@ -87,9 +108,19 @@ class WardroundImportForm extends BlazeComponent {
 		}
 	}
 	departments(){					
-		return	OPD.Model.departments.find({});
+		return	OPD.Model.Departments.find({}).fetch();
+	}
+	doctors(){
+		let departmentID=this.state.get('departmentID');
+		return Meteor.users.find({'profile.Department':departmentID}).fetch();
+	}
+	vanz(){
+		Meteor.setTimeout(function(){
+        	$('select').material_select()
+    	}, 20);
 	}
 }
+
 
 Meteor.methods({
 	'addWardround': function(id,dayTimes){
