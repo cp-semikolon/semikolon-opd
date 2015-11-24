@@ -1,39 +1,58 @@
 <template name="ViewDeptWardRound">
+	<div class="row">
+		<div class="input-field col s6">
+		    <select id="selectDepartment">
+		      	<option value="NONE" disabled selected>(Choose the department)</option>
+		    {{#each departments}}
+		      	<option value={{_id}}>{{Name}}</option>
+		    {{/each}}
+		    </select>
+		    <label>เลือกแผนกที่ต้องการ</label>
+		</div>
+		<div class="input-field col s6">
+		    <select id="selectMonth">
+		      	<option value="" selected>All</option>
+		      	<option value="201511">Nov 2015</option>
+		      	<option value="201512">Dec 2015</option>
+		      	<option value="201601">Jan 2016</option>
 
-	<div class="input-field col s12">
-	    <select id="selectDepartment">
-	      	<option value="NONE" disabled selected>Choose the department</option>
-	    {{#each departments}}
-	      	<option value={{_id}}>{{Name}}</option>
-	    {{/each}}
-	    </select>
-	    <label>เลือกแผนก</label>
+		<!--     {{#each departments}}
+		      	<option value={{_id}}>{{Name}}</option>
+		    {{/each}} -->
+		    </select>
+		    <label>เลือกเดือนที่ต้องการ</label>
+		</div>
 	</div>
-
+	<br>
 	<div class="container">
-		<table class="highlight">
-			<!-- table header -->
+		<h5>ตารางการออกตรววจ: {{selectedDepartment}}</h5>
+		<table class="bordered">
 			<thead>
-			 <tr>
-			     <th data-field="id">วันที่</th>
-			     <th data-field="name">ช่วง</th>
-			     <th data-field="price">แพทย์</th>
-			 </tr>
+			<tr>
+			    <th data-field="date">วันที่</th>
+			    <th data-field="doctor">แพทย์</th>
+			</tr>
 			</thead>
 
-			<!-- table body -->
 			<tbody>
-			<!-- start loop #each appointment -->
 			{{#each wardroundDate}}
-			 <tr>
-			   <td>Monday: {{workTime.monday.selected}}</td>
-			   <td>Morning: {{workTime.monday.morning}}<br>
-			   	Afternoon: {{workTime.monday.afternoon}}</td>
-			   <td>{{_id}}: {{profile.FName}} {{profile.LName}}</td>
+			<tr>
+				<td>{{date}}</td>
+			   	<td>
+	   				<u>ช่วงเช้า :</u><br>
+			   		{{#each morning}}
+			   			{{index}}) {{FName}} {{LName}}<br>
+			   		{{/each}}
+			   		<br>
+	   				<u>ช่วงบ่าย :</u><br>
+			   		{{#each afternoon}}
+			   			{{index}}) {{FName}} {{LName}}<br>
+			   		{{/each}}
+				</td>
 			 </tr>
-			 {{/each}}
-			 <!-- end loop /each -->
+			{{/each}}
 			</tbody>
      	</table>
 	</div>
+
 </template>

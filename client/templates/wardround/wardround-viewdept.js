@@ -23,23 +23,53 @@ class ViewDeptWardRound extends BlazeComponent {
     return OPD.Model.Departments.find();
   }
 
+  selectedDepartment() {
+    return OPD.Model.Departments.findOne(this.state.get('departmentID')).Name;
+  }
+
   wardroundDate() {
+    let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     var doctors = Meteor.users.find({'profile.Department': this.state.get('departmentID')})
       .map(doctor => {
-        let work = OPD.Model.Wardrounds.findOne(doctor._id);
-        console.log(work);
-        doctor.workTime = work.dayTime;
+        console.log(doctor.profile.FName + doctor._id);
+        let works = OPD.Model.Wardrounds.find({'UserID': doctor._id});
+        works.forEach(work => {
+          console.log(work);
+          doctor.workTime = work.dayTime;
+        });
+        if (!doctor.workTime) {
+          doctor.workTime = {};
+          for (var i in days) {
+            doctor.workTime[days[i]] = {selected: false, morning: false, afternoon: false};
+          }
+        }
         return doctor;
       });
-    return doctors;
+    // return doctors;
     var works = OPD.Model.Wardrounds.find()
     var currentDate = new Date();
     var oneDay = 24 * 60 * 60 * 1000;
-    var showDays = 100;
+    var showDays = 10;
     var schedules = [];
     for (var i = 0; i < showDays; i++) {
-      var morning = 
-      schedules[i] = {date: currentDate.toDateString()};
+      let thisDay = days[currentDate.getDay()];
+      let iM = 0, iA = 0;
+      let mor = [];
+      let aft = [];
+      doctors.forEach(doctor => {
+        if (doctor.workTime[thisDay].selected === true) {
+          if (doctor.workTime[thisDay].morning === true) {
+            mor[iM] = {index: (iM+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
+            iM++;
+          }
+          if (doctor.workTime[thisDay].afternoon === true) {
+            aft[iA] = {index: (iA+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
+            iA++;
+          }
+        }
+      })
+      schedules[i] = {date: currentDate.toDateString(), morning: mor, afternoon: aft};
+      console.log(schedules[i]["morning"]);
       currentDate = new Date(currentDate.getTime() + oneDay);
     }
     return schedules;

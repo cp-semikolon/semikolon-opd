@@ -160,7 +160,7 @@ FlowRouter.route('/view/wardRound/:doctorId', {
 });
 
 //ดูตารางออกตรวจรายแผนก
-FlowRouter.route('/view/wardRound/department/', {
+FlowRouter.route('/view/wardRoundByDept', {
   action: function() {
     BlazeLayout.render("DashboardLayout", 
       {content: "ViewDeptWardRound",

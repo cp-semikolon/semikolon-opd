@@ -52,18 +52,12 @@ Template.NavHeader.helpers({
 			},{
 					text:"ค้นหาแพทย์",
 					link:"/find/doctor"
-			},
-			{
+			},{
 					text:"ดูตารางการออกตรวจ",
 					link:"/view/wardRound/:doctorId"
-			}
-			,{
+			},{
 					text:"ดูตารางออกตรวจรายแผนก",
-<<<<<<< HEAD
-					link:"/view/wardRound/department/:deptId"
-=======
-					link:"/view/wardRound/department/"
->>>>>>> fa16d99d9774e197feaf843aebbb1955965b764c
+					link:"/view/wardRoundByDept"
 			},{
 					text:"นำเข้าตารางออกตรวจ",
 					link:"/import/wardRound/"
