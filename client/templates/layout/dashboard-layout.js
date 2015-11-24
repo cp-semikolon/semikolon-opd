@@ -12,7 +12,9 @@ class DashboardLayout extends BlazeComponent{
 
 		let role = Session.get('currentRole');
 		for (var i = permission.length - 1; i >= 0; i--) {
-			if(role===permission[i]) return true;
+			if(role===permission[i]) {
+				return true;
+			}
 		}
 		return false;
 	}
