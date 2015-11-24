@@ -76,7 +76,16 @@ class WardroundImportForm extends BlazeComponent {
 				event.preventDefault();
 				let doctorID=this.state.get('doctorID');
 				let dayTime=this.state.get('dayTime');
-				Meteor.call('Wardrounds.add',doctorID,dayTime);
+				Meteor.call('Wardrounds.add',doctorID,dayTime,function(error,result){
+					if(error){
+						console.log(error);
+						Materialize.toast('ล้มเหลว เนื่องจากมีข้อมูลของแพทย์คนนี้แล้ว', 2000,'red lighten-1');
+					}
+					if(result){
+						Materialize.toast('เพิ่มข้อมูลสำเร็จ', 2000,'light-green lighten-1');
+					}					
+				});
+
 			}
 		});
 	}
