@@ -2,20 +2,29 @@ class RecordMedData extends BlazeComponent {
   onCreate(){
     super.onCreate();
     this.state = new ReactiveDict();
-    this.state.set('date',{date:new Date(),Time:''});
+    this.state.set('id','');
   }
   event(){
     return super.event().concat({
       'change #selectdate'(e){
-        this.state.set('date',e.target.value);
+        this.state.set('id',e.target.value);
       }
     });
   }
 
+  getrecord(){
+    let id = this.state.get('id');
+    return OPD.Model.Record.findOne(id);
+  }
 
+  getdisease(icd){
+    return OPD.Model.diseaseData.findOne(icd).Name;
+  }
 
+  getmedicine(id){
+    return OPD.Model.medicineData.findOne(id).Name;
+  }
 
-  recordIndex() { return RecordIndex; } // instanceof EasySearch.Index
   patient(){
     let patientId = FlowRouter.getParam('patientId');
     return OPD.Model.Patients.findOne(patientId);
@@ -35,7 +44,7 @@ class RecordMedData extends BlazeComponent {
           `/${medrec.Date.getUTCMonth()+1}` +
           `/${medrec.Date.getFullYear()}` +
           `(${medrec.Time})`,
-        value:{date:medrec.date,Time:medrec.Time}
+        value:medrec._id
       };
      });
 }
@@ -48,9 +57,8 @@ let RecordData = OPD.Model.Record;
 
 RecordIndex = new EasySearch.Index({
   collection: RecordData,
-  fields: ['patientid'],
+  fields: ['patientid','Date','Time'],
   engine: new EasySearch.Minimongo({
-    sort: () => ['Date'],
   	// selector: function (searchObject, options, aggregation) {
   	// 	console.log(searchObject);
 
