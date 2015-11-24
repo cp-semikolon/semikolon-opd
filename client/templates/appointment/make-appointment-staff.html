@@ -1,7 +1,7 @@
 <template name="MakeAppointmentStaff">
 	<h5>ทำการนัด</h5>
 	<br>
-	{{#autoForm collection="OPD.Model.Appointments" id="makeAppointment" type="insert" resetOnSuccess=true}}
+	{{#autoForm collection="OPD.Model.Appointments" id="makeAppointmentStaff" type="insert" resetOnSuccess=true}}
 		{{> afQuickField name="PatientID" value=patientId}}
 		{{> afQuickField name='DepartmentID'}}
 		{{> afQuickField name='AppDate'}} <!-- ต้อง default เป็นวันเวลาที่เร็วสุด -->

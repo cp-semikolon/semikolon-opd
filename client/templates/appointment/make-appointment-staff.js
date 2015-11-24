@@ -36,9 +36,9 @@ class MakeAppointmentStaff extends BlazeComponent {
 AutoForm.hooks({
   makeAppointmentStaff: {
     onSuccess() {
-      Alert.success('คุณทำการนัดสำเร็จ');
       // Meteor.call('Appointment.sendConfirmationEmail', result);
-      FlowRouter.go('/');
+      let patientId = FlowRouter.getParam('patientId');
+      FlowRouter.go(`/patient/${patientId}/appointment/`);
     },
 
     onError(formType, error) {
