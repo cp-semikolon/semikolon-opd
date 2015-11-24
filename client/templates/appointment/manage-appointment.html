@@ -1,5 +1,25 @@
 <template name="ManageAppointment">
 	<div class="container">
+			
+		<h4>ข้อมูลผู้ป่วย</h4>
+		
+		<div class="row">
+			<div class="col s7">
+				<blockquote class="border-color-red">
+					{{#with currentPatient}}
+						<p>ชื่อ - สกุล : {{Title}}{{FName}} {{LName}}</p>
+						<p>สัญชาติ : {{Nationality}}</p>
+						<p>เบอร์โทรศัพท์ : {{TelNo}}</p>
+						<p>อีเมล : {{Email}}</p>
+					{{/with}}
+				</blockquote>	
+			</div>	
+			<div class="col s5">
+				<h5 class="right">HN : {{HN}}</h5>
+			</div>	
+		</div>	
+	</div>
+	<div class="container">
 		<table class="highlight">
 		<!-- table header -->
 		<thead>
@@ -66,3 +86,29 @@
     </table>
 	</div>
 </template>
+
+<template name="CancelModal">
+	<!-- Modal Structure -->
+<!--   <div id="modal_{{_id}}" class="modal">
+    <div class="modal-content">
+    	<h4>ยกเลิกนัดหมาย</h4>
+    	<div class="container">
+    		<div class="col offset-s1">
+	      	<p>วันที่ : {{Date}}</p>
+				  <p>ช่วงเวลา : {{AppTime}}</p>
+				  <p>แผนก : {{DepartmentName}}</p>
+				  <p>แพทย์ : {{DoctorName}}</p>
+    		</div>
+    	</div>
+    </div>
+    <div class="modal-footer">
+      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+      	{{#quickRemoveButton collection="OPD.Model.Appointments" _id=_id onError=onError onSuccess=onSuccess class="at-btn waves-effect waves-light btn red"}}ยกเลิกการนัด{{/quickRemoveButton}}
+      </a>
+      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+      	<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่รายการนัด</button>
+      </a>
+    </div>
+  </div> -->
+</template>
+
