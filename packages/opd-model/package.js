@@ -28,19 +28,22 @@ Package.onUse(function(api) {
     'models/wardrounds.js',
     'models/medData.js',
     'models/myusers.js',
+    'models/dispenseData.js',
+    'models/record.js',
 
 
     //schemas
     'schemas/appointments-schema.js',
     'schemas/departments-schema.js',
     // 'schemas/diseases-schema.js',
-    // 'schemas/dispenses-schema.js',
+    'schemas/dispenses-schema.js',
     // 'schemas/medicines-schema.js',
     'schemas/patients-schema.js',
     'schemas/medData-schema.js',
     'schemas/users-schema.js',
     'schemas/works-schema.js',
-    'schemas/healthData-schema.js'
+    'schemas/healthData-schema.js',
+    'schemas/record-schema.js',
   ]);
 
   api.export('Model');

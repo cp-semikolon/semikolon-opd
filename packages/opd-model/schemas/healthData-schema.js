@@ -43,14 +43,9 @@ Schema.HealthData = new SimpleSchema({
   //   regEx: /^HN[0-9]{8}$/,
   //   optional: true
   // }
-    patientid:{
-      type: String,
-      max: 50
-    },
-    doctorid:{
-      type:String,
-      max:50
-    }
+
 });
 
 Model.HealthData.attachSchema(Schema.HealthData);
+
+// OPD.Model.HealthData.insert({Weight:'1',Height:'1',BodyTemp:'1',HeartRate:'1',SystolicBP:'1',DiastolicBP:'1',Date:new Date('2015-11-11'),patientid:'1',doctorid:'1'})
