@@ -1,16 +1,14 @@
-<head><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></head>
-
 <template name="DashboardHeader"> 
-
+	<div class="{{getColorClass}}">
 	{{> LogoHeader}}
 	{{> NavHeader}}
+	</div>
 </template>
  
 <template name="LogoHeader">
 
-	<div class="navbar-fixed ">
-	    <nav class = "z-depth-0" id="toplevel">
-	    {{> getBGColor}}
+	<div class="navbar-fixed">
+	    <nav class = "z-depth-0">
 		    <div class="nav-wrapper ">
 			    <div class ="col s12">	
 			        <a href="#top" class="brand-logo" >
@@ -28,7 +26,7 @@
 									<div class="col l9">
 										<div class="row" style=" padding-top: 0px; padding-bottom: 0px;">
 											<div class="col l12" style="height: 18px; font-size: 1.11vw;">
-												{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}
+												{{> printName}}
 											</div>
 											<div class="col l12" style="height:15px"><a href="#logout" id="logout" style="height: 6px;font-size:10pt;">ออกจากระบบ</a>
 											</div>
@@ -49,16 +47,14 @@
 				    </ul>
 			    </div>		     
 		    </div>
-		<!--</div>-->
-    </nav>
+    	</nav>
 	 </div>	
 </template>
 
 
 <template name="NavHeader" >
 	<div class="toplevel-menu" style="margin-bottom:56px">
-	    <nav class= "z-depth-0" id="toplevel">
-		{{> getBGColor}}
+	    <nav class= "z-depth-0">
           	<ul class="left hide-on-med-and-down">
 	        	<!--   <li><a href="sass.html">Sass</a></li>
 	          	<li><a href="badges.html">Components</a></li>
@@ -74,29 +70,24 @@
 </template>
 
 
+<!-- ////////////////////////////Other Templates////////////////////////////// -->
 
-
+<!--  Links in Navbar Generator -->
 <template name="menuGenerator">
 	<li><a class="{{#if active}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
 </template>
 
 
-
-<template name="getBGColor">
+<!-- Display Name of User on Navbar -->
+<template name="printName">
+	<script type="text/javascript">console.log('1');</script>
     {{#if isPatient}}
-	    <script type="text/javascript">
-	    	var sheet = window.document.styleSheets[0]
-			sheet.insertRule('#toplevel { background: #07BDF1; }', sheet.cssRules.length);
-	    </script> 
-    {{else}}
-	    <script type="text/javascript">
-		    var sheet = window.document.styleSheets[0]
-			sheet.insertRule('#toplevel {  background: #01b791; }', sheet.cssRules.length);
-	    </script>
+		{{patientName}}
+	{{else}}
+	<script type="text/javascript">console.log('3');</script>	
+	{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}
 	{{/if}}
 </template>
-
-
 
 <!-- ///////////////////////////FOOTER///////////////////////////
  -->
