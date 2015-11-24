@@ -6,6 +6,7 @@ class DashboardLayout extends BlazeComponent{
 
 		// initialize side nav functionality
 		$(".button-collapse").sideNav();
+
 	}
 
 	isPermitted(permission){

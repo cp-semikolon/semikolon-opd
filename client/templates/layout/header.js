@@ -57,7 +57,7 @@ Template.NavHeader.helpers({
 					link:"/view/wardRound/:doctorId"
 			},{
 					text:"ดูตารางออกตรวจรายแผนก",
-					link:"/view/wardRound/:deptId"
+					link:"/view/wardRound/department/:deptId"
 			},{
 					text:"นำเข้าตารางออกตรวจ",
 					link:"/import/wardRound/"

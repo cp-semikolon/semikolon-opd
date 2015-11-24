@@ -1,0 +1,39 @@
+<template name="ViewDeptWardRound">
+
+	<div class="input-field col s12">
+	    <select id="selectDepartment">
+	      	<option value="NONE" disabled selected>Choose the department</option>
+	    {{#each departments}}
+	      	<option value={{_id}}>{{Name}}</option>
+	    {{/each}}
+	    </select>
+	    <label>เลือกแผนก</label>
+	</div>
+
+	<div class="container">
+		<table class="highlight">
+			<!-- table header -->
+			<thead>
+			 <tr>
+			     <th data-field="id">วันที่</th>
+			     <th data-field="name">ช่วง</th>
+			     <th data-field="price">แพทย์</th>
+			 </tr>
+			</thead>
+
+			<!-- table body -->
+			<tbody>
+			<!-- start loop #each appointment -->
+			{{#each wardroundDate}}
+			 <tr>
+			   <td>Monday: {{workTime.monday.selected}}</td>
+			   <td>Morning: {{workTime.monday.morning}}<br>
+			   	Afternoon: {{workTime.monday.afternoon}}</td>
+			   <td>{{_id}}: {{profile.FName}} {{profile.LName}}</td>
+			 </tr>
+			 {{/each}}
+			 <!-- end loop /each -->
+			</tbody>
+     	</table>
+	</div>
+</template>
