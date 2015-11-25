@@ -2,6 +2,7 @@
 	<div class="{{getColorClass}}">
 	{{> LogoHeader}}
 	{{> NavHeader}}
+	{{> Breadcrumb}}
 	</div>
 </template>
  
@@ -53,14 +54,16 @@
 
 
 <template name="NavHeader" >
-	<div class="toplevel-menu" style="margin-bottom:56px">
-	    <nav class= "z-depth-0">
-          	<ul class="left hide-on-med-and-down">
+	<div class="toplevel-menu" >
+	<div class="row">
+	    <nav class= "z-depth-0" style="line-height:36px;height: 36px;">
+          	<ul class="left hide-on-med-and-down" style="height: 32px;">
 		       	{{#each menu}}
 		        	{{> menuGenerator}}
 		      	{{/each}}
         	</ul>
    		</nav>
+    </div>
     </div>
 </template>
 
@@ -69,7 +72,7 @@
 
 <!--  Links in Navbar Generator -->
 <template name="menuGenerator">
-	<li><a class="{{#if active}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
+	<li><a class="{{#if ifActive}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
 </template>
 
 
@@ -83,6 +86,32 @@
 	{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}
 	{{/if}}
 </template>
+
+
+
+<!-- ////////////////////////////Breadcrumb////////////////////// -->
+<template name="Breadcrumb">
+<nav class="white" style="margin-bottom: 60px; height: 30px;line-height:30px; font-size:9pt;">
+ 
+    <div class="nav-wrapper jamemax" id="breadcrumbNav">
+      <div class="col s12" style="color: #D0D0D0;">
+		       	{{#each breadPath}}
+		        	{{> breadGenerator}}
+		      	{{/each}}
+      </div>
+    </div>
+  </nav>
+
+
+</template>
+
+
+
+<!--  Links in Navbar Generator -->
+<template name="breadGenerator">
+	<a href="{{link}}" class="breadcrumb" style="color:grey">{{text}}</a>  >	
+</template>
+
 
 <!-- ///////////////////////////FOOTER///////////////////////////
  -->

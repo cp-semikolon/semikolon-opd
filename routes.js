@@ -8,7 +8,7 @@ Authentication = {
       return;
     } else if( Meteor.user() ){
       // some auth function
-      console.log('there is a user');
+      // console.log('there is a user');
     } else {
       FlowRouter.go('/noPermission');
     }
@@ -72,7 +72,7 @@ FlowRouter.route('/patient/:patientId/appointment/', {
 FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   triggersEnter: [Authentication.patientOTP],
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
+    BlazeLayout.render("DashboardLayout", {content: "PostponeAppointment",
         permission:['staff','patient']      
   });
   }
