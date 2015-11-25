@@ -1,16 +1,20 @@
 Schema.CancelWardrounds = new SimpleSchema({
-    // which doctor 
+    // Doctor 
     UserID: {
       type: String,
-      label: 'รหัสประจำบุคลากร',
-      unique: true
+      label: 'รหัสประจำบุคลากร'
     },
-    // A doctor can have many wardround day and times
+    // Cancellation list
     dateTime:{
       type: Object,
       label:'วันที่และช่วงเวลา',
       blackbox: true
-    }    
+    }
+    // {
+    //   Date: date,
+    //   morning: true,
+    //   afternoon: false
+    // }
 });
-// Attach this to WardRound
+// Attach this to CancelWardrounds
 Model.CancelWardrounds.attachSchema(Schema.CancelWardrounds);

@@ -51,7 +51,9 @@ class ViewDeptWardRound extends BlazeComponent {
   }
 
   selectedDepartment() {
-    return OPD.Model.Departments.findOne(this.state.get('departmentID')).Name;
+    var department = OPD.Model.Departments.findOne(this.state.get('departmentID'));
+    if (!department) return "";
+    return department.Name;
   }
 
   selectedMonthYear() {
@@ -61,23 +63,30 @@ class ViewDeptWardRound extends BlazeComponent {
 
   wardroundDate() {
     if (this.state.get('departmentID') === "NONE") return [];
+
     let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     var doctors = Meteor.users.find({'profile.Department': this.state.get('departmentID')})
       .map(doctor => {
-        console.log(doctor.profile.FName + doctor._id);
+        // Find doctor's work day
         let works = OPD.Model.Wardrounds.find({'UserID': doctor._id});
         works.forEach(work => {
-          console.log(work);
           doctor.workTime = work.dayTime;
+        });
+        // Find doctor's wardround cancellaiton
+        let cancelList = OPD.Model.CancelWardrounds.find({'UserID': doctor._id});
+        doctor.cancel = {};
+        cancelList.forEach(cancel => {
+          var dateTime = cancel.dateTime;
+          doctor.cancel[dateTime.date.toDateString()] = {'morning': dateTime.morning, 'afternoon': dateTime.afternoon};
         });
         return doctor;
       });
     // return doctors;
     
-    var works = OPD.Model.Wardrounds.find();
     var currentDate = new Date();
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
     var selectedMonth = new Date(this.state.get('year'), this.state.get('month'), 1);
-    if (currentDate.getTime() < selectedMonth.getTime()) {
+    if (currentDate < selectedMonth) {
       currentDate = selectedMonth;
     }
     var currentMonth = currentDate.getMonth();
@@ -91,18 +100,18 @@ class ViewDeptWardRound extends BlazeComponent {
       doctors.forEach(doctor => {
         if (!doctor.workTime) return;
         if (doctor.workTime[thisDay].selected === true) {
-          if (doctor.workTime[thisDay].morning === true) {
+          let cancel = doctor.cancel[currentDate.toDateString()];
+          if (doctor.workTime[thisDay].morning === true && (!cancel || cancel.morning === false)) {
             mor[iM] = {index: (iM+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iM++;
           }
-          if (doctor.workTime[thisDay].afternoon === true) {
+          if (doctor.workTime[thisDay].afternoon === true && (!cancel || cancel.afternoon === false)) {
             aft[iA] = {index: (iA+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iA++;
           }
         }
       })
       schedules[i] = {date: currentDate.toDateString(), morning: mor, afternoon: aft};
-      console.log(schedules[i]["morning"]);
       currentDate = new Date(currentDate.getTime() + oneDay);
     }
     return schedules;
