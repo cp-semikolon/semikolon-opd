@@ -1,4 +1,81 @@
 <template name="ViewDispensesList">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h4>รายการจ่ายยา</h4>
+			</div>
+		</div>		
 
+		<!-- {{#if currentDispemsesList}} -->
+			<table class="highlight">
+				<!-- table header -->
+				<thead>
+				 <tr>
+				     <th data-field="id">วันที่</th>
+				     <th data-field="price">แผนก</th>
+				     <th data-field="price">แพทย์</th>
+				     <th data-field="name">ผู้ป่วย</th>
+				     <th>จัดการ</th>
+				 </tr>
+				</thead>
+
+				<!-- table body -->
+				<tbody>
+				<!-- start loop #each กรหยำืหำ -->
+				<!-- {{#each currentData}} -->
+				 	<tr>
+					  <td>{{Date}}</td>
+					  <td>{{DepartmentName}}</td>
+					  <td>{{DoctorName}}</td>
+					  <td>{{PatientName}}</td>
+
+					  <td class="activity-icons">
+				   		<a href="#modal_{{_id}}" class="left tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   		<i class="material-icons grey-text">assignment</i>
+				   		</a>
+
+				   		<a href="#modal_{{_id}}" class="right tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   		<i class="material-icons green-text">done</i>
+				   		</a>
+				   	</td>
+				 	</tr>
+
+				 	<!-- Modal Structure -->
+				  <div id="modal_{{_id}}" class="modal modal-fixed-footer">
+				    <div class="modal-content">
+				    	<h4>รายการยา</h4>
+				    	<div class="container">
+				    	{{#each Dispense}}
+				    		<div class="row">
+					    		<div class="col offset-s1">
+						      	<p>ชื่อยา : {{Yaa}}</p>
+									  <p>คำอธิบาย : {{Description}}</p>
+									  <p>จำนวน : {{Amount}} {{Unit}}</p>
+									  <br>
+					    		</div>
+					    	</div>
+					    {{/each}}		
+				    	</div>
+				    </div>
+				    <div class="modal-footer">
+				      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+				      	{{#quickRemoveButton collection="OPD.Model.Appointments" _id=_id  class="at-btn waves-effect waves-light btn red"}}ยกเลิกการนัด{{/quickRemoveButton}}
+				      </a>
+				      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+				      	<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่รายการนัด</button>
+				      </a>
+				    </div>
+				  </div>
+				 
+				 <!-- {{/each}} -->
+				 <!-- end loop /each -->
+				</tbody>
+	    </table>  
+	  <!-- {{else}}
+	  	<h5 class="center">ไม่พบข้อมูลการจ่ายยา</h5>
+	  {{/if}} -->
+
+	</div>
 
 </template>

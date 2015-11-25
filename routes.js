@@ -76,7 +76,7 @@ FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   }
 });
 
-//เลื่อนนัด
+//เลื่อนนัด //จนท
 FlowRouter.route(
   '/staff/patient/:patientId/appointment/postpone/:appointmentId', {
   triggersEnter: [Authentication.patientOTP],
