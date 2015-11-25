@@ -9,6 +9,8 @@ try {
     }
     initPatients();
     initRecords();
+    initDiseases();
+    initMedicines();
   }
 
   function initDepartments() {
@@ -179,6 +181,7 @@ try {
 		SystolicBP:120,
 		DiastolicBP:120
   	};
+
   	let medData={
   		ICD:'12-abc1234',
   		Description:'ปวดหัวตัวร้อนนอนไม่หลับกระสับกระส่าย'
@@ -232,6 +235,32 @@ try {
   	recordList.forEach(record=>{
   		Records.upsert(record,{$setOnInsert:record});
   	});
+  }
+
+  function initDiseases(){
+    let disease ={
+      ICD:'12-abc1234',
+      Name:'โรคหัวใจกำเริบเลิฟ',
+      Description:'ละละเลิฟเลิฟเลิฟ ดูสิมันกำเริบเลิฟ ละละเลิฟยูว'
+    };
+    OPD.Model.DiseaseData.upsert(disease,{$setOnInsert:disease});
+  }
+  function initMedicines(){
+    let medicines=[
+      {
+        ID:'yolo',
+        Name:'ยานัดหมอมี',
+        Description:'แก้ฝีแก้หิด'
+      },
+      {
+        ID:'yolo2',
+        Name:'ยานัดหมอชิด',
+        Description:'แก้หิดแก้ฝี'
+      }
+    ];
+    medicines.forEach(med=>{
+      OPD.Model.MedicineData.upsert(med,{$setOnInsert:med});
+    });
   }
 }
 catch(error) {
