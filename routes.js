@@ -49,6 +49,13 @@ FlowRouter.route('/patient/:patientId/appointment/new', {
   }
 });
 
+//ทำการนัดหมาย
+FlowRouter.route('/staff/patient/:patientId/appointment/new', {
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "MakeAppointmentStaff"});
+  }
+});
+
 //จัดการนัด(มีดูตารางการนัด + console ให้เลื่อนนัด + ยกเลิกนัดได้ทันที)
 FlowRouter.route('/patient/:patientId/appointment/', {
   triggersEnter: [Authentication.patientOTP],
@@ -64,6 +71,17 @@ FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   triggersEnter: [Authentication.patientOTP],
   action: function() {
     BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
+        permission:['staff','patient']      
+  });
+  }
+});
+
+//เลื่อนนัด
+FlowRouter.route(
+  '/staff/patient/:patientId/appointment/postpone/:appointmentId', {
+  triggersEnter: [Authentication.patientOTP],
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "PostponeAppointment",
         permission:['staff','patient']      
   });
   }
@@ -153,7 +171,7 @@ FlowRouter.route('/view/wardRound/:doctorId', {
 });
 
 //ดูตารางออกตรวจรายแผนก
-FlowRouter.route('/view/wardRound/department/', {
+FlowRouter.route('/view/wardRoundByDept', {
   action: function() {
     BlazeLayout.render("DashboardLayout", 
       {content: "ViewDeptWardRound",
