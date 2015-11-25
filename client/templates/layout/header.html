@@ -2,6 +2,7 @@
 	<div class="{{getColorClass}}">
 	{{> LogoHeader}}
 	{{> NavHeader}}
+	{{> Breadcrumb}}
 	</div>
 </template>
  
@@ -53,7 +54,7 @@
 
 
 <template name="NavHeader" >
-	<div class="toplevel-menu" style="margin-bottom:56px">
+	<div class="toplevel-menu" >
 	    <nav class= "z-depth-0">
           	<ul class="left hide-on-med-and-down">
 		       	{{#each menu}}
@@ -83,6 +84,25 @@
 	{{ currentUser.profile.FName }} {{ currentUser.profile.LName }}
 	{{/if}}
 </template>
+
+
+
+<!-- ////////////////////////////Breadcrumb////////////////////// -->
+<template name="Breadcrumb">
+<nav>
+    <div class="nav-wrapper" style="margin-bottom:56px">
+      <div class="col s12">
+        <a href="#!" class="breadcrumb">First</a>
+        <a href="#!" class="breadcrumb">Second</a>
+        <a href="#!" class="breadcrumb">Third</a>
+      </div>
+    </div>
+  </nav>
+</template>
+
+
+
+
 
 <!-- ///////////////////////////FOOTER///////////////////////////
  -->

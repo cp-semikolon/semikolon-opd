@@ -69,11 +69,13 @@ Template.NavHeader.helpers({
 			}];
 		}
 
+			//Defien Path Text
+
 			//find if current path is already in temp 
 			for (var i = temp.length - 1; i >= 0; i--) {
 				if(path.link===temp[i].link){
 					path.text = temp[i].text;
-					temp.splice(i,1);
+					// temp.splice(i,1);
 					break;
 				}
 			}
@@ -100,7 +102,7 @@ Template.NavHeader.helpers({
 				}
 			}
 			
-			temp.unshift(path);
+			// temp.unshift(path);
 			// console.log(temp);
 			return temp;
 
