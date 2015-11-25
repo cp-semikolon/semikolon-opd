@@ -44,9 +44,16 @@ AutoForm.hooks({
   postponeAppointment: {
     onSuccess() {
       let patientId = FlowRouter.getParam('patientId');
+      let isStaff = Meteor.user().profile.roles[0] === 'staff';
+
       Alert.success('คุณทำการเลื่อนนัดสำเร็จ');
       // Meteor.call('Appointment.sendConfirmationEmail', result);
-      FlowRouter.go(`/patient/${patientId}/appointment/`);
+      if (isStaff) {
+        FlowRouter.go('/view/dailyAppointment');
+      } else {
+        FlowRouter.go(`/patient/${patientId}/appointment/`);
+      }
+      
     },
 
     onError(formType, error) {
