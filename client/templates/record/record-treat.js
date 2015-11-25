@@ -18,11 +18,11 @@ class RecordMedData extends BlazeComponent {
   }
 
   getdisease(icd){
-    return OPD.Model.diseaseData.findOne(icd).Name;
+    return OPD.Model.diseaseData.findOne({ICD:icd}).Name;
   }
 
   getmedicine(id){
-    return OPD.Model.medicineData.findOne(id).Name;
+    return OPD.Model.medicineData.findOne({ID:id}).Name;
   }
 
   patient(){
@@ -59,27 +59,9 @@ RecordIndex = new EasySearch.Index({
   collection: RecordData,
   fields: ['patientid','Date','Time'],
   engine: new EasySearch.Minimongo({
-  	// selector: function (searchObject, options, aggregation) {
-  	// 	console.log(searchObject);
-
-  	// let selector =
-   //    this.defaultConfiguration().selector(searchObject, options, aggregation);
-      
-  	// return selector;
-  	// }
 
   })
 });
 
 
-Template.RecordMedData.helpers({
 
-		
-    // medrecord() {
-    //   console.log('check');
-    //     let patientId = FlowRouter.getParam('patientId');
-    //     let temp = MedIndex.search(patientId).fetch();
-    //     console.log(temp);
-    //     return temp;
-    // }
-});
