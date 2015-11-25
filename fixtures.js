@@ -238,12 +238,18 @@ try {
   }
 
   function initDiseases(){
-    let disease ={
+    let disease1 ={
       ICD:'12-abc1234',
       Name:'โรคหัวใจกำเริบเลิฟ',
       Description:'ละละเลิฟเลิฟเลิฟ ดูสิมันกำเริบเลิฟ ละละเลิฟยูว'
     };
-    OPD.Model.DiseaseData.upsert(disease,{$setOnInsert:disease});
+    let disease2 ={
+      ICD:'12-abc1235',
+      Name:'โรคไข้เลือดออก',
+      Description:'บอกไม่ถูก'
+    };
+    OPD.Model.DiseaseData.upsert(disease1,{$setOnInsert:disease1});
+    OPD.Model.DiseaseData.upsert(disease2,{$setOnInsert:disease2});
   }
   function initMedicines(){
     let medicines=[
