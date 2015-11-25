@@ -29,7 +29,7 @@ Schema.Record = new SimpleSchema({
       optional:true
     },
     Dispense:{
-      type: [Schema.Dispenses],
+      type: Schema.Dispenses,
       optional:true
     },
     DispensesStatus:{
