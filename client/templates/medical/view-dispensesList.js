@@ -4,7 +4,16 @@ class ViewDispensesList extends BlazeComponent {
   }
 
   onRendered() {
-    
+    super.onRendered();
+    $('.tooltipped').tooltip({delay: 50});
+    $('.modal-trigger').leanModal({
+      // Modal can be dismissed by clicking outside of the modal
+      dismissible: true, 
+      opacity: 0.5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      height: 100
+    });
   }
 
   staff() {
@@ -26,7 +35,7 @@ class ViewDispensesList extends BlazeComponent {
           `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getFullYear()}`;
 
         let patient = OPD.Model.Patients.findOne(record.patientid); 
-        record.PatientName = `${patient.FName} ${patient.LName}`;
+        record.PatientName = `${patient.Title}${patient.FName} ${patient.LName}`;
 
         record.Dispense = record.Dispense
           .map(dispense => {
@@ -35,6 +44,17 @@ class ViewDispensesList extends BlazeComponent {
         });
       return record;
     });
+  }
+
+  events() {
+    return super.events().concat({
+      "click .update-status": function () {
+        // Set the checked property to the opposite of its current value
+        Record.update(this._id, {
+          $set: {DispensesStatus: '1'}
+        });
+      }
+    }) 
   }
 
   // currentDispensesList(){

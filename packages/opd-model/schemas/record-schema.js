@@ -13,6 +13,7 @@ Schema.Record = new SimpleSchema({
     },
     Time:{
       type: String,
+      label:"ช่วงเวลา",
       max: 50
     },
     Health:{
