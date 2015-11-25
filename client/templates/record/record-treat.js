@@ -109,43 +109,43 @@ class RecordMedData extends BlazeComponent {
   medicineIndex(){
     return MedicineIndex;
   }
-//   date(){
-//     let patientId = FlowRouter.getParam('patientId');
-//     let medrecs = OPD.Model.Appointments.find(
-//       {PatientID:patientId},
-//       {sort: {AppDate: 1}
-//     });
-    
-//      return medrecs.map((medrec)=>{
-//       return {
-//         label:
-//           `${medrec.AppDate.getUTCDate()}` +
-//           `/${medrec.AppDate.getUTCMonth()+1}` +
-//           `/${medrec.AppDate.getFullYear()}` +
-//           `(${medrec.AppTime})`,
-//         value:medrec._id
-//       };
-//      });
-// }
-
   date(){
-      let patientId = FlowRouter.getParam('patientId');
-      let medrecs = OPD.Model.Record.find(
-        {patientid:patientId},
-        {sort: {Date: 1}
-      });
+    let patientId = FlowRouter.getParam('patientId');
+    let medrecs = OPD.Model.Appointments.find(
+      {PatientID:patientId},
+      {sort: {AppDate: 1}
+    });
+    
+     return medrecs.map((medrec)=>{
+      return {
+        label:
+          `${medrec.AppDate.getUTCDate()}` +
+          `/${medrec.AppDate.getUTCMonth()+1}` +
+          `/${medrec.AppDate.getFullYear()}` +
+          `(${medrec.AppTime})`,
+        value:medrec._id
+      };
+     });
+}
+
+  // date(){
+  //     let patientId = FlowRouter.getParam('patientId');
+  //     let medrecs = OPD.Model.Record.find(
+  //       {patientid:patientId},
+  //       {sort: {Date: 1}
+  //     });
       
-       return medrecs.map((medrec)=>{
-        return {
-          label:
-            `${medrec.Date.getUTCDate()}` +
-            `/${medrec.Date.getUTCMonth()+1}` +
-            `/${medrec.Date.getFullYear()}` +
-            `(${medrec.Time})`,
-          value:medrec._id
-        };
-       });
-  }
+  //      return medrecs.map((medrec)=>{
+  //       return {
+  //         label:
+  //           `${medrec.Date.getUTCDate()}` +
+  //           `/${medrec.Date.getUTCMonth()+1}` +
+  //           `/${medrec.Date.getFullYear()}` +
+  //           `(${medrec.Time})`,
+  //         value:medrec._id
+  //       };
+  //      });
+  // }
 
 
 }

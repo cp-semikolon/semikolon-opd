@@ -23,7 +23,7 @@ Template.NavHeader.helpers({
 		// console.log(Routes.routeGenRegEx(path.link));
 		// console.log(path.link);
 		if(role==='doctor'){
-			let DoctorID = FlowRouter.getParam('doctorId');			
+			let DoctorID = Meteor.userId();			
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
 					link:"/view/dailyAppointment",

@@ -6,10 +6,10 @@
 	{{> EasySearch.FieldInput field="profile.FName" attributes=getInputAttributes index=doctorIndex}}
 	<span>นามสกุล</span>
 	{{> EasySearch.FieldInput field="profile.LName" attributes=getInputAttributes index=doctorIndex}}
-	
-
+	</div>
+	<div class="container" style="margin-top: 40px">
 	<div class="row">
-		<div class="col s12">รายชื่อแพทย์</div><br>
+		<div class="col s12"><h5>รายชื่อแพทย์</h5></div><br>
 		{{#EasySearch.IfInputEmpty index=doctorIndex}}
 		  	<div class="col s12">Start searching!</div><br>
 
@@ -42,8 +42,9 @@
 			    {{> EasySearch.LoadMore index=doctorIndex}}
 			{{/EasySearch.IfNoResults}}
 		{{/EasySearch.IfInputEmpty}}
-	</div>		
-	</div>
+	</div>	
+	</div>	
+	
      
 
   	
