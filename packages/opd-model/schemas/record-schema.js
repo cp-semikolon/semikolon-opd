@@ -24,6 +24,11 @@ Schema.Record = new SimpleSchema({
     },
     Dispense:{
       type: [Schema.Dispenses]
+    },
+    DispensesStatus:{
+      type: String,
+      label: "สถานะจ่ายยา",
+      allowedValues: ['0', '1'] //1 = สำเร็จ 
     }
 });
 
