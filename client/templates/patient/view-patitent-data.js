@@ -4,6 +4,10 @@ class ViewPatientData extends BlazeComponent{
     this.state = new ReactiveDict();
     this.state.set('id','');
   }
+  onRendered(){
+    super.onRendered();
+    $('select').material_select();
+  }
   event(){
     return super.event().concat({
       'change #selectdate'(e){
@@ -15,7 +19,7 @@ class ViewPatientData extends BlazeComponent{
     return Session.get('currentRole');
   }
   getrecord(){
-    let id = this.state.get('id');
+    let id = FlowRouter.getParam('patientId');
     return OPD.Model.Record.findOne(id);
   }
   date(){
