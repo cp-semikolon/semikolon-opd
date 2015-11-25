@@ -230,7 +230,7 @@ try {
 		}
   	];
   	recordList.forEach(record=>{
-  		Records.insert(record);
+  		Records.upsert(record,{$setOnInsert:record});
   	});
   }
 }
