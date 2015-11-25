@@ -37,6 +37,7 @@ class WardroundImportForm extends BlazeComponent {
 
 				if(departmentID!==oldID){
 					this.state.set('departmentID',departmentID);
+					this.state.set('doctorID','');
 				}	
 				// Re-initialize select form
 				this.vanz();
