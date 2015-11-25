@@ -17,7 +17,8 @@ Schema.Record = new SimpleSchema({
       max: 50
     },
     Health:{
-      type: Schema.HealthData
+      type: Schema.HealthData,
+      optional:true
     },
     Med:{
       type: Schema.MedData
