@@ -27,8 +27,9 @@ class ViewDispensesList extends BlazeComponent {
         record.DoctorName = `${doctor.profile.FName} ${doctor.profile.LName}`;
         
         let doctorDeptID = doctor.profile.Department; 
-        record.DepartmentName =
+        let Department =
           OPD.Model.Departments.findOne(doctorDeptID);
+        record.DepartmentName = Department.Name;  
         
         let d = new Date(record.Date);
         record.Date = 
@@ -39,7 +40,8 @@ class ViewDispensesList extends BlazeComponent {
 
         record.Dispense = record.Dispense
           .map(dispense => {
-            dispense.Yaa = OPD.Model.Medicines.findOne(ID);
+            Yaa = OPD.Model.MedicineData.findOne(dispense.ID);
+            if(Yaa) dispense.YaaName = Yaa.Name;
           return dispense;
         });
       return record;
@@ -50,11 +52,11 @@ class ViewDispensesList extends BlazeComponent {
     return super.events().concat({
       "click .update-status": function () {
         // Set the checked property to the opposite of its current value
-        Record.update(this._id, {
+        OPD.Model.Record.update(this._id, {
           $set: {DispensesStatus: true}
         });
       }
-    }) 
+    }); 
   }
 
 
