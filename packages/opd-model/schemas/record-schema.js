@@ -23,7 +23,7 @@ Schema.Record = new SimpleSchema({
       type: Schema.MedData
     },
     Dispense:{
-      type: [Schema.Dispenses]
+      type: [Schema.DispenseData]
     },
     DispensesStatus:{
       type: Boolean,
