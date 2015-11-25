@@ -3,11 +3,11 @@
   login: '/login',
   newPatientForm:'/patient/new',
   makeAppointment: '/patient/:patientId/appointment/new',
-  manageAppointment: '/patient/:patientId/appointment/',
+  manageAppointment: '/patient/:patientId/appointment',
   postponeAppointment: '/patient/:patientId/appointment/postpone/:appointmentId',
   printAppointmentCard: '/patient/:patientId/appointment/:appointmentId/print',
   recordHealthData: '/record/healthData/:staffId/:patientId',
-  recordMedData: '/record/medData/:patientId/',
+  recordMedData: '/record/medData/:patientId',
   findPatient: '/find/patient',
   findDoctor: '/find/doctor',
   viewDailyAppointment: '/view/dailyAppointment',
@@ -18,9 +18,9 @@
   AuthenticationFailed: '/noPermission',
 
  isPatternMatched: function (pathPattern, actualPath) {
-  let pathPatternRegexpString = pathPattern.replace(/\/:[^/]+/g, '/:[^\/]+');
+  let pathPatternRegexpString = pathPattern.replace(/\/:[^/]+/g, '/[^\/]+');
   let pathPatternRegexp = new RegExp(pathPatternRegexpString);
-
+  // console.log(pathPatternRegexp);
   return !!actualPath.match(pathPatternRegexp);
 }
 

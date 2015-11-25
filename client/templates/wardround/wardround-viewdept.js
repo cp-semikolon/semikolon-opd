@@ -69,7 +69,7 @@ class ViewDeptWardRound extends BlazeComponent {
         }
       })
       schedules[i] = {date: currentDate.toDateString(), morning: mor, afternoon: aft};
-      console.log(schedules[i]["morning"]);
+      // console.log(schedules[i]["morning"]);
       currentDate = new Date(currentDate.getTime() + oneDay);
     }
     return schedules;

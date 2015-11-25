@@ -46,7 +46,7 @@ class ManageAppointment extends BlazeComponent {
 
         return appointment;
     });
-    console.log('res', result);
+    // console.log('res', result);
     return result;
   }
 

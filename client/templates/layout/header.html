@@ -55,13 +55,15 @@
 
 <template name="NavHeader" >
 	<div class="toplevel-menu" >
-	    <nav class= "z-depth-0">
-          	<ul class="left hide-on-med-and-down">
+	<div class="row">
+	    <nav class= "z-depth-0" style="line-height:36px;height: 36px;">
+          	<ul class="left hide-on-med-and-down" style="height: 32px;">
 		       	{{#each menu}}
 		        	{{> menuGenerator}}
 		      	{{/each}}
         	</ul>
    		</nav>
+    </div>
     </div>
 </template>
 
@@ -70,7 +72,7 @@
 
 <!--  Links in Navbar Generator -->
 <template name="menuGenerator">
-	<li><a class="{{#if active}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
+	<li><a class="{{#if ifActive}}waves-effect active{{/if}}" href="{{link}}">{{text}}</a></li>
 </template>
 
 
@@ -89,19 +91,26 @@
 
 <!-- ////////////////////////////Breadcrumb////////////////////// -->
 <template name="Breadcrumb">
-<nav>
-    <div class="nav-wrapper" style="margin-bottom:56px">
-      <div class="col s12">
-        <a href="#!" class="breadcrumb">First</a>
-        <a href="#!" class="breadcrumb">Second</a>
-        <a href="#!" class="breadcrumb">Third</a>
+<nav class="white" style="margin-bottom: 60px; height: 30px;line-height:30px; font-size:9pt;">
+ 
+    <div class="nav-wrapper jamemax" id="breadcrumbNav">
+      <div class="col s12" style="color: #D0D0D0;">
+		       	{{#each breadPath}}
+		        	{{> breadGenerator}}
+		      	{{/each}}
       </div>
     </div>
   </nav>
+
+
 </template>
 
 
 
+<!--  Links in Navbar Generator -->
+<template name="breadGenerator">
+	<a href="{{link}}" class="breadcrumb" style="color:grey">{{text}}</a>  >	
+</template>
 
 
 <!-- ///////////////////////////FOOTER///////////////////////////
