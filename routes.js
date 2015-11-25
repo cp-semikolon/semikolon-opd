@@ -181,6 +181,18 @@ FlowRouter.route('/view/wardRoundByDept', {
   }
 });
 
+//ดูการจ่ายยา //เภสัช
+FlowRouter.route('/view/dispensesList', {
+  action: function() {
+    BlazeLayout.render(
+      "DashboardLayout",
+      {content: "ViewDispensesList",
+       permission:['pharmacist'] 
+      }
+    );
+  }
+});
+
 //นำเข้าตารางออกตรวจ
 FlowRouter.route('/import/wardRound', {
   action: function() {
