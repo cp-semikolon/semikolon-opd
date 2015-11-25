@@ -1,0 +1,90 @@
+<template name="ViewDailyAppointment">
+
+	<div class="container" style="margin-bottom: 20px">
+		<h5>รายการนัดหมายประจำวัน</h5>
+	</div>
+	<div class="container">
+	<div class="row">
+		<div class="col s2">
+			<i class="large material-icons">schedule</i>
+		</div>
+		<div class="input-field col s10">
+		  <input type="date" class="datepicker" id="appointment-date">
+		  <label for="appointment-date">วันที่นัด</label>
+		</div>
+	</div>
+	</div>
+
+	<div class="container">
+		{{#if currentDateAppointments}}
+			<table class="highlight">
+				<!-- table header -->
+				<thead>
+				 <tr>
+				     <th>ช่วง</th>
+				     <th>แผนก</th>
+				     <th>แพทย์</th>
+				     <th>ชื่อผู้ป่วย</th>
+				     <th>จัดการ</th>
+				 </tr>
+				</thead>
+
+				<!-- table body -->
+				<tbody>
+				<!-- start loop #each appointment -->
+				{{#each currentDateAppointments}}
+				 	<tr>
+					  <td>{{AppTime}}</td>
+					  <td>{{DepartmentName}}</td>
+					  <td>{{DoctorName}}</td>
+					  <td>{{PatientName}}</td>
+
+					  <td class="activity-icons">
+					   	<a href="/staff/patient/{{PatientID}}/appointment/postpone/{{_id}}" class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
+						   	<i class="material-icons grey-text">av_timer</i>
+							</a>
+
+							<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="พิมพ์ใบนัด">
+					  	 	<i class="material-icons grey-text">print</i>
+				   		</a>
+
+				   		<a href="#modal_{{_id}}" class="right tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   		<i class="material-icons red-text">delete</i>
+				   		</a>
+					   	</td>
+				 	</tr>
+
+				 	<!-- Modal Structure -->
+					  <div id="modal_{{_id}}" class="modal">
+					    <div class="modal-content">
+					    	<h4>ยกเลิกนัดหมาย</h4>
+					    	<div class="container">
+					    		<div class="col offset-s1">
+						      		<p>วันที่ : {{Date}}</p>
+									<p>ช่วงเวลา : {{AppTime}}</p>
+									<p>แผนก : {{DepartmentName}}</p>
+									<p>แพทย์ : {{DoctorName}}</p>
+					    		</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      	{{#quickRemoveButton collection="OPD.Model.Appointments" _id=_id class="at-btn waves-effect waves-light btn red"}}ยกเลิกการนัด{{/quickRemoveButton}}
+					      </a>
+					      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      	<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่รายการนัด</button>
+					      </a>
+					    </div>
+					  </div>
+				{{/each}}
+				 <!-- end loop /each -->
+
+				 	
+				</tbody>
+		    </table> 
+	    {{else}}
+	    	<h5 class="center">ไม่พบข้อมูลการนัดหมาย</h5>
+	  	{{/if}}
+	</div>
+
+</template>
