@@ -21,7 +21,7 @@ class ViewDispensesList extends BlazeComponent {
   }
 
   currentData() {
-    return OPD.Model.Record.find({DispensesStatus: false})
+    return OPD.Model.Record.find({DispensesStatus: false},{sort: {Date: 1, Time: 1}})
       .map(record => {
         let doctor = Meteor.users.findOne(record.doctorid);
         record.DoctorName = `${doctor.profile.FName} ${doctor.profile.LName}`;
