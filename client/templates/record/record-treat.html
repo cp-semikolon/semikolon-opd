@@ -10,7 +10,7 @@
 <div class="input-field col s12">
 	<select id="selectdate">
 	  {{#each date}}
-	  	<option value={{value}}>{{label}}</option>
+	  	<option value="{{value}}">{{label}}</option>
 	  {{/each}}
 	</select>
 	<label>Select Date</label>
@@ -32,6 +32,51 @@
 	{{/with}}
 </div>
 
+การรักษา
+<div id='icd'>ชื่อโรค: {{> EasySearch.Autosuggest index=diseaseIndex }}</div>
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">คำอธิบาย</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+   $('#textarea1').val('');
+  $('#textarea1').trigger('autoresize');
+</script>
+
+
+
+
+
+  รายการยา
+
+
+  <div>ชื่อยา: {{> EasySearch.Autosuggest index=medicineIndex }}</div>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea2" class="materialize-textarea"></textarea>
+          <label for="textarea2">คำอธิบาย</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+   $('#textarea2').val('');
+  $('#textarea2').trigger('autoresize');
+</script>
+
+
+
+
+
+<button id='submit'>Submit</button>
 
 
 
