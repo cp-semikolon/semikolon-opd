@@ -4,8 +4,8 @@ class ViewDeptWardRound extends BlazeComponent {
     this.state = new ReactiveDict();
     this.state.set('departmentID', "NONE");
     var d = new Date();
-    var my = "" + d.getFullYear() + d.getMonth();
-    this.state.set('monthYear', my);
+    this.state.set('year', d.getFullYear());
+    this.state.set('month', d.getMonth());
     // registerDispatcher(this.state);
   }
 
@@ -20,7 +20,9 @@ class ViewDeptWardRound extends BlazeComponent {
         this.state.set('departmentID', $(e.target).val());
       },
       'change #selectMonth'(e) {
-        this.state.set('monthYear', $(e.target).val());
+        var ym = $(e.target).val().split(",");
+        this.state.set('year', parseInt(ym[0]));
+        this.state.set('month', parseInt(ym[1]));
       }
     });
   }
@@ -37,7 +39,7 @@ class ViewDeptWardRound extends BlazeComponent {
     var Months = [];
     for (var i = 0; i < totalMonthShown; i++) {
       var sel = (i === 0? 'selected': '');
-      var id = ("" + currentYear + currentMonth);
+      var id = (currentYear + "," + currentMonth);
       Months[i] = {Name: (monthNames[currentMonth] + " " + currentYear), selected: sel, ID: id};
       currentMonth++;
       if (currentMonth >= 12) {
@@ -62,26 +64,26 @@ class ViewDeptWardRound extends BlazeComponent {
           console.log(work);
           doctor.workTime = work.dayTime;
         });
-        if (!doctor.workTime) {
-          doctor.workTime = {};
-          for (var i in days) {
-            doctor.workTime[days[i]] = {selected: false, morning: false, afternoon: false};
-          }
-        }
         return doctor;
       });
     // return doctors;
-    var works = OPD.Model.Wardrounds.find()
+    
+    var works = OPD.Model.Wardrounds.find();
     var currentDate = new Date();
+    var selectedMonth = new Date(this.state.get('year'), this.state.get('month'), 1);
+    if (currentDate.getTime() < selectedMonth.getTime()) {
+      currentDate = selectedMonth;
+    }
+    var currentMonth = currentDate.getMonth();
     var oneDay = 24 * 60 * 60 * 1000;
-    var showDays = 10;
     var schedules = [];
-    for (var i = 0; i < showDays; i++) {
+    for (var i = 0; currentDate.getMonth() === currentMonth; i++) {
       let thisDay = days[currentDate.getDay()];
       let iM = 0, iA = 0;
       let mor = [];
       let aft = [];
       doctors.forEach(doctor => {
+        if (!doctor.workTime) return;
         if (doctor.workTime[thisDay].selected === true) {
           if (doctor.workTime[thisDay].morning === true) {
             mor[iM] = {index: (iM+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
@@ -102,65 +104,3 @@ class ViewDeptWardRound extends BlazeComponent {
 }
 
 ViewDeptWardRound.register("ViewDeptWardRound");
-
-
-/*
-
-dayTime['monday'] = {
-  selected: false,
-  morning: false,
-  afternoon: false
-}
-/*
-let Departments = OPD.Model.Departments;
-
-DepartmentsIndex = new EasySearch.Index({
-  engine: new EasySearch.MongoDB({
-    // sort: function () {
-    //   return { score: -1 };
-    // },
-    selector: function (searchObject, options, aggregation) {
-      let selector = this.defaultConfiguration().selector(searchObject, options, aggregation),
-        departmentFilter = options.search.props.departmentFilter;
-
-      if (_.isString(departmentFilter) && !_.isEmpty(departmentFilter)) {
-        selector._id = departmentFilter;
-      }
-
-      return selector;
-    }
-  }),
-  collection: Departments,
-  fields: [],
-  // defaultSearchOptions: {
-  //   limit: 8
-  // },
-  // permission: () => {
-  //   //console.log(Meteor.userId());
-
-  //   return true;
-  // }
-});
-Template.ViewDeptWardRound.helpers({
-  // inputAttributes: function () {
-  //   return { 'class': 'easy-search-input', 'placeholder': 'Start searching...' };
-  // },
-  index: function () {
-    return DepartmentsIndex;
-  },
-
-});
-Template.ViewDeptWardRound.events({
-  'change .filterDepartment.DepartmentID': function (e) {
-    DepartmentsIndex.getComponentMethods()
-      .addProps('departmentFilter', $(e.target).val())
-    ;
-  }
-});
-Template.ViewDeptWardRound.onRendered(function() {
-  //initialize select form
-  $('select').material_select();
-  //$('select').material_select('destroy');
-});
-
-*/
