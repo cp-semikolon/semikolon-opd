@@ -11,14 +11,10 @@
 		</div>
 		<div class="input-field col s6">
 		    <select id="selectMonth">
-		      	<option value="" selected>All</option>
-		      	<option value="201511">Nov 2015</option>
-		      	<option value="201512">Dec 2015</option>
-		      	<option value="201601">Jan 2016</option>
-
-		<!--     {{#each departments}}
-		      	<option value={{_id}}>{{Name}}</option>
-		    {{/each}} -->
+		      	<!-- <option value="" disabled selected>(Choose month)</option> -->
+		    {{#each months}}
+		      	<option value={{ID}} {{selected}}>{{Name}}</option>
+		    {{/each}}
 		    </select>
 		    <label>เลือกเดือนที่ต้องการ</label>
 		</div>
