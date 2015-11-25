@@ -35,22 +35,23 @@
 			  	<div class="col s2">
 			  	 {{LName}}
 			  	</div>
-			  	<div class="col s4">
-			  	
-			  	  <a href={{pathFor '/patient/:patientId/appointment/' patientId=_id}}>
-			  	  <button class="waves-effect waves-light btn" >ดูรายการการนัด</button></a>
-			  	  <a href={{pathFor '/view/patientData/:patientId' patientId=_id}}>
-			  	  <button class="waves-effect waves-light btn">ดูข้อมูล</button>
-			  	  </a>
+			  	<div class="col s2 offset-s2">
+			  		{{> manipulateButton}}
 			  	</div>
 			    {{/EasySearch.Each}}
 			    {{> EasySearch.LoadMore index=patientsIndex}}
 			{{/EasySearch.IfNoResults}}
 		{{/EasySearch.IfInputEmpty}}
-	</div>
-     
+	</div>	
+</template>
 
-  	
 
-  	
+<template name="manipulateButton">
+		{{#if isStaff}}
+			<a href={{pathFor '/patient/:patientId/appointment/' patientId=_id}}>
+	  	  	<button class="waves-effect waves-light btn" >ดูรายการการนัด</button></a>
+		{{else}}
+	  	  	<a href={{pathFor '/view/patientData/:patientId' patientId=_id}}>
+	  	  	<button class="waves-effect waves-light btn">ดูข้อมูล</button></a>
+  	  	{{/if}}
 </template>

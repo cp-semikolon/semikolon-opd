@@ -1,5 +1,3 @@
-
-
 class NavHeader extends BlazeComponent {
 	onCreated() {
     super.onCreated();
@@ -20,14 +18,17 @@ Template.NavHeader.helpers({
 						link: FlowRouter.current().path,
 						text: ""
 					};
+
+		// console.log(Routes.routeGenRegEx(path.link));
 		// console.log(path.link);
 		if(role==='doctor'){
+			let DoctorID = FlowRouter.getParam('doctorId');			
 			temp = [
 			{		text:"ดูรายการนัดหมายประจำวัน",
 					link:"/view/dailyAppointment"
 			},{
 					text:"ดูตารางการออกตรวจ",
-					link:"/view/wardRound/:doctorId"
+					link:"/view/wardRound/"+DoctorID
 			}];
 		}
 		else if(role==='nurse'){
@@ -52,12 +53,7 @@ Template.NavHeader.helpers({
 			},{
 					text:"ค้นหาแพทย์",
 					link:"/find/doctor"
-			},
-			{
-					text:"ดูตารางการออกตรวจ",
-					link:"/view/wardRound/:doctorId"
-			}
-			,{
+			},{
 					text:"ดูตารางออกตรวจรายแผนก",
 					link:"/view/wardRound/department/"
 			},{
@@ -66,10 +62,10 @@ Template.NavHeader.helpers({
 			}];
 		}
 		else{
-
+			let PatientID = FlowRouter.getParam('patientId');
 			temp = [
 			{		text:"ดูรายการนัดหมาย",
-					link:"/patient/:patientId/appointment/"
+					link:"/patient/"+PatientID+"/appointment/"
 			}];
 		}
 
@@ -83,23 +79,23 @@ Template.NavHeader.helpers({
 			}
 			if(path.text===""){
 				let cur = path.link;
-				if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
+				if( Routes.isPatternMatched('postponeAppointment',cur)){
 					path.text = "เลื่อนนัด";
 				}
 
-				else if(cur==='/patient/:patientId/appointment/postpone/:appointmentId'){
+				else if( Routes.isPatternMatched('viewPatientData',cur)){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
-				else if(cur==='/record/medData/:docId/:patientId'){
+				else if(Routes.isPatternMatched('recordMedData',cur)){
 					path.text = "ดูข้อมูลผู้ป่วย";
 				}
-				else if(cur==='/patient/:patientId/appointment/'){
+				else if(Routes.isPatternMatched('manageAppointment',cur)){
 					path.text = "ดูรายการนัดหมาย";
 				}
 				// ทำนัดยังไม่มี else if(){
 
 				// }
-				else if(cur==='/view/wardRound/:doctorId'){
+				else if(Routes.isPatternMatched('viewWardRound',cur)){
 					path.text = "ดูตารางออกตรวจ";
 				}
 			}
@@ -113,27 +109,23 @@ Template.NavHeader.helpers({
 		
 	},
 
-	isPatient: function(){
-		_dep.depend();
-			let role = Session.get('currentRole');
-			if(role==='patient'){return true;}
-			else return false;
-	}
 
 
-	
+
   });
 
 
-
-
 Template.printName.helpers({
-
+	isPatient: function(){
+			let role = Session.get('currentRole');
+			if(role==='patient'){return true;}
+			else return false;
+	},
 	patientName: function(){
 		let PatientID = FlowRouter.getParam('patientId');
-		console.log(OPD.Model.Patient.find({PatientID}));
-		console.log('Name');
-    	return 'name';
+		let name = OPD.Model.Patients.findOne(PatientID).FName;
+		name = name + " " + OPD.Model.Patients.findOne(PatientID).LName;
+    	return name;
     }
 
 }
@@ -146,12 +138,10 @@ Template.DashboardHeader.events({
 
             Meteor.logout();
             if(role==="patient"){ 
-            	console.log(role);
-            	FlowRouter.go('/');
+             	FlowRouter.go('/');
 	            $('body').removeClass('dashboardLayout').addClass('MainLayout');
             }
 			else {
-				console.log('fuck'); 
 				FlowRouter.go('/login');
 	            $('body').removeClass('dashboardLayout').addClass('loginLayout');
 			}
