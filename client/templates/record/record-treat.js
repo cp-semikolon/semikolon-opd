@@ -1,3 +1,15 @@
+
+function getyaa(){
+  return $('#something div').map($d => {
+    return {
+      ID:OPD.Model.DiseaseData.findOne($d.find('input').data('value')),
+      Description:$d.find('textarea.description').val(),
+      Amount:$d.find('amount'),
+      Unit:$d.find('unit')
+    };
+  });
+}
+
 class RecordMedData extends BlazeComponent {
   onCreated(){
     super.onCreated();
@@ -22,19 +34,16 @@ class RecordMedData extends BlazeComponent {
           Date:new Date(),
           Time:'เช้า',
           Med:{
-            ICD:$('#icd input').val(),
-            Description:$('#textarea1 textarea').target.value
-          }
-
-
+            ICD:OPD.Model.DiseaseData.findOne($('#icd .item').data('value')).ICD,
+            Description:$('#textarea1').val()
+          },
+          Dispense:getyaa(),
+          DispensesStatus:false
         });
       }
     });
   }
 
-  arraymedicine(){
-    
-  }
 
   getrecord(){
     let id = this.state.get('id');
