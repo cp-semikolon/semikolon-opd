@@ -50,9 +50,9 @@ class ViewDispensesList extends BlazeComponent {
 
   events() {
     return super.events().concat({
-      "click .update-status": function () {
+      "click .update-status": function (e) {
         // Set the checked property to the opposite of its current value
-        OPD.Model.Record.update(this._id, {
+        OPD.Model.Record.update($(e.target).data('record-id'), {
           $set: {DispensesStatus: true}
         });
       }
