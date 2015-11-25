@@ -78,6 +78,17 @@ FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   }
 });
 
+//เลื่อนนัด
+FlowRouter.route(
+  '/staff/patient/:patientId/appointment/postpone/:appointmentId', {
+  triggersEnter: [Authentication.patientOTP],
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "PostponeAppointment",
+        permission:['staff','patient']      
+  });
+  }
+});
+
 //ออกบัตรนัด
 FlowRouter.route('/patient/:patientId/appointment/:appointmentId/print', {
   action: function() {
