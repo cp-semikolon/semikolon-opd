@@ -8,12 +8,14 @@ Authentication = {
       return;
     } else if( Meteor.user() ){
       // some auth function
-      console.log('there is a user');
+      // console.log('there is a user');
     } else {
       FlowRouter.go('/noPermission');
     }
   }
 };
+
+//
 
 // routing section
 
@@ -70,7 +72,7 @@ FlowRouter.route('/patient/:patientId/appointment/', {
 FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   triggersEnter: [Authentication.patientOTP],
   action: function() {
-    BlazeLayout.render("MainLayout", {content: "PostponeAppointment",
+    BlazeLayout.render("DashboardLayout", {content: "PostponeAppointment",
         permission:['staff','patient']      
   });
   }
@@ -107,9 +109,9 @@ FlowRouter.route('/record/healthData/:staffId/:patientId', {
 });
 
 //บันทึกการตรวจของหมอ
-  FlowRouter.route('/record/medData/:patientId/', {
+  // FlowRouter.route('/record/medData/:patientId/', {
 
-// FlowRouter.route('/record/medData/:docId/:patientId', {
+FlowRouter.route('/record/medData/:docId/:patientId', {
 
   action: function() {
     BlazeLayout.render("DashboardLayout", {

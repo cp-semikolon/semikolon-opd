@@ -5,7 +5,7 @@ PatientsIndex = new EasySearch.Index({
   fields: ['FName', 'LName','SSID','HN'],
   engine: new EasySearch.Minimongo({
   	selector: function (searchObject, options, aggregation) {
-  		console.log(searchObject);
+  		// console.log(searchObject);
   		if(!searchObject['LName']){
   			searchObject['LName']='------';
   		}
@@ -29,5 +29,17 @@ PatientsIndex = new EasySearch.Index({
 if (Meteor.isClient) {
 	Template.FindPatient.helpers({
   		patientsIndex: () => PatientsIndex // instanceof EasySearch.Index
+  
 	});
+
+
+  Template.manipulateButton.helpers({
+      isStaff: function(){
+        let role = Session.get('currentRole');
+        console.log('You found me');
+        if(role==='staff'){return true;}
+        else return false;
+      }
+  });
+
 }

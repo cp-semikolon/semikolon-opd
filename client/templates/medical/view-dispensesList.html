@@ -7,7 +7,7 @@
 			</div>
 		</div>		
 
-		<!-- {{#if currentDispemsesList}} -->
+		{{#if currentData}}
 			<table class="highlight">
 				<!-- table header -->
 				<thead>
@@ -23,7 +23,7 @@
 				<!-- table body -->
 				<tbody>
 				<!-- start loop #each กรหยำืหำ -->
-				<!-- {{#each currentData}} -->
+				{{#each currentData}}
 				 	<tr>
 					  <td>{{Date}}</td>
 					  <td>{{DepartmentName}}</td>
@@ -47,21 +47,21 @@
 				    	<h4>รายการยา</h4>
 				    	<h5>วันที่:{{Date}} แผนก:{{DepartmentName}} แพทย์:{{DoctorName}} ผู้ป่วย:{{PatientName}}</h5>
 				    	<div class="container">		
-				    	<!-- {{#each Dispense}} -->
+				    	{{#each Dispense}}
 				    		<div class="row">
 					    		<div class="col offset-s1">
-						      	<p>ชื่อยา : {{Yaa}}</p>
+						      	<p>ชื่อยา : {{YaaName}}</p>
 									  <p>คำอธิบาย : {{Description}}</p>
 									  <p>จำนวน : {{Amount}} {{Unit}}</p>
 									  <br>
 					    		</div>
 					    	</div>
-					    <!-- {{/each}}		 -->
+					    {{/each}}		
 				    	</div>
 				    </div>
 				    <div class="modal-footer">
-				      <a href class="modal-action modal-close waves-effect waves-green btn-flat update-status">
-				      	<button type="submit" class="at-btn waves-effect waves-light btn red">จ่ายยาสำเร็จ</button>
+				      <a href class="modal-action modal-close waves-effect waves-green btn-flat">
+				      	<button type="submit" class="at-btn waves-effect waves-light btn red update-status" data-record-id="{{_id}}">จ่ายยาสำเร็จ</button>
 				      </a>
 				      <a href class=" modal-action modal-close waves-effect waves-green btn-flat">
 				      	<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่รายการจ่ายยาทั้งหมด</button>
@@ -69,13 +69,13 @@
 				    </div>
 				  </div>
 				 
-				 <!-- {{/each}} -->
+				 {{/each}}
 				 <!-- end loop /each -->
 				</tbody>
 	    </table>  
-	  <!-- {{else}}
+	  {{else}}
 	  	<h5 class="center">ไม่พบข้อมูลการจ่ายยา</h5>
-	  {{/if}} -->
+	  {{/if}}
 
 	</div>
 

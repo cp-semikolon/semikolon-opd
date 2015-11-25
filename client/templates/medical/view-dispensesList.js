@@ -21,14 +21,15 @@ class ViewDispensesList extends BlazeComponent {
   }
 
   currentData() {
-    return OPD.Model.Record.find({DispensesStatus: '0'})
+    return OPD.Model.Record.find({DispensesStatus: false},{sort: {Date: 1, Time: 1}})
       .map(record => {
         let doctor = Meteor.users.findOne(record.doctorid);
         record.DoctorName = `${doctor.profile.FName} ${doctor.profile.LName}`;
         
         let doctorDeptID = doctor.profile.Department; 
-        record.DepartmentName =
+        let Department =
           OPD.Model.Departments.findOne(doctorDeptID);
+        record.DepartmentName = Department.Name;  
         
         let d = new Date(record.Date);
         record.Date = 
@@ -39,7 +40,8 @@ class ViewDispensesList extends BlazeComponent {
 
         record.Dispense = record.Dispense
           .map(dispense => {
-            dispense.Yaa = OPD.Model.Medicines.findOne(ID);
+            Yaa = OPD.Model.MedicineData.findOne(dispense.ID);
+            if(Yaa) dispense.YaaName = Yaa.Name;
           return dispense;
         });
       return record;
@@ -48,28 +50,15 @@ class ViewDispensesList extends BlazeComponent {
 
   events() {
     return super.events().concat({
-      "click .update-status": function () {
+      "click .update-status": function (e) {
         // Set the checked property to the opposite of its current value
-        Record.update(this._id, {
-          $set: {DispensesStatus: '1'}
+        OPD.Model.Record.update($(e.target).data('record-id'), {
+          $set: {DispensesStatus: true}
         });
       }
-    }) 
+    }); 
   }
 
-  // currentDispensesList(){
-  //   return OPD.Model.Record.find({DispensesStatus: '0'})
-  //     .map(record => {
-  //       let dispense = record.Dispense;
-
-  //       dispense.ID = ID;
-  //       dispense.Description = Description;
-  //       dispense.Amount = Amount;
-  //       dispense.Unit = Unit;
-
-  //       return dispense;
-  //   });
-  // }
 
 }
 

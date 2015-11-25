@@ -17,7 +17,8 @@ Schema.Record = new SimpleSchema({
       max: 50
     },
     Health:{
-      type: Schema.HealthData
+      type: Schema.HealthData,
+      optional:true
     },
     Med:{
       type: Schema.MedData
@@ -26,9 +27,8 @@ Schema.Record = new SimpleSchema({
       type: [Schema.Dispenses]
     },
     DispensesStatus:{
-      type: String,
-      label: "สถานะจ่ายยา",
-      allowedValues: ['0', '1'] //1 = สำเร็จ 
+      type: Boolean,
+      label: "สถานะจ่ายยา"
     }
 });
 

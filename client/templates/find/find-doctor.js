@@ -20,7 +20,7 @@ DoctorIndex = new EasySearch.Index({
 	        					{ 'profile.roles.0': 'doctor'}
 	    					]
     				};
-    	console.log(searchObject);
+    	// console.log(searchObject);
 
   	return searchObject;
   	}

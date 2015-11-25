@@ -1,7 +1,7 @@
 <template name="FindDoctor">
 
+	<div class="container">	
 	<h5>ค้นหาแพทย์</h5>
-	<br>
 	<span>ชื่อ</span>
 	{{> EasySearch.FieldInput field="profile.FName" attributes=getInputAttributes index=doctorIndex}}
 	<span>นามสกุล</span>
@@ -43,7 +43,7 @@
 			{{/EasySearch.IfNoResults}}
 		{{/EasySearch.IfInputEmpty}}
 	</div>		
-
+	</div>
      
 
   	

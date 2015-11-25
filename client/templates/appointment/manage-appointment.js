@@ -28,7 +28,7 @@ class ManageAppointment extends BlazeComponent {
 
   currentPatientAppointments() {
     let PatientID = FlowRouter.getParam('patientId');
-    return OPD.Model.Appointments.find({PatientID})
+    let result =  OPD.Model.Appointments.find({PatientID})
       .map(appointment => {
 
         let department =
@@ -46,6 +46,8 @@ class ManageAppointment extends BlazeComponent {
 
         return appointment;
     });
+    // console.log('res', result);
+    return result;
   }
 
   currentPatient(){
