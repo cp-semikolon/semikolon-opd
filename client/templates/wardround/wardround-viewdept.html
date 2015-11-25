@@ -11,26 +11,23 @@
 		</div>
 		<div class="input-field col s6">
 		    <select id="selectMonth">
-		      	<option value="" selected>All</option>
-		      	<option value="201511">Nov 2015</option>
-		      	<option value="201512">Dec 2015</option>
-		      	<option value="201601">Jan 2016</option>
-
-		<!--     {{#each departments}}
-		      	<option value={{_id}}>{{Name}}</option>
-		    {{/each}} -->
+		      	<!-- <option value="" disabled selected>(Choose month)</option> -->
+		    {{#each months}}
+		      	<option value={{ID}} {{selected}}>{{Name}}</option>
+		    {{/each}}
 		    </select>
 		    <label>เลือกเดือนที่ต้องการ</label>
 		</div>
 	</div>
 	<br>
 	<div class="container">
-		<h5>ตารางการออกตรววจ: {{selectedDepartment}}</h5>
-		<table class="bordered">
+		<h5>ตารางการออกตรวจ{{selectedDepartment}}</h5> เดือน{{selectedMonthYear}} 
+		<table class="bordered striped">
 			<thead>
 			<tr>
 			    <th data-field="date">วันที่</th>
-			    <th data-field="doctor">แพทย์</th>
+			    <th data-field="doctor-morning">แพทย์ช่วงเช้า</th>
+			    <th data-field="doctor-afternoon">แพทย์ช่วงบ่าย</th>
 			</tr>
 			</thead>
 
@@ -39,12 +36,13 @@
 			<tr>
 				<td>{{date}}</td>
 			   	<td>
-	   				<u>ช่วงเช้า :</u><br>
+	   				<!-- <u>ช่วงเช้า :</u><br> -->
 			   		{{#each morning}}
 			   			{{index}}) {{FName}} {{LName}}<br>
 			   		{{/each}}
-			   		<br>
-	   				<u>ช่วงบ่าย :</u><br>
+			   	</td>
+			   	<td>
+	   				<!-- <u>ช่วงบ่าย :</u><br> -->
 			   		{{#each afternoon}}
 			   			{{index}}) {{FName}} {{LName}}<br>
 			   		{{/each}}

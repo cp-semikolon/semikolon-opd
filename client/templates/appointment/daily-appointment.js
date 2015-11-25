@@ -20,6 +20,7 @@ class ViewDailyAppointment extends BlazeComponent {
     });
 
     this.state.set('appointmentDate', new Date(...today));
+    initializedDynamicUIComponent();
   }
 
   currentDateAppointments() {
@@ -32,7 +33,7 @@ class ViewDailyAppointment extends BlazeComponent {
         let doctor = Meteor.users.findOne(appointment.DoctorID);
         let patient = OPD.Model.Patients.findOne(appointment.PatientID);
         let d = new Date(appointment.AppDate);
-        
+
         appointment.Date = 
           `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getFullYear()}`;
 
@@ -51,6 +52,7 @@ class ViewDailyAppointment extends BlazeComponent {
     return super.events().concat({
       'change input#appointment-date'(e) {
         this.state.set('appointmentDate', new Date(e.target.value));
+        this.vanz();
       }
     });
   }
@@ -61,15 +63,15 @@ class ViewDailyAppointment extends BlazeComponent {
 }
 
 function initializedDynamicUIComponent(){
-  $('.tooltipped').tooltip({delay: 50});
   $('.modal-trigger').leanModal({
     // Modal can be dismissed by clicking outside of the modal
     dismissible: true, 
-    opacity: 0.5, // Opacity of modal background
-    in_duration: 300, // Transition in duration
-    out_duration: 200, // Transition out duration
-    height: 100
+    // opacity: 0.5, // Opacity of modal background
+    // in_duration: 300, // Transition in duration
+    // out_duration: 200, // Transition out duration
+    // height: 100
   });
+  $('.tooltipped').tooltip({delay: 50});
 }
 
 
