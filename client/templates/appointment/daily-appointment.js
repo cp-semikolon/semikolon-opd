@@ -6,6 +6,10 @@ class ViewDailyAppointment extends BlazeComponent {
     this.state.set('appointmentDate', new Date());
   }
 
+  isDoctor() {
+    return Meteor.user().profile.roles[0] === 'doctor';
+  }
+
   onRendered() {
     super.onRendered();
     // document ready
