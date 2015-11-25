@@ -76,8 +76,7 @@ class ViewDeptWardRound extends BlazeComponent {
         let cancelList = OPD.Model.CancelWardrounds.find({'UserID': doctor._id});
         doctor.cancel = {};
         cancelList.forEach(cancel => {
-          var dateTime = cancel.dateTime;
-          doctor.cancel[dateTime.date.toDateString()] = {'morning': dateTime.morning, 'afternoon': dateTime.afternoon};
+          doctor.cancel = cancel.dateTimes;
         });
         return doctor;
       });
@@ -101,11 +100,11 @@ class ViewDeptWardRound extends BlazeComponent {
         if (!doctor.workTime) return;
         if (doctor.workTime[thisDay].selected === true) {
           let cancel = doctor.cancel[currentDate.toDateString()];
-          if (doctor.workTime[thisDay].morning === true && (!cancel || cancel.morning === false)) {
+          if (doctor.workTime[thisDay].morning === true && (!cancel || (cancel.morning === false))) {
             mor[iM] = {index: (iM+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iM++;
           }
-          if (doctor.workTime[thisDay].afternoon === true && (!cancel || cancel.afternoon === false)) {
+          if (doctor.workTime[thisDay].afternoon === true && (!cancel || (cancel.afternoon === false))) {
             aft[iA] = {index: (iA+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iA++;
           }

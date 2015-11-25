@@ -1,4 +1,6 @@
 <template name="PostponeAppointment">
+	<div class="container"> 
+	<h5>เลือกเวลานัดพบใหม่</h5>
 	{{#autoForm collection="OPD.Model.Appointments" id="postponeAppointment" type="update" resetOnSuccess=true doc=currentAppointment}}
 		{{> afQuickField name="PatientID" value=patientId}}
 		{{> afQuickField name='DepartmentID'}}
@@ -7,4 +9,5 @@
 		{{> afQuickField name='DoctorID' options=doctors}}
 		<button type="submit" class="waves-effect waves-light btn">ยืนยันการเปลี่ยนแปลง</button>
 	{{/autoForm}}
+	</div>
 </template>

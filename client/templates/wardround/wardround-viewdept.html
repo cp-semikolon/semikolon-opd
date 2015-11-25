@@ -1,26 +1,27 @@
 <template name="ViewDeptWardRound">
-	<div class="row">
-		<div class="input-field col s6">
-		    <select id="selectDepartment">
-		      	<option value="NONE" disabled selected>(Choose the department)</option>
-		    {{#each departments}}
-		      	<option value={{_id}}>{{Name}}</option>
-		    {{/each}}
-		    </select>
-		    <label>เลือกแผนกที่ต้องการ</label>
-		</div>
-		<div class="input-field col s6">
-		    <select id="selectMonth">
-		      	<!-- <option value="" disabled selected>(Choose month)</option> -->
-		    {{#each months}}
-		      	<option value={{ID}} {{selected}}>{{Name}}</option>
-		    {{/each}}
-		    </select>
-		    <label>เลือกเดือนที่ต้องการ</label>
-		</div>
-	</div>
-	<br>
 	<div class="container">
+		<div class="row">
+			<div class="input-field col s6">
+			    <select id="selectDepartment">
+			      	<option value="NONE" disabled selected>(Choose the department)</option>
+			    {{#each departments}}
+			      	<option value={{_id}}>{{Name}}</option>
+			    {{/each}}
+			    </select>
+			    <label>เลือกแผนกที่ต้องการ</label>
+			</div>
+			<div class="input-field col s6">
+			    <select id="selectMonth">
+			      	<!-- <option value="" disabled selected>(Choose month)</option> -->
+			    {{#each months}}
+			      	<option value={{ID}} {{selected}}>{{Name}}</option>
+			    {{/each}}
+			    </select>
+			    <label>เลือกเดือนที่ต้องการ</label>
+			</div>
+		</div>
+		<br>
+		
 		<h5>ตารางการออกตรวจ{{selectedDepartment}}</h5> เดือน{{selectedMonthYear}} 
 		<table class="bordered striped">
 			<thead>

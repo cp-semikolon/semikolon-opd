@@ -1,26 +1,43 @@
 class ViewPatientData extends BlazeComponent{
-  onCreate(){
-    super.onCreate();
+  onCreated(){
+    super.onCreated();
     this.state = new ReactiveDict();
     this.state.set('id','');
+    this.state.set('add',false);
   }
   onRendered(){
     super.onRendered();
     $('select').material_select();
   }
-  event(){
-    return super.event().concat({
+  events(){
+    return super.events().concat({
       'change #selectdate'(e){
         this.state.set('id',e.target.value);
+      },
+      'click #addPatientData'(event){
+        this.state.set('add',true);
       }
     });
   }
-  getRole(){
-    return Session.get('currentRole');
+  getRole(role){
+    currentRole=Session.get('currentRole');
+    return currentRole===role;
   }
   getrecord(){
-    let id = FlowRouter.getParam('patientId');
+    let id = this.state.get('id');
     return OPD.Model.Record.findOne(id);
+  }
+  getdisease(icd){
+    if(!OPD.Model.DiseaseData.findOne({ICD:icd})){
+      return 'ไม่พบ'
+    }
+    return OPD.Model.DiseaseData.findOne({ICD:icd}).Name;
+  }
+  getmedicine(id){
+    if(!OPD.Model.MedicineData.findOne({ID:id})){
+      return 'ไม่พบ'
+    }
+    return OPD.Model.MedicineData.findOne({ID:id}).Name;
   }
   date(){
     let patientId = FlowRouter.getParam('patientId');
@@ -39,6 +56,9 @@ class ViewPatientData extends BlazeComponent{
         value:medrec._id
       };
      });
+  }
+  isAdd(){
+    return this.state.get('add');
   }
 }
 

@@ -1,30 +1,28 @@
 <template name="ViewWardRound">
-
+	
 	<div class="container">
 		<h5>ตารางการออกตรวจ</h5>
+
+		{{#with currentDoctor}}
+			<h4 class="page-header">
+				หมอ {{profile.FName}} {{profile.LName}}
+				<small>{{department}} </small>
+			</h4>
+		{{/with}}
+
 		<div class="row">
-			<div class="col s7">
-					{{#with currentDoctor}}
-						<p>ชื่อ - สกุล : {{profile.FName}} {{profile.LName}}</p>
-					{{/with}}	
-			</div>		
-		</div>	
-	</div>
+			<div class="input-field col s6">
+			    <select id="selectMonth">
 
-	<div class="row">
-		<div class="input-field col s6">
-		    <select id="selectMonth">
-		      	<!-- <option value="" disabled selected>(Choose month)</option> -->
-		    {{#each months}}
-		      	<option value={{ID}} {{selected}}>{{Name}}</option>
-		    {{/each}}
-		    </select>
-		    <label>เลือกเดือนที่ต้องการ</label>
+			    {{#each months}}
+			      	<option value={{ID}} {{selected}}>{{Name}}</option>
+			    {{/each}}
+			    </select>
+			    <label>เลือกเดือนที่ต้องการ</label>
+			</div>
 		</div>
-	</div>
+		<br>
 
-	<br>
-	<div class="container">
 		<table class="bordered">
 			<thead>
 			<tr>
@@ -39,20 +37,114 @@
 			<tr>
 				<td>{{date}}</td>
 			   	<td class="activity-icons">
-	   				<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
-					   	<i class="material-icons">{{morning}}</i>
+			   	{{#if imor}}
+	   				<a href="#{{modal_m}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="กดเพื่อยกเลิกออกตรวจ">
+					   	<i class="material-icons blue-text md-48">check</i>
 				   	</a>
-			   		<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
-					   	<i class="material-icons red-text">{{deletemor}}</i>
+
+				   	<div id="{{modal}}_m" class="modal">
+					    <div class="modal-content">
+					    	<h4>ยกเลิกการออกตรวจ</h4>
+					    	<div class="container">
+					    		<div class="col offset-s1">
+						      		<p>วันที่ : {{date}}</p>
+									<p>ช่วงเวลา : เช้า</p>
+					    			<p>หมายเหตุ: รายการนัดหมายทั้งหมดในช่วงเวลานี้จะถูกเลื่อนโดยอัตโนมัติ</p>
+					    		</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					     	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button id="cancelWardround_m" type="submit" class="at-btn waves-effect waves-light btn" data-date="{{modal}}">ยกเลิกการออกตรวจ</button>
+					      	</a>
+					      	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่ตารางออกตรวจ</button>
+					      	</a>
+					    </div>
+					</div>
+			   	{{/if}}
+
+			   	{{#if jmor}}
+	   				<a href="#{{modal_m}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="กดเพื่อกลับมาออกตรวจ">
+					   	<i class="material-icons red-text md-48">close</i>
 				   	</a>
+
+				   	<div id="{{modal}}_m" class="modal">
+					    <div class="modal-content">
+					    	<h4>กลับมาออกตรวจ</h4>
+					    	<div class="container">
+					    		<div class="col offset-s1">
+						      		<p>วันที่ : {{date}}</p>
+									<p>ช่วงเวลา : เช้า</p> 
+					    		</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					     	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button id="unCancelWardround_m" type="submit" class="at-btn waves-effect waves-light btn" data-date="{{modal}}">กลับมาออกตรวจ</button>
+					      	</a>
+					      	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่ตารางออกตรวจ</button>
+					      	</a>
+					    </div>
+					</div>
+			   	{{/if}}
 			   	</td>
+
+
 			   	<td class="activity-icons">
-	   				<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
-					   	<i class="material-icons">{{afternoon}}</i>
+			   	{{#if iaft}}
+	   				<a href="#{{modal_a}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="กดเพื่อยกเลิกออกตรวจ">
+					   	<i class="material-icons blue-text md-48">check</i>
 				   	</a>
-			   		<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
-					   	<i class="material-icons red-text">{{deleteaft}}</i>
+
+				   	<div id="{{modal}}_a" class="modal">
+					    <div class="modal-content">
+					    	<h4>ยกเลิกการออกตรวจ</h4>
+					    	<div class="container">
+					    		<div class="col offset-s1">
+						      		<p>วันที่ : {{date}}</p>
+									<p>ช่วงเวลา : บ่าย</p>
+					    			<p>หมายเหตุ: รายการนัดหมายทั้งหมดในช่วงเวลานี้จะถูกเลื่อนโดยอัตโนมัติ</p>
+					    		</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					     	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button id="cancelWardround_a" type="submit" class="at-btn waves-effect waves-light btn" data-date="{{modal}}">ยกเลิกการออกตรวจ</button>
+					      	</a>
+					      	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่ตารางออกตรวจ</button>
+					      	</a>
+					    </div>
+					</div>
+			   	{{/if}}
+
+			   	{{#if jaft}}
+	   				<a href="#{{modal_a}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="กดเพื่อกลับมาออกตรวจ">
+					   	<i class="material-icons red-text md-48">close</i>
 				   	</a>
+
+				   	<div id="{{modal}}_a" class="modal">
+					    <div class="modal-content">
+					    	<h4>กลับมาออกตรวจ</h4>
+					    	<div class="container">
+					    		<div class="col offset-s1">
+						      		<p>วันที่ : {{date}}</p>
+									<p>ช่วงเวลา : บ่าย</p> 
+					    		</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					     	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button id="unCancelWardround_a" type="submit" class="at-btn waves-effect waves-light btn" data-date="{{modal}}">กลับมาออกตรวจ</button>
+					      	</a>
+					      	<a href class=" modal-action modal-close waves-effect waves-green btn-flat">
+					      		<button type="submit" class="at-btn waves-effect waves-light btn">กลับสู่ตารางออกตรวจ</button>
+					      	</a>
+					    </div>
+					</div>
+			   	{{/if}}
 				</td>
 			 </tr>
 			{{/each}}

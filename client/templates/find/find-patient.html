@@ -1,9 +1,8 @@
 <template name="FindPatient">
 
 
-
+	<div class="container">	
 	<h5>ค้นหาผู้ป่วย</h5>
-	<br>
 	<span>ชื่อ</span>
 	{{> EasySearch.FieldInput field="FName" attributes=getInputAttributes index=patientsIndex}}
 	<span>นามสกุล</span>
@@ -12,8 +11,8 @@
 	{{> EasySearch.FieldInput field="HN" attributes=getInputAttributes index=patientsIndex}}
 	<span>เลขประจำตัวประชาชน</span>
 	{{> EasySearch.FieldInput field="SSID" attributes=getInputAttributes index=patientsIndex}}
-	
-
+	</div>
+	<div class="container">
 	<div class="row">
 		<div class="col s12">รายชื่อผู้ป่วย</div><br>
 		{{#EasySearch.IfInputEmpty index=patientsIndex}}
@@ -44,6 +43,7 @@
 			    {{> EasySearch.LoadMore index=patientsIndex}}
 			{{/EasySearch.IfNoResults}}
 		{{/EasySearch.IfInputEmpty}}
+	</div>
 	</div>	
 </template>
 
