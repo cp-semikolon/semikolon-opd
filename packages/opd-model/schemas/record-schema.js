@@ -13,16 +13,22 @@ Schema.Record = new SimpleSchema({
     },
     Time:{
       type: String,
+      label:"ช่วงเวลา",
       max: 50
     },
     Health:{
-      type: Schema.HealthData
+      type: Schema.HealthData,
+      optional:true
     },
     Med:{
       type: Schema.MedData
     },
     Dispense:{
-      type: [Schema.Dispenses]
+      type: [Schema.DispenseData]
+    },
+    DispensesStatus:{
+      type: Boolean,
+      label: "สถานะจ่ายยา"
     }
 });
 

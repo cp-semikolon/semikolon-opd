@@ -22,6 +22,7 @@ Package.onUse(function(api) {
     // models
     'models/patients.js',
     'models/appointments.js',
+    'models/cancelWardrounds.js',
     'models/otps.js',
     'models/departments.js',
     'models/healthData.js',
@@ -36,6 +37,7 @@ Package.onUse(function(api) {
 
     //schemas
     'schemas/appointments-schema.js',
+    'schemas/cancelWardrounds-schema.js',
     'schemas/departments-schema.js',
     'schemas/diseases-schema.js',
     'schemas/dispenses-schema.js',

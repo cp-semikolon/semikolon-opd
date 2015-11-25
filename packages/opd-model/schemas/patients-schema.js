@@ -43,7 +43,8 @@ Schema.Patients = new SimpleSchema({
     SSID: {
       type: String,
       label: 'เลขประจำตัวประชาชน',
-      max: 50
+      max: 50,
+      unique:true
     },
     HN: {
       type: String,

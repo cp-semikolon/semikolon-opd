@@ -2,7 +2,10 @@ class ViewDeptWardRound extends BlazeComponent {
   onCreated() {
     super.onCreated();
     this.state = new ReactiveDict();
-     this.state.set('departmentID', "NONE");
+    this.state.set('departmentID', "NONE");
+    var d = new Date();
+    this.state.set('year', d.getFullYear());
+    this.state.set('month', d.getMonth());
     // registerDispatcher(this.state);
   }
 
@@ -15,6 +18,11 @@ class ViewDeptWardRound extends BlazeComponent {
     return super.events().concat({
       'change #selectDepartment'(e) {
         this.state.set('departmentID', $(e.target).val());
+      },
+      'change #selectMonth'(e) {
+        var ym = $(e.target).val().split(",");
+        this.state.set('year', parseInt(ym[0]));
+        this.state.set('month', parseInt(ym[1]));
       }
     });
   }
@@ -23,53 +31,88 @@ class ViewDeptWardRound extends BlazeComponent {
     return OPD.Model.Departments.find();
   }
 
+  months() {
+    var totalMonthShown = 12;
+    var currentMonth = new Date().getMonth();
+    var currentYear = new Date().getFullYear();
+    var monthNames = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var Months = [];
+    for (var i = 0; i < totalMonthShown; i++) {
+      var sel = (i === 0? 'selected': '');
+      var id = (currentYear + "," + currentMonth);
+      Months[i] = {Name: (monthNames[currentMonth] + " " + currentYear), selected: sel, ID: id};
+      currentMonth++;
+      if (currentMonth >= 12) {
+        currentMonth = 0;
+        currentYear++;
+      }
+    }
+    return Months;
+  }
+
   selectedDepartment() {
-    return OPD.Model.Departments.findOne(this.state.get('departmentID')).Name;
+    var department = OPD.Model.Departments.findOne(this.state.get('departmentID'));
+    if (!department) return "";
+    return department.Name;
+  }
+
+  selectedMonthYear() {
+    var monthNames = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+    return monthNames[this.state.get('month')] + " " + this.state.get('year');
   }
 
   wardroundDate() {
+    if (this.state.get('departmentID') === "NONE") return [];
+
     let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     var doctors = Meteor.users.find({'profile.Department': this.state.get('departmentID')})
       .map(doctor => {
-        console.log(doctor.profile.FName + doctor._id);
+        // Find doctor's work day
         let works = OPD.Model.Wardrounds.find({'UserID': doctor._id});
         works.forEach(work => {
-          console.log(work);
           doctor.workTime = work.dayTime;
         });
-        if (!doctor.workTime) {
-          doctor.workTime = {};
-          for (var i in days) {
-            doctor.workTime[days[i]] = {selected: false, morning: false, afternoon: false};
-          }
-        }
+        // Find doctor's wardround cancellaiton
+        let cancelList = OPD.Model.CancelWardrounds.find({'UserID': doctor._id});
+        doctor.cancel = {};
+        cancelList.forEach(cancel => {
+          var dateTime = cancel.dateTime;
+          doctor.cancel[dateTime.date.toDateString()] = {'morning': dateTime.morning, 'afternoon': dateTime.afternoon};
+        });
         return doctor;
       });
     // return doctors;
-    var works = OPD.Model.Wardrounds.find()
+    
     var currentDate = new Date();
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+    var selectedMonth = new Date(this.state.get('year'), this.state.get('month'), 1);
+    if (currentDate < selectedMonth) {
+      currentDate = selectedMonth;
+    }
+    var currentMonth = currentDate.getMonth();
     var oneDay = 24 * 60 * 60 * 1000;
-    var showDays = 10;
     var schedules = [];
-    for (var i = 0; i < showDays; i++) {
+    for (var i = 0; currentDate.getMonth() === currentMonth; i++) {
       let thisDay = days[currentDate.getDay()];
       let iM = 0, iA = 0;
       let mor = [];
       let aft = [];
       doctors.forEach(doctor => {
+        if (!doctor.workTime) return;
         if (doctor.workTime[thisDay].selected === true) {
-          if (doctor.workTime[thisDay].morning === true) {
+          let cancel = doctor.cancel[currentDate.toDateString()];
+          if (doctor.workTime[thisDay].morning === true && (!cancel || cancel.morning === false)) {
             mor[iM] = {index: (iM+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iM++;
           }
-          if (doctor.workTime[thisDay].afternoon === true) {
+          if (doctor.workTime[thisDay].afternoon === true && (!cancel || cancel.afternoon === false)) {
             aft[iA] = {index: (iA+1), FName: doctor.profile.FName, LName: doctor.profile.LName};
             iA++;
           }
         }
       })
       schedules[i] = {date: currentDate.toDateString(), morning: mor, afternoon: aft};
-      // console.log(schedules[i]["morning"]);
+
       currentDate = new Date(currentDate.getTime() + oneDay);
     }
     return schedules;
@@ -77,65 +120,3 @@ class ViewDeptWardRound extends BlazeComponent {
 }
 
 ViewDeptWardRound.register("ViewDeptWardRound");
-
-
-/*
-
-dayTime['monday'] = {
-  selected: false,
-  morning: false,
-  afternoon: false
-}
-/*
-let Departments = OPD.Model.Departments;
-
-DepartmentsIndex = new EasySearch.Index({
-  engine: new EasySearch.MongoDB({
-    // sort: function () {
-    //   return { score: -1 };
-    // },
-    selector: function (searchObject, options, aggregation) {
-      let selector = this.defaultConfiguration().selector(searchObject, options, aggregation),
-        departmentFilter = options.search.props.departmentFilter;
-
-      if (_.isString(departmentFilter) && !_.isEmpty(departmentFilter)) {
-        selector._id = departmentFilter;
-      }
-
-      return selector;
-    }
-  }),
-  collection: Departments,
-  fields: [],
-  // defaultSearchOptions: {
-  //   limit: 8
-  // },
-  // permission: () => {
-  //   //console.log(Meteor.userId());
-
-  //   return true;
-  // }
-});
-Template.ViewDeptWardRound.helpers({
-  // inputAttributes: function () {
-  //   return { 'class': 'easy-search-input', 'placeholder': 'Start searching...' };
-  // },
-  index: function () {
-    return DepartmentsIndex;
-  },
-
-});
-Template.ViewDeptWardRound.events({
-  'change .filterDepartment.DepartmentID': function (e) {
-    DepartmentsIndex.getComponentMethods()
-      .addProps('departmentFilter', $(e.target).val())
-    ;
-  }
-});
-Template.ViewDeptWardRound.onRendered(function() {
-  //initialize select form
-  $('select').material_select();
-  //$('select').material_select('destroy');
-});
-
-*/

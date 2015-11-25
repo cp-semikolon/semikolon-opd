@@ -1,0 +1,64 @@
+<template name="ViewWardRound">
+
+	<div class="container">
+		<h5>ตารางการออกตรวจ</h5>
+		<div class="row">
+			<div class="col s7">
+					{{#with currentDoctor}}
+						<p>ชื่อ - สกุล : {{profile.FName}} {{profile.LName}}</p>
+					{{/with}}	
+			</div>		
+		</div>	
+	</div>
+
+	<div class="row">
+		<div class="input-field col s6">
+		    <select id="selectMonth">
+		      	<!-- <option value="" disabled selected>(Choose month)</option> -->
+		    {{#each months}}
+		      	<option value={{ID}} {{selected}}>{{Name}}</option>
+		    {{/each}}
+		    </select>
+		    <label>เลือกเดือนที่ต้องการ</label>
+		</div>
+	</div>
+
+	<br>
+	<div class="container">
+		<table class="bordered">
+			<thead>
+			<tr>
+			    <th data-field="date">วันที่</th>
+			    <th data-field="name">ช่วงเช้า</th>
+			    <th data-field="name">ช่วงบ่าย</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			{{#each wardroundDate}}
+			<tr>
+				<td>{{date}}</td>
+			   	<td class="activity-icons">
+	   				<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   	<i class="material-icons">{{morning}}</i>
+				   	</a>
+			   		<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   	<i class="material-icons red-text">{{deletemor}}</i>
+				   	</a>
+			   	</td>
+			   	<td class="activity-icons">
+	   				<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   	<i class="material-icons">{{afternoon}}</i>
+				   	</a>
+			   		<a href="#modal_{{_id}}" class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   	<i class="material-icons red-text">{{deleteaft}}</i>
+				   	</a>
+				</td>
+			 </tr>
+			{{/each}}
+		
+			</tbody>
+     	</table>
+	</div>
+
+</template>

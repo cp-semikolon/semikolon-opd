@@ -78,7 +78,7 @@ FlowRouter.route('/patient/:patientId/appointment/postpone/:appointmentId', {
   }
 });
 
-//เลื่อนนัด
+//เลื่อนนัด //จนท
 FlowRouter.route(
   '/staff/patient/:patientId/appointment/postpone/:appointmentId', {
   triggersEnter: [Authentication.patientOTP],
@@ -109,9 +109,9 @@ FlowRouter.route('/record/healthData/:staffId/:patientId', {
 });
 
 //บันทึกการตรวจของหมอ
-  FlowRouter.route('/record/medData/:patientId/', {
+  // FlowRouter.route('/record/medData/:patientId/', {
 
-// FlowRouter.route('/record/medData/:docId/:patientId', {
+FlowRouter.route('/record/medData/:docId/:patientId', {
 
   action: function() {
     BlazeLayout.render("DashboardLayout", {
@@ -180,6 +180,18 @@ FlowRouter.route('/view/wardRoundByDept', {
        permission:['staff']       
       }
       );
+  }
+});
+
+//ดูการจ่ายยา //เภสัช
+FlowRouter.route('/view/dispensesList', {
+  action: function() {
+    BlazeLayout.render(
+      "DashboardLayout",
+      {content: "ViewDispensesList",
+       permission:['pharmacist'] 
+      }
+    );
   }
 });
 
