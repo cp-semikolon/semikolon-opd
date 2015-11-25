@@ -1,13 +1,26 @@
 
 function getyaa(){
-  return $('#something div').map($d => {
+  let x = $('div.something');
+  if(!x[0])  {
+    x = [x];
+  }
+
+  console.log(x);
+
+  x.map(d => {
+    console.log('check');
+    console.log(d);
     return {
-      ID:OPD.Model.DiseaseData.findOne($d.find('input').data('value')),
-      Description:$d.find('textarea.description').val(),
-      Amount:$d.find('amount'),
-      Unit:$d.find('unit')
+      ID:OPD.Model.DiseaseData.findOne(d.find('.item').data('value')),
+      Description:d.find('textarea.description').val(),
+      Amount:d.find('.amount'),
+      Unit:d.find('.unit')
     };
   });
+
+  console.log(x);
+
+  return x;
 }
 
 class RecordMedData extends BlazeComponent {
