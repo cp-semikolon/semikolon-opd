@@ -6,36 +6,42 @@ Schema.HealthData = new SimpleSchema({
   // },
   Weight: {
     type: Number,
-    label: 'น้ำหนัก',
-    max: 10,
+    label: 'น้ำหนัก (กก.)',
+    max: 300,
+    min:1,
     decimal: true
   },
   Height: {
     type: Number,
-    label: 'ส่วนสูง',
-    max: 10,
+    label: 'ส่วนสูง (ซม.)',
+    max: 200,
+    min:1,
     decimal: true
   },
   BodyTemp: {
     type: Number,
-    label: 'อุณหภูมิร่างกาย',
-    max: 10,
+    label: 'อุณหภูมิร่างกาย (องศาเซลเซียส)',
+    max: 100,
+    min:1,
     decimal: true
   },
   HeartRate: {
     type: Number,
-    label: 'อัตราการเต้นของหัวใจ',
-    max: 10
+    label: 'อัตราการเต้นของหัวใจ (bpm)',
+    max: 100,
+    min:1
   },
   SystolicBP: {
     type: Number,
-    label: 'ความดันสูงสุด',
-    max: 10
+    label: 'ความดันสูงสุด (mmHg)',
+    max: 200,
+    min: 1
   },
   DiastolicBP: {
     type: Number,
-    label: 'ความดันต่ำสุด',
-    max: 10
+    label: 'ความดันต่ำสุด (mmHg)',
+    max: 150,
+    min:1
   },
   // HN: {
   //   type: String,
