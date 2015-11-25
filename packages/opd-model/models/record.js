@@ -7,11 +7,16 @@ Meteor.methods({
 		delete doc.patientid;		
 		let today=new Date();
 		let result;
-		result=OPD.Model.Record.insert(
+		result=OPD.Model.Record.upsert(
 			{
-				patientid:patientid,
-				Date: today,
-				Health:doc
+				Date:today
+			},
+			{$setOnInsert:
+				{
+					patientid:patientid,
+					Date: today,
+					Health:doc
+				}
 			}
 		);
 
