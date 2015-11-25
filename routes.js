@@ -51,6 +51,13 @@ FlowRouter.route('/patient/:patientId/appointment/new', {
   }
 });
 
+//ทำการนัดหมาย
+FlowRouter.route('/staff/patient/:patientId/appointment/new', {
+  action: function() {
+    BlazeLayout.render("DashboardLayout", {content: "MakeAppointmentStaff"});
+  }
+});
+
 //จัดการนัด(มีดูตารางการนัด + console ให้เลื่อนนัด + ยกเลิกนัดได้ทันที)
 FlowRouter.route('/patient/:patientId/appointment/', {
   triggersEnter: [Authentication.patientOTP],
@@ -155,7 +162,7 @@ FlowRouter.route('/view/wardRound/:doctorId', {
 });
 
 //ดูตารางออกตรวจรายแผนก
-FlowRouter.route('/view/wardRound/department/', {
+FlowRouter.route('/view/wardRoundByDept', {
   action: function() {
     BlazeLayout.render("DashboardLayout", 
       {content: "ViewDeptWardRound",

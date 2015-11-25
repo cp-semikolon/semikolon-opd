@@ -2,9 +2,16 @@ Model.Wardrounds = new Meteor.Collection('wardrounds');
 
 Meteor.methods({
 	'Wardrounds.add': function(id,dayTimes){
-		OPD.Model.Wardrounds.insert({
-			UserID: id,
-			dayTime:dayTimes
+		let result;
+		result=OPD.Model.Wardrounds.upsert({
+			UserID: id
+		},{
+			$set:{
+				UserID:id,
+				dayTime:dayTimes
+			}
 		});
+
+  		return result;
 	}
 });

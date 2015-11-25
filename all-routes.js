@@ -13,7 +13,7 @@
   viewDailyAppointment: '/view/dailyAppointment',
   viewPatientData: '/view/patientData/:patientId',
   viewWardRound: '/view/wardRound/:doctorId',
-  viewDeptWardRound: '/view/wardRound/department/',
+  viewDeptWardRound: '/view/wardRoundByDept',
   importWardRoundSchedule: '/import/wardRound',
   AuthenticationFailed: '/noPermission',
 

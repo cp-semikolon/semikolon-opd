@@ -10,12 +10,20 @@ class ManageAppointment extends BlazeComponent {
     super.onRendered();
     $('.tooltipped').tooltip({delay: 50});
     $('.modal-trigger').leanModal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
+      // Modal can be dismissed by clicking outside of the modal
+      dismissible: true, 
+      opacity: 0.5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
       height: 100
     });
+  }
+
+  staff() {
+    if( Meteor.user() ) {
+      return  '/staff';
+    }
+    return '';
   }
 
   currentPatientAppointments() {
@@ -40,15 +48,21 @@ class ManageAppointment extends BlazeComponent {
     });
   }
 
-  
-  onError() {
-    return function (error) { alert("BOO!"); console.log(error); };
+  currentPatient(){
+    let PatientID = FlowRouter.getParam('patientId');
+    return OPD.Model.Patients.findOne(PatientID);
   }
-  onSuccess() {
-    let patientId = FlowRouter.getParam('patientId');
-    Alert.success('คุณทำการยกเลิกนัดสำเร็จ');
-    FlowRouter.go(`/patient/${patientId}/appointment/`);
-  }
+
+  // onError() {
+  //   return function (error) { alert("BOO!"); console.log(error); };
+  // }
+  // onSuccess() {
+  //   let patientId = FlowRouter.getParam('patientId');
+  //   Alert.success('คุณทำการยกเลิกนัดสำเร็จ');
+  //   FlowRouter.go(`/patient/${patientId}/appointment/`);
+  // }
+
+
 
 }
 

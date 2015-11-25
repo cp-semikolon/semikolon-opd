@@ -1,0 +1,1 @@
+Model.DiseaseData = new Meteor.Collection('diseases');
