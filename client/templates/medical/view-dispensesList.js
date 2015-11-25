@@ -21,7 +21,7 @@ class ViewDispensesList extends BlazeComponent {
   }
 
   currentData() {
-    return OPD.Model.Record.find({DispensesStatus: '0'})
+    return OPD.Model.Record.find({DispensesStatus: false})
       .map(record => {
         let doctor = Meteor.users.findOne(record.doctorid);
         record.DoctorName = `${doctor.profile.FName} ${doctor.profile.LName}`;
@@ -51,25 +51,12 @@ class ViewDispensesList extends BlazeComponent {
       "click .update-status": function () {
         // Set the checked property to the opposite of its current value
         Record.update(this._id, {
-          $set: {DispensesStatus: '1'}
+          $set: {DispensesStatus: true}
         });
       }
     }) 
   }
 
-  // currentDispensesList(){
-  //   return OPD.Model.Record.find({DispensesStatus: '0'})
-  //     .map(record => {
-  //       let dispense = record.Dispense;
-
-  //       dispense.ID = ID;
-  //       dispense.Description = Description;
-  //       dispense.Amount = Amount;
-  //       dispense.Unit = Unit;
-
-  //       return dispense;
-  //   });
-  // }
 
 }
 
