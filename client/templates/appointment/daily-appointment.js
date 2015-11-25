@@ -20,6 +20,15 @@ class ViewDailyAppointment extends BlazeComponent {
     });
 
     this.state.set('appointmentDate', new Date(...today));
+
+    $('.modal-trigger').leanModal({
+      // Modal can be dismissed by clicking outside of the modal
+      dismissible: true, 
+      opacity: 0.5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      height: 100
+    });
   }
 
   currentDateAppointments() {
