@@ -9,25 +9,40 @@
 		<label>Select Date</label>
 	</div><br>
 	<div class='card'>
-	<div class='card-content'>
-	<div class='container'>
-	{{#with getrecord}}
-		{{#if getRole 'nurse'}}
-		<span class='card-title black-text'>ข้อมูลสุขภาพเบื้องต้น</span>
-		<br>
-		<span>น้ำหนัก: {{Health.Weight}} กก. ส่วนสูง: {{Health.Height}} ซม. อุณหภูมิ: {{Health.BodyTemp}} องศาเซลเซียส</span><br>
-		<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} bpm ความดันสูงสุด: {{Health.SystolicBP}} mmHg ความดันต่ำสุด: {{Health.DiastolicBP}} mmHg</span><br>
-		{{/if}}
-		{{#if getRole 'pharmacist'}}
-		<span class='card-title black-text'>การรักษา</span>
-		<br>
-		<span>ชื่อโรค: {{getdisease Med.ICD}} คำอธิบาย: {{Med.Description}}</span><br>
+		<div class='card-content'>
+			<div class='container'>
+				{{#with getrecord}}
+				{{#if getRole 'nurse'}}
+				<span class='card-title black-text'>ข้อมูลสุขภาพเบื้องต้น</span>
+				<br>
+				<span>น้ำหนัก: {{Health.Weight}} กก. ส่วนสูง: {{Health.Height}} ซม. อุณหภูมิ: {{Health.BodyTemp}} องศาเซลเซียส</span><br>
+				<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} bpm ความดันสูงสุด: {{Health.SystolicBP}} mmHg ความดันต่ำสุด: {{Health.DiastolicBP}} mmHg</span><br>		
+						
+				{{/if}}
+				{{#if getRole 'pharmacist'}}
+				<span class='card-title black-text'>การรักษา</span>
+				<br>
+				<span>ชื่อโรค: {{getdisease Med.ICD}} คำอธิบาย: {{Med.Description}}</span><br>
 
-		<div>การจ่ายยา</div><br>
-		{{#each Dispense}}
-			<span>ชื่อยา: {{getmedicine ID}} จำนวน: {{Amount}} หน่วย: {{Unit}}</span><br>
-		{{/each}}
-		{{/if}}
-	{{/with}}
-</div></div></div>
+				<div>การจ่ายยา</div><br>
+				{{#each Dispense}}
+				<span>ชื่อยา: {{getmedicine ID}} จำนวน: {{Amount}} หน่วย: {{Unit}}</span><br>
+				{{/each}}
+				{{/if}}
+				{{/with}}
+			</div>
+		</div>
+	</div>
+	{{#if getRole 'nurse'}}
+	{{#if isAdd}}
+		{{>RecordHealthData}}
+	{{else}}
+	<div class='row'>		
+		<div class="col s1 offset-s11">
+		<a class="btn-floating btn-large waves-effect waves-light cyan accent-3" id='addPatientData'><i class="material-icons">add</i></a>
+		</div>
+	</div>
+	{{/if}}
+	{{/if}}
+
 </template>

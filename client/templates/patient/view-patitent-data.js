@@ -3,6 +3,7 @@ class ViewPatientData extends BlazeComponent{
     super.onCreated();
     this.state = new ReactiveDict();
     this.state.set('id','');
+    this.state.set('add',false);
   }
   onRendered(){
     super.onRendered();
@@ -12,6 +13,9 @@ class ViewPatientData extends BlazeComponent{
     return super.events().concat({
       'change #selectdate'(e){
         this.state.set('id',e.target.value);
+      },
+      'click #addPatientData'(event){
+        this.state.set('add',true);
       }
     });
   }
@@ -52,6 +56,9 @@ class ViewPatientData extends BlazeComponent{
         value:medrec._id
       };
      });
+  }
+  isAdd(){
+    return this.state.get('add');
   }
 }
 
