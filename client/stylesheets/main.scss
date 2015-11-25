@@ -133,7 +133,7 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
 }
 
 nav ul li a.active{
-  font: bold;
+  font-size: 1.04rem;
   color: grey;
   background: white;
   padding-top: 6px;
@@ -169,3 +169,8 @@ nav ul li a.active{
 .material-tooltip {
   font-size: 0.9rem;
 }
+
+///////////////////////////////////
+  h5 {
+    margin-bottom: 35px;
+  }
