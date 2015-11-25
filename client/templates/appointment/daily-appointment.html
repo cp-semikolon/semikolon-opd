@@ -41,6 +41,31 @@
 
 
 
+					  <td class="activity-icons">
+					  	{{#if isDoctor}}
+					  	
+					  	<a href="/record/medData/{{DepartmentID}}/{{PatientID}}" class="tooltipped" data-position="top" data-delay="50" data-tooltip="บันทึกการรักษา">
+					  	 	<i class="material-icons grey-text">library_books</i>
+				   		</a>
+
+				   		{{else}}
+
+
+					   	<a href="/staff/patient/{{PatientID}}/appointment/postpone/{{_id}}" class="tooltipped" data-position="top" data-delay="50" data-tooltip="เลื่อนนัด">
+						   	<i class="material-icons grey-text">av_timer</i>
+						</a>
+
+						<a href class="tooltipped" data-position="top" data-delay="50" data-tooltip="พิมพ์ใบนัด">
+					  	 	<i class="material-icons grey-text">print</i>
+				   		</a>
+
+				   		<a href="#modal_{{_id}}" class="right tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="ยกเลิกนัด">
+					   		<i class="material-icons red-text">delete</i>
+				   		</a>
+
+				   		{{/if}}
+					   	</td>
+
 				 	</tr>
 
 				 	<!-- Modal Structure -->
