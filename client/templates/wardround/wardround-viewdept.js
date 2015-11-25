@@ -54,7 +54,13 @@ class ViewDeptWardRound extends BlazeComponent {
     return OPD.Model.Departments.findOne(this.state.get('departmentID')).Name;
   }
 
+  selectedMonthYear() {
+    var monthNames = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+    return monthNames[this.state.get('month')] + " " + this.state.get('year');
+  }
+
   wardroundDate() {
+    if (this.state.get('departmentID') === "NONE") return [];
     let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     var doctors = Meteor.users.find({'profile.Department': this.state.get('departmentID')})
       .map(doctor => {
