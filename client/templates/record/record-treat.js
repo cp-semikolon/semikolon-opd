@@ -1,14 +1,27 @@
 
-function getyaa(){
-  return $('#something div').map($d => {
-    return {
-      ID:OPD.Model.DiseaseData.findOne($d.find('input').data('value')),
-      Description:$d.find('textarea.description').val(),
-      Amount:$d.find('amount'),
-      Unit:$d.find('unit')
-    };
-  });
-}
+// function getyaa(){
+//   let x = $('div.something');
+//   if(!x[0])  {
+//     x = [x];
+//   }
+
+//   console.log(x);
+
+//   x.map(d => {
+//     console.log('check');
+//     console.log(d);
+//     return {
+//       ID:OPD.Model.DiseaseData.findOne(d.find('.item').data('value')),
+//       Description:d.find('textarea.description').val(),
+//       Amount:d.find('.amount'),
+//       Unit:d.find('.unit')
+//     };
+//   });
+
+//   console.log(x);
+
+//   return x;
+// }
 
 class RecordMedData extends BlazeComponent {
   onCreated(){
@@ -26,20 +39,41 @@ class RecordMedData extends BlazeComponent {
         this.state.set('id',e.target.value);
       },
       'click #submit'(e){
+
         let patientId = FlowRouter.getParam('patientId');
         let docId = FlowRouter.getParam('docId');
-        OPD.Model.Record.insert({
-          patientid:patientId,
-          doctorid:docId,
-          Date:new Date(),
-          Time:'เช้า',
-          Med:{
-            ICD:OPD.Model.DiseaseData.findOne($('#icd .item').data('value')).ICD,
-            Description:$('#textarea1').val()
+        let lastedRecord = OPD.Model.Record.findOne({patientid:patientId})._id;
+        if(!lastedRecord){
+          lastedRecord='';
+        }
+        else{
+          lastedRecord=lastedRecord._id;
+        }
+        OPD.Model.Record.upsert(
+          {
+            _id:lastedRecord
           },
-          Dispense:getyaa(),
-          DispensesStatus:false
-        });
+          {
+            doctorid:docId,
+            Time:'เช้า',
+            Med:{
+              ICD:OPD.Model.DiseaseData.findOne($('#icd .item').data('value')).ICD,
+              Description:$('#textarea1').val()
+            },
+            // Dispense:getyaa(),
+            Dispense:{
+              ID:OPD.Model.DiseaseData.findOne($('div.something').find('.item').data('value')),
+              Description:$('div.something').find('textarea.description').val(),
+              Amount:$('div.something').find('.amount'),
+              Unit:$('div.something').find('.unit')
+            },
+            DispensesStatus:false
+          },
+          {
+            // upsert : true,
+            validate: false
+          }
+        );
       }
     });
   }
@@ -75,24 +109,44 @@ class RecordMedData extends BlazeComponent {
   medicineIndex(){
     return MedicineIndex;
   }
-  date(){
-    let patientId = FlowRouter.getParam('patientId');
-    let medrecs = OPD.Model.Appointments.find(
-      {PatientID:patientId},
-      {sort: {AppDate: 1}
-    });
+//   date(){
+//     let patientId = FlowRouter.getParam('patientId');
+//     let medrecs = OPD.Model.Appointments.find(
+//       {PatientID:patientId},
+//       {sort: {AppDate: 1}
+//     });
     
-     return medrecs.map((medrec)=>{
-      return {
-        label:
-          `${medrec.AppDate.getUTCDate()}` +
-          `/${medrec.AppDate.getUTCMonth()+1}` +
-          `/${medrec.AppDate.getFullYear()}` +
-          `(${medrec.AppTime})`,
-        value:medrec._id
-      };
-     });
-}
+//      return medrecs.map((medrec)=>{
+//       return {
+//         label:
+//           `${medrec.AppDate.getUTCDate()}` +
+//           `/${medrec.AppDate.getUTCMonth()+1}` +
+//           `/${medrec.AppDate.getFullYear()}` +
+//           `(${medrec.AppTime})`,
+//         value:medrec._id
+//       };
+//      });
+// }
+
+  date(){
+      let patientId = FlowRouter.getParam('patientId');
+      let medrecs = OPD.Model.Record.find(
+        {patientid:patientId},
+        {sort: {Date: 1}
+      });
+      
+       return medrecs.map((medrec)=>{
+        return {
+          label:
+            `${medrec.Date.getUTCDate()}` +
+            `/${medrec.Date.getUTCMonth()+1}` +
+            `/${medrec.Date.getFullYear()}` +
+            `(${medrec.Time})`,
+          value:medrec._id
+        };
+       });
+  }
+
 
 }
 

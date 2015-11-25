@@ -19,8 +19,8 @@
 <div>
 	{{#with getrecord}}
 		<div>ข้อมูลสุขภาพเบื้องต้น</div><br>
-		<span>น้ำหนัก: {{Health.Weight}} ส่วนสูง: {{Health.Height}} อุณหภูมิ: {{Health.BodyTemp}}</span><br>
-		<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} ความดันสูงสุด: {{Health.SystolicBP}} ความดันต่ำสุด: {{Health.DiastolicBP}}</span><br>
+		<span>น้ำหนัก: {{Health.Weight}} กก.  ส่วนสูง: {{Health.Height}} ซม.  อุณหภูมิ: {{Health.BodyTemp}} องศาเซลเซียส</span><br>
+		<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} ครั้ง/นาที  ความดันสูงสุด: {{Health.SystolicBP}} มม. ปรอท  ความดันต่ำสุด: {{Health.DiastolicBP}} มม. ปรอท</span><br>
 
 		<div>การรักษา</div><br>
 		<span>ชื่อโรค: {{getdisease Med.ICD}} คำอธิบาย: {{Med.Description}}</span><br>
@@ -55,9 +55,10 @@
 
   รายการยา
 
-<div class="row">
+<div class="something">
+<div class="input_fields_wrap">
+
   <div class="medicine">ชื่อยา: {{> EasySearch.Autosuggest index=medicineIndex }}</div>
-  <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
@@ -67,15 +68,12 @@
       </div>
     </form>
     จำนวน<input class="amount" />      <input class="unit" />
-  </div>
   <script>
    $('#textarea2').val('');
   $('#textarea2').trigger('autoresize');
 	</script>
+  </div>
 </div>
-
-
-
 
 
 <button id='submit'>Submit</button>
