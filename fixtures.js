@@ -205,7 +205,8 @@ try {
 			Time:'เช้า',
 			Health:healthData,
 			Med:medData,
-			Dispense:dispenses
+			Dispense:dispenses,
+			DispensesStatus:true
 		},
 		{
 			patientid:khaiID,
@@ -214,7 +215,8 @@ try {
 			Time:'เช้า',
 			Health:healthData,
 			Med:medData,
-			Dispense:dispenses
+			Dispense:dispenses,
+			DispensesStatus:false
 		},
 		{
 			patientid:jebID,
@@ -223,7 +225,8 @@ try {
 			Time:'บ่าย',
 			Health:healthData,
 			Med:medData,
-			Dispense:dispenses
+			Dispense:dispenses,
+			DispensesStatus:false
 		}
   	];
   	recordList.forEach(record=>{
