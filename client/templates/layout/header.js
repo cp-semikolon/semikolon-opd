@@ -75,7 +75,7 @@ Template.NavHeader.helpers({
 			let PatientID = FlowRouter.getParam('patientId');
 			temp = [
 			{		text:"ดูรายการนัดหมาย",
-					link:"/patient/"+PatientID+"/appointment/",
+					link:"/patient/"+PatientID+"/appointment",
 					ifActive: false
 
 			}];
@@ -160,7 +160,7 @@ breadPath: function () {
 
 			let PatientID = FlowRouter.getParam('patientId');
 
-			temp = [{text:"ดูรายการนัดหมาย", link:"/patient/"+PatientID+"/appointment/"},
+			temp = [{text:"ดูรายการนัดหมาย", link:"/patient/"+PatientID+"/appointment"},
 					{text:"เลื่อนนัด",link: cur}];
 
 			if(role==='staff')temp.unshift({text:"ค้นหาผู้ป่วย",link:"/find/patient"});
@@ -170,7 +170,7 @@ breadPath: function () {
 		else if( Routes.isPatternMatched(Routes.makeAppointment,cur)){
 			let PatientID = FlowRouter.getParam('patientId');
 
-			temp = [{text:"ดูรายการนัดหมาย", link:"/patient/"+PatientID+"/appointment/"},
+			temp = [{text:"ดูรายการนัดหมาย", link:"/patient/"+PatientID+"/appointment"},
 					{text:"ทำนัด",link: cur}];
 
 			if(role==='staff')temp.unshift({text:"ค้นหาผู้ป่วย",link:"/find/patient"});
@@ -188,7 +188,7 @@ breadPath: function () {
 		else if(Routes.isPatternMatched(Routes.recordMedData,cur)){
 			let PatientID = FlowRouter.getParam('patientId');
 
-			return [{text:"ดูรายการนัดหมาย", link:"/patient/"+PatientID+"/appointment/"},
+			return [{text:"ดูรายการนัดหมายประจำวัน", link:"/view/dailyAppointment"},
 					{text:"บันทึกการรักษา",link: cur}];
 
 		}

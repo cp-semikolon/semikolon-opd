@@ -1,4 +1,5 @@
 <template name="RecordHealthData">
+<div class="container"> 
 	{{#autoForm schema="OPD.Schema.HealthData" id="recordHealthData" type="method" meteormethod="Record.addHealthData" resetOnSuccess=false}}
 		{{> afQuickField name='Weight'}} 
 		{{> afQuickField name='Height'}} 
@@ -8,4 +9,5 @@
 		{{> afQuickField name='DiastolicBP'}} 
 		<button type="submit" class="waves-effect waves-light btn">บันทึก</button>
 	{{/autoForm}}
+	</div>
 </template>
