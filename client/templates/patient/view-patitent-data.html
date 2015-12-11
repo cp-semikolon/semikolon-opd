@@ -5,6 +5,7 @@
 			<option value="" disabled selected>เลือกวันที่</option>
 			{{#each date}}
 			<option value={{value}}>{{label}}</option>
+			{{vanz}}
 			{{/each}}
 		</select>
 		<label>Select Date</label>
@@ -17,8 +18,7 @@
 				<span class='card-title black-text'>ข้อมูลสุขภาพเบื้องต้น</span>
 				<br>
 				<span>น้ำหนัก: {{Health.Weight}} กก. ส่วนสูง: {{Health.Height}} ซม. อุณหภูมิ: {{Health.BodyTemp}} องศาเซลเซียส</span><br>
-				<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} bpm ความดันสูงสุด: {{Health.SystolicBP}} mmHg ความดันต่ำสุด: {{Health.DiastolicBP}} mmHg</span><br>		
-						
+				<span>อัตราการเต้นของหัวใจ: {{Health.HeartRate}} bpm ความดันสูงสุด: {{Health.SystolicBP}} mmHg ความดันต่ำสุด: {{Health.DiastolicBP}} mmHg</span><br>						
 				{{/if}}
 				{{#if getRole 'pharmacist'}}
 				<span class='card-title black-text'>การรักษา</span>

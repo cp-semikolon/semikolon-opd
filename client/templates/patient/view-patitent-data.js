@@ -60,6 +60,11 @@ class ViewPatientData extends BlazeComponent{
   isAdd(){
     return this.state.get('add');
   }
+  vanz(){
+    Meteor.setTimeout(function(){
+      $('select').material_select();
+    }
+  }
 }
 
 ViewPatientData.register('ViewPatientData');
