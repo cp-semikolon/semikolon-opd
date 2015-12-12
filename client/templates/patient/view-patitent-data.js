@@ -63,7 +63,7 @@ class ViewPatientData extends BlazeComponent{
   vanz(){
     Meteor.setTimeout(function(){
       $('select').material_select();
-    }
+    });
   }
 }
 
