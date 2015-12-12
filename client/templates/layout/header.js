@@ -43,8 +43,8 @@ Template.NavHeader.helpers({
 		}
 		else if(role==='pharmacist'){
 			temp = [
-			{		text:"ค้นหาผู้ป่วย",
-					link:"/find/patient",
+			{		text:"ดูรายการสั่งยา",
+					link:"/view/dispensesList",
 					ifActive: false
 			}];
 		}

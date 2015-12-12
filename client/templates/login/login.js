@@ -18,7 +18,7 @@ AccountsTemplates.configure({
             FlowRouter.go('/find/patient');
             break;
           case 'pharmacist':
-            FlowRouter.go('/find/patient');
+            FlowRouter.go('/view/dispensesList');
             break;
 
           case 'staff':
